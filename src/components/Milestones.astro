@@ -1,0 +1,44 @@
+---
+const milestoneImage = '/hero-work.jpg';
+const isEn = (Astro.currentLocale === 'en');
+
+const t = isEn
+  ? {
+      h2: "The real answers aren't in someone else's hands",
+      p1: 'Growing up, we were told too many "shoulds" — chasing someone else\'s version of success while forgetting the key question: what do you truly want?',
+      p2: "Instead of demanding perfection at every step, keep experiencing, reflecting, and improving. Your life's manual should be written by you.",
+      btn1: 'Open the Brendon manual',
+      btn2: 'Read my three-act story',
+    }
+  : {
+      h2: '真正的答案，不在别人手上',
+      p1: '我们在成长过程里，被灌输太多应该。忙着追赶别人版本的成功，却忘了最关键的问题：你真正想要什么。',
+      p2: '与其执着每一步都完美，不如持续体验、反思、改进。你的人生说明书，应该由你自己书写。',
+      btn1: '进入赖先生使用手册',
+      btn2: '先看我的三幕故事',
+    };
+---
+
+<section id="milestones" class="py-24 px-6 max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+        <div class="bg-hk-primary rounded-3xl p-10 text-white">
+            <p class="text-xs tracking-[0.28em] text-hk-accent mb-5">BRENDON MANUALS</p>
+            <h2 class="text-3xl md:text-4xl font-black leading-tight mb-6">{t.h2}</h2>
+            <p class="text-stone-200 leading-relaxed mb-4">
+                {t.p1}
+            </p>
+            <p class="text-stone-200 leading-relaxed mb-8">
+                {t.p2}
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href={isEn ? '/en/manuals' : '/manuals'} class="px-6 py-3 rounded-full bg-white text-hk-primary text-sm font-bold hover:bg-stone-100 transition">{t.btn1}</a>
+                <a href={isEn ? '/en/about-brendon' : '/about-brendon'} class="px-6 py-3 rounded-full border border-white/50 text-white text-sm font-bold hover:bg-white/10 transition">{t.btn2}</a>
+            </div>
+        </div>
+        <div class="rounded-3xl border border-stone-200 bg-white p-6">
+            <div class="w-full h-full min-h-[320px] rounded-2xl overflow-hidden border border-stone-200">
+                <img src={milestoneImage} alt="manual preview" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+            </div>
+        </div>
+    </div>
+</section>

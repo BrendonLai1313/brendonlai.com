@@ -1,0 +1,95 @@
+---
+import Header from '../../components/Header.astro';
+import Contact from '../../components/Contact.astro';
+import '../../styles/global.css';
+
+const manualImages = {
+    cover: '/hero-main.jpg',
+    chapterBusiness: '/hero-work.jpg',
+    chapterGrowth: '/hero-life.jpg',
+    chapterFamily: '/hero-main.jpg'
+};
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Brendon Manual | Brendon Manuals</title>
+    <link rel="alternate" hreflang="zh-CN" href="https://brendonlai.com/manuals" />
+    <link rel="alternate" hreflang="en" href="https://brendonlai.com/en/manuals" />
+    <link rel="canonical" href="https://brendonlai.com/en/manuals" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="font-sans leading-relaxed selection:bg-hk-accent selection:text-white bg-white text-hk-text">
+    <Header />
+    <main class="pt-28">
+        <section class="px-6 max-w-6xl mx-auto pb-16">
+            <p class="text-xs font-bold tracking-[0.28em] text-hk-accent mb-5">BRENDON MANUALS</p>
+            <h1 class="text-4xl md:text-5xl font-black text-hk-primary leading-tight mb-6">The real answers aren't in someone else's hands</h1>
+            <p class="text-stone-600 max-w-3xl text-lg">
+                We've all heard too many "shoulds" while growing up, rushing to live someone else's version of success. This page curates tools, knowledge and reflections to help you write your own manual.
+            </p>
+        </section>
+
+        <section class="px-6 max-w-6xl mx-auto pb-12">
+            <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+                <div class="bg-hk-primary text-white rounded-3xl p-8 md:p-10">
+                    <h2 class="text-3xl font-black mb-4">The Real Answers Aren't in Someone Else's Handbook</h2>
+                    <p class="text-stone-200 leading-relaxed mb-4">
+                        Change is the only constant, and perfection is an illusion. Instead of chasing flawless decisions, we move forward by practicing, reflecting, and iterating.
+                    </p>
+                    <p class="text-stone-200 leading-relaxed">
+                        This won't make decisions for you — but it will give you methods, perspectives and inspiration to see your own path more clearly in a complex world.
+                    </p>
+                </div>
+                <div class="rounded-3xl border border-stone-200 overflow-hidden min-h-[300px]">
+                    <img src={manualImages.cover} alt="Manual cover" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+                </div>
+            </div>
+        </section>
+
+        <section class="px-6 max-w-6xl mx-auto pb-24">
+            <div class="flex items-end justify-between gap-4 mb-8">
+                <h2 class="text-3xl font-black text-hk-primary">Chapter preview</h2>
+                <p class="text-stone-500 text-sm">To be replaced with real articles and cases.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <article class="rounded-2xl border border-stone-200 bg-white overflow-hidden shadow-sm">
+                    <div class="h-40 border-b border-stone-200 overflow-hidden">
+                        <img src={manualImages.chapterBusiness} alt="Going global chapter" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="p-6">
+                        <p class="text-xs tracking-[0.2em] text-hk-accent mb-2">Going global</p>
+                        <h3 class="text-lg font-bold text-hk-primary mb-3">The 1+1 globalization playbook</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed">From market-entry assessment to execution, turning a repeatable method into daily team practice.</p>
+                    </div>
+                </article>
+                <article class="rounded-2xl border border-stone-200 bg-white overflow-hidden shadow-sm">
+                    <div class="h-40 border-b border-stone-200 overflow-hidden">
+                        <img src={manualImages.chapterGrowth} alt="Personal growth chapter" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="p-6">
+                        <p class="text-xs tracking-[0.2em] text-hk-accent mb-2">Personal growth</p>
+                        <h3 class="text-lg font-bold text-hk-primary mb-3">Staying long-term in a changing era</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed">How to build a steady rhythm amid uncertainty and keep moving the goals you truly care about.</p>
+                    </div>
+                </article>
+                <article class="rounded-2xl border border-stone-200 bg-white overflow-hidden shadow-sm">
+                    <div class="h-40 border-b border-stone-200 overflow-hidden">
+                        <img src={manualImages.chapterFamily} alt="Family life chapter" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="p-6">
+                        <p class="text-xs tracking-[0.2em] text-hk-accent mb-2">Family life</p>
+                        <h3 class="text-lg font-bold text-hk-primary mb-3">Balancing work, family and self</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed">Put love, responsibility and growth on one map — without losing speed or warmth.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    <Contact />
+</body>
+</html>

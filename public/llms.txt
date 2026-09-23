@@ -1,0 +1,28 @@
+# Brendon Lai — brendonlai.com | 帮中国工业落地东南亚
+
+> Brendon Lai 是中国工业企业进入东南亚的实战顾问。这个网站是个人 IP 枢纽，持续输出关于工业出海、AI 自动化与一人公司运营的实战内容。
+> Brendon Lai is a hands-on advisor helping Chinese industry enter Southeast Asia. This site is his personal IP hub, publishing field notes on industrial expansion, AI automation and one-person-company operations.
+
+## 中文（简体）
+
+- [首页](https://brendonlai.com/)：帮中国工业，落地东南亚。
+- [关于 Brendon](https://brendonlai.com/about-brendon)：三幕人生故事与 20 年工业品目录分销实战背景。
+- [Brendon Hub 内容书架](https://brendonlai.com/hub)：内容枢纽，索引所有视频 / 文章 / 短文（飞轮索引层）。
+- [专栏](https://brendonlai.com/insights)：长文根据地。
+- [在途项目](https://brendonlai.com/projects)：build in public 实时看板。
+- [升级手册](https://brendonlai.com/manuals)：方法论与 SOP。
+
+## English
+
+- [Home](https://brendonlai.com/en/)：Helping Chinese industry land in Southeast Asia.
+- [About Brendon](https://brendonlai.com/en/about-brendon)：A three-act story and 20 years of industrial catalog distribution.
+- [Brendon Hub](https://brendonlai.com/en/hub)：The content hub indexing all videos / articles / shorts.
+- [Insights](https://brendonlai.com/en/insights)：Long-form home base.
+- [Projects](https://brendonlai.com/en/projects)：Build-in-public progress board.
+- [Manuals](https://brendonlai.com/en/manuals)：Methods & SOPs.
+
+## 转化入口 / Conversion entries
+
+- 出海咨询 Consulting：[sea-leap.com](https://sea-leap.com)
+- B2B 贸易平台 Trade：[gai-store.com](https://gai-store.com)
+- 马来西亚分销 Distribution：[hoff-industrial.com](https://hoff-industrial.com)

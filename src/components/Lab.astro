@@ -1,0 +1,195 @@
+---
+// src/components/Lab.astro
+const isEn = Astro.currentLocale === 'en';
+
+const t = isEn
+  ? {
+      h2: 'How I rebuilt all of this with AI',
+      p: 'No more platform lock-in — 100% code control. An Astro storefront + n8n automation pipeline, documented.',
+      p1Title: 'Phase 1: Static rebuild',
+      p1Desc: 'Astro blazing-fast storefront (Completed)',
+      p2Title: 'Phase 2: Automation engine',
+      p2Desc: 'n8n → WordPress content pipeline testing (In Progress)',
+      p3Title: 'Phase 3: AI empowerment',
+      p3Desc: 'Personal knowledge base & AI assistant (Planning)',
+      cta: 'Unlock NLM\'s n8n JSON code & SOPs 📝',
+      ctaNote: 'Core code & supply-chain resources are reserved for aligned peers — fill in the form to get instant access.',
+    }
+  : {
+      h2: '我是如何用 AI 重构这一切的',
+      p: '告别平台绑架，100% 代码掌控。Astro 门面 + n8n 自动化流水线实录。',
+      p1Title: 'Phase 1: 静态重构',
+      p1Desc: 'Astro 极速门面部署 (Completed)',
+      p2Title: 'Phase 2: 自动化引擎',
+      p2Desc: 'n8n -> WordPress 图文流水线测试中 (In Progress)',
+      p3Title: 'Phase 3: AI 赋能',
+      p3Desc: '个人知识库与智能客服接入 (Planning)',
+      cta: '解锁 NLM 底层 n8n JSON 代码与 SOP 📝',
+      ctaNote: '核心代码与供应链资源仅对同频者开放，填写申请单自动获取。',
+    };
+---
+
+<section id="lab" class="relative py-24 overflow-hidden bg-[#Fdfbf7]">
+    <!-- 复古网格线背景 (Retro Grid Background) -->
+    <div class="absolute inset-0 z-0 pointer-events-none opacity-40"
+         style="background-image: linear-gradient(rgba(217, 119, 87, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(217, 119, 87, 0.2) 1px, transparent 1px); background-size: 30px 30px;">
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+            <!-- 左侧/主视觉区 (The Engine Room) -->
+            <div class="lg:col-span-5 relative group">
+                <!-- 背景阴影 -->
+                <div class="absolute inset-0 bg-hk-accent/20 blur-2xl rounded-full transform group-hover:scale-105 transition-transform duration-700"></div>
+
+                <!-- 控制台 / 蓝图视窗 -->
+                <div class="bg-[#1c1917] rounded-xl border-2 border-stone-800 shadow-2xl overflow-hidden font-mono text-sm sm:text-base relative z-10">
+                    <!-- 视窗顶部 (Window Header) -->
+                    <div class="flex items-center justify-between px-4 py-3 bg-[#292524] border-b border-stone-700">
+                        <div class="flex space-x-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                        </div>
+                        <div class="text-stone-400 text-xs tracking-wider">NLM_Architecture.sh</div>
+                    </div>
+
+                    <!-- 控制台内容 (Content) -->
+                    <div class="p-6 md:p-8 text-stone-300">
+                        <!-- 状态指示灯 (Status Indicator) -->
+                        <div class="flex items-center gap-3 mb-8 pb-4 border-b border-stone-700/50">
+                            <span class="relative flex h-3 w-3">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                            </span>
+                            <span class="text-green-400 font-bold tracking-widest text-xs md:text-sm">System Phase 1: Online</span>
+                        </div>
+
+                        <!-- 数据流向图 (Data Flow Diagram - CSS Only) -->
+                        <div class="space-y-5">
+                            <!-- 1. Astro -->
+                            <div class="relative flex items-center justify-between p-4 bg-stone-800/40 rounded-lg border border-stone-700 hover:border-amber-500/50 transition-colors">
+                                <span class="text-amber-500 font-bold tracking-wider">1. Astro UI</span>
+                                <span class="text-stone-500 text-xs">Static Frontend</span>
+                            </div>
+
+                            <div class="flex justify-center text-stone-600">
+                                <i class="fas fa-arrow-down animate-bounce"></i>
+                            </div>
+
+                            <!-- 2. n8n -->
+                            <div class="relative flex items-center justify-between p-4 bg-stone-800/40 rounded-lg border border-stone-700 hover:border-[#ff6d5a]/50 transition-colors">
+                                <span class="text-[#ff6d5a] font-bold tracking-wider">2. n8n</span>
+                                <span class="text-stone-500 text-xs">Automation Hub</span>
+                            </div>
+
+                            <div class="flex justify-center text-stone-600">
+                                <i class="fas fa-arrow-down animate-bounce" style="animation-delay: 0.2s"></i>
+                            </div>
+
+                            <!-- 3. WordPress -->
+                            <div class="relative flex items-center justify-between p-4 bg-stone-800/40 rounded-lg border border-stone-700 hover:border-blue-400/50 transition-colors">
+                                <span class="text-blue-400 font-bold tracking-wider">3. WP API</span>
+                                <span class="text-stone-500 text-xs">Headless CMS</span>
+                            </div>
+                        </div>
+
+                        <!-- 模拟终端日志 (Terminal Log) -->
+                        <div class="mt-8 pt-4 border-t border-stone-700/50 text-xs text-stone-500 leading-relaxed">
+                            <p class="text-stone-400">> Initializing build-in-public protocol...</p>
+                            <p>> Parsing markdown from Google Drive... <span class="text-green-500/80">[OK]</span></p>
+                            <p>> Pushing payload via JWT Auth... <span class="text-amber-500/80">[TESTING]</span></p>
+                            <p class="mt-2 text-stone-400 animate-pulse">_</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 装饰水印 (Decorative Watermark) -->
+                <div class="absolute -bottom-8 -right-8 text-8xl text-stone-300/40 font-black z-[-1] select-none pointer-events-none font-mono tracking-tighter">NLM</div>
+            </div>
+
+            <!-- 右侧/文案与转化区 (The Narrative & CTA) -->
+            <div class="lg:col-span-7 space-y-8 lg:pl-8 relative">
+                <!-- 标题区 -->
+                <div class="space-y-4 relative">
+                    <!-- 装饰引号 -->
+                    <span class="absolute -top-10 -left-6 text-6xl text-amber-200/50 font-serif">"</span>
+
+                    <h2 class="text-3xl md:text-4xl font-black text-stone-900 leading-tight tracking-tight">
+                        <span class="inline-block px-3 py-1 bg-stone-900 text-white text-sm md:text-base tracking-widest font-mono rounded-md mb-4 shadow-md">NLM-新店子实验室</span>
+                        <br />
+                        {t.h2}
+                    </h2>
+                    <p class="text-lg md:text-xl text-stone-600 font-medium leading-relaxed">
+                        {t.p}
+                    </p>
+                </div>
+
+                <!-- 状态清单 (Bullet points) -->
+                <div class="bg-white/60 backdrop-blur-md p-6 md:p-8 rounded-xl border border-amber-200/50 shadow-sm relative overflow-hidden">
+                    <!-- 装饰性右上角胶带 -->
+                    <div class="absolute -top-6 -right-6 w-20 h-8 bg-amber-500/10 rotate-45 transform"></div>
+
+                    <h3 class="text-xs font-bold text-amber-700 tracking-[0.2em] uppercase mb-5 font-mono flex items-center gap-2">
+                        <i class="fas fa-clipboard-list"></i> Current Lab Tasks
+                    </h3>
+
+                    <ul class="space-y-5 font-mono text-sm md:text-base">
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded flex items-center justify-center bg-green-100 text-green-600">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <span class="text-stone-700 leading-relaxed">
+                                <strong class="text-stone-900 block mb-1">{t.p1Title}</strong>
+                                {t.p1Desc}
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded flex items-center justify-center bg-amber-100 text-amber-600">
+                                <i class="fas fa-cog fa-spin text-xs"></i>
+                            </div>
+                            <span class="text-stone-700 leading-relaxed">
+                                <strong class="text-stone-900 block mb-1">{t.p2Title}</strong>
+                                {t.p2Desc}
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-4 opacity-50 grayscale">
+                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded flex items-center justify-center bg-stone-200 text-stone-500">
+                                <i class="fas fa-lock text-xs"></i>
+                            </div>
+                            <span class="text-stone-700 leading-relaxed">
+                                <strong class="text-stone-900 block mb-1">{t.p3Title}</strong>
+                                {t.p3Desc}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 行动呼吁 (Primary CTA) -->
+                <div class="pt-4">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-stone-900 text-white font-bold rounded-lg overflow-hidden transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                        <!-- 按钮扫光效果 -->
+                        <span class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
+
+                        <i class="fas fa-lock text-hk-accent"></i>
+                        <span class="font-mono tracking-wide text-sm sm:text-base">{t.cta}</span>
+                        <i class="fas fa-arrow-right opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300"></i>
+                    </a>
+                    <p class="mt-3 text-xs text-stone-500 font-mono leading-relaxed">
+                        {t.ctaNote}
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes shimmer {
+        100% {
+            transform: translateX(100%);
+        }
+    }
+</style>

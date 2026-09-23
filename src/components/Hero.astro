@@ -1,0 +1,149 @@
+---
+const lang = Astro.currentLocale === 'en' ? 'en' : 'zh';
+const isEn = lang === 'en';
+
+const t = isEn
+  ? {
+      badge: 'Stay true. Serve the industry.',
+      h1a: 'Helping Chinese industry',
+      h1b: 'land in Southeast Asia',
+      tag1: '[ Business: Industrial catalog distribution ]',
+      tag2: '[ Method: AI-driven + battle-tested ]',
+      tag3: '[ Core: Quality-first + long-term ]',
+      p1: '20 years of European / Japanese industrial catalog distribution. I openly share how I built a cross-border trading company from 0 to 1 with AI — so you can enter Southeast Asia with fewer detours.',
+      p2: 'Here I also openly document how one Hong Kong boy lifts his family up the ladder, one "level" at a time.',
+      cta1: 'See how I can help',
+      cta2: 'View my field notes →',
+      workBack: 'Practitioner view: manufacturing expansion, growth, and execution on the ground.',
+      realBack: 'Beyond work: growth, family, and the beliefs I hold.',
+      lifeBack: 'Real-life snapshots — warmth and long-term thinking.',
+    }
+  : {
+      badge: '坚守真实，贡献产业',
+      h1a: '帮中国工业，',
+      h1b: '落地东南亚',
+      tag1: '[ 商业: 工业品目录分销 ]',
+      tag2: '[ 方法: AI 驱动 + 实测验证 ]',
+      tag3: '[ 内核: 品质优先 + 长期主义 ]',
+      p1: '20 年欧洲 / 日本工业品目录分销实战。我公开自己从 0 到 1、用 AI 把一间跨境贸易公司做起来的过程——帮你进入东南亚市场，少走弯路。',
+      p2: '在这里，我也真实记录一个香港男孩如何带领家庭阶层升级、一路「打怪升级」的过程。',
+      cta1: '了解我能帮你做什么',
+      cta2: '看我的实战实录 →',
+      workBack: '实战顾问视角，聚焦制造业出海、增长与落地执行。',
+      realBack: '工作之外，也分享成长、家庭与坚持信念的自己。',
+      lifeBack: '真实生活切片，保留烟火气与长期主义的温度。',
+    };
+---
+
+<section id="hero" class="pt-32 pb-20 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 min-h-[80vh]">
+    <div class="w-full md:w-1/2 space-y-8">
+        <div class="inline-block px-3 py-1 border border-hk-accent/30 text-hk-accent text-sm font-bold rounded-full bg-hk-accent/5">
+            {t.badge}
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-hk-primary leading-[1.2]">
+            {t.h1a}<br/>
+            <span class="text-hk-accent relative inline-block mt-2">
+                {t.h1b}
+                <svg class="absolute w-full h-3 -bottom-1 left-0 text-hk-accent/20" viewBox="0 0 100 10" preserveAspectRatio="none">
+                    <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="4" fill="transparent"/>
+                </svg>
+            </span>
+        </h1>
+
+        <!-- 商业/逻辑用途: 核心定位标签 (老香港霓虹灯牌质感) -->
+        <div class="flex flex-wrap gap-3 pt-2 pb-2">
+            <span class="border border-amber-600 text-amber-700 bg-amber-50 px-3 py-1 rounded-md text-sm font-medium">{t.tag1}</span>
+            <span class="border border-amber-600 text-amber-700 bg-amber-50 px-3 py-1 rounded-md text-sm font-medium">{t.tag2}</span>
+            <span class="border border-amber-600 text-amber-700 bg-amber-50 px-3 py-1 rounded-md text-sm font-medium">{t.tag3}</span>
+        </div>
+
+        <p class="text-lg text-stone-600 leading-relaxed font-medium">
+            {t.p1}
+        </p>
+        <p class="text-stone-500 leading-relaxed">
+            {t.p2}
+        </p>
+        <div class="pt-4 flex flex-wrap gap-4">
+            <a href={isEn ? '/en/about-brendon' : '/about-brendon'} class="px-8 py-3 bg-hk-primary text-white rounded-md shadow-lg hover:bg-slate-700 transition font-medium">
+                {t.cta1}
+            </a>
+            <a href={isEn ? '/en/hub' : '/hub'} class="bg-amber-600 text-white px-8 py-3 rounded-full hover:bg-amber-700 transition shadow-md font-medium">
+                {t.cta2}
+            </a>
+            <div class="flex items-center space-x-5 text-2xl text-stone-400 pl-2">
+                <a href="#" class="hover:text-[#0077b5] transition"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="hover:text-[#E1306C] transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-[#1DA1F2] transition"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="w-full md:w-1/2 relative md:pl-6">
+        <div class="relative h-[420px] sm:h-[460px] lg:h-[500px] flex items-center justify-center">
+            <div class="absolute inset-10 rounded-3xl bg-hk-accent/10 blur-2xl"></div>
+            <div class="relative z-10 w-full max-w-[560px] group/covers [perspective:1500px]">
+                <div class="flex items-center justify-center gap-3 sm:gap-5">
+                    <div class="w-36 h-52 sm:w-40 sm:h-56 lg:w-44 lg:h-60 [perspective:1200px] transition-all duration-500 ease-out [transform:rotateY(14deg)_translateY(14px)] opacity-85 group-hover/covers:opacity-50 group-hover/covers:scale-95 hover:!opacity-100 hover:!scale-[1.08] hover:!translate-y-[-12px] hover:![transform:rotateY(0deg)] hover:!z-30">
+                        <div class="relative w-full h-full [transform-style:preserve-3d] transition-transform duration-700 delay-100 hover:[transform:rotateY(180deg)]">
+                            <div class="absolute inset-0 rounded-2xl overflow-hidden border-4 border-white shadow-xl [backface-visibility:hidden]">
+                                <img
+                                    src="/hero-work.jpg"
+                                    alt="Brendon Lai work"
+                                    class="w-full h-full object-cover"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/70 to-transparent p-3">
+                                    <p class="text-xs tracking-[0.2em] text-white/90">WORK</p>
+                                </div>
+                            </div>
+                            <div class="absolute inset-0 rounded-2xl border-4 border-white bg-slate-900 text-white shadow-xl p-5 flex flex-col justify-end [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                                <p class="text-xs tracking-[0.22em] text-hk-accent">WORK</p>
+                                <p class="mt-2 text-sm leading-relaxed text-white/90">{t.workBack}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-36 h-52 sm:w-40 sm:h-56 lg:w-44 lg:h-60 [perspective:1200px] transition-all duration-500 ease-out [transform:translateY(-8px)] z-20 group-hover/covers:opacity-50 group-hover/covers:scale-95 hover:!opacity-100 hover:!scale-[1.08] hover:!translate-y-[-14px] hover:!z-30">
+                        <div class="relative w-full h-full [transform-style:preserve-3d] transition-transform duration-700 delay-100 hover:[transform:rotateY(180deg)]">
+                            <div class="absolute inset-0 rounded-2xl overflow-hidden border-4 border-white shadow-2xl [backface-visibility:hidden]">
+                                <img
+                                    src="/hero-main.jpg"
+                                    alt="Brendon Lai real me"
+                                    class="w-full h-full object-cover"
+                                    loading="eager"
+                                    decoding="async"
+                                />
+                                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/75 to-transparent p-3">
+                                    <p class="text-xs tracking-[0.2em] text-white/95">REAL ME</p>
+                                </div>
+                            </div>
+                            <div class="absolute inset-0 rounded-2xl border-4 border-white bg-hk-primary text-white shadow-2xl p-5 flex flex-col justify-end [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                                <p class="text-xs tracking-[0.22em] text-hk-accent">REAL ME</p>
+                                <p class="mt-2 text-sm leading-relaxed text-white/90">{t.realBack}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-36 h-52 sm:w-40 sm:h-56 lg:w-44 lg:h-60 [perspective:1200px] transition-all duration-500 ease-out [transform:rotateY(-14deg)_translateY(14px)] opacity-85 group-hover/covers:opacity-50 group-hover/covers:scale-95 hover:!opacity-100 hover:!scale-[1.08] hover:!translate-y-[-12px] hover:!z-30 hover:![transform:rotateY(0deg)]">
+                        <div class="relative w-full h-full [transform-style:preserve-3d] transition-transform duration-700 delay-100 hover:[transform:rotateY(180deg)]">
+                            <div class="absolute inset-0 rounded-2xl overflow-hidden border-4 border-white shadow-xl [backface-visibility:hidden]">
+                                <img
+                                    src="/hero-life.jpg"
+                                    alt="Brendon Lai life"
+                                    class="w-full h-full object-cover"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/70 to-transparent p-3">
+                                    <p class="text-xs tracking-[0.2em] text-white/90">LIFE</p>
+                                </div>
+                            </div>
+                            <div class="absolute inset-0 rounded-2xl border-4 border-white bg-slate-900 text-white shadow-xl p-5 flex flex-col justify-end [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                                <p class="text-xs tracking-[0.22em] text-hk-accent">LIFE</p>
+                                <p class="mt-2 text-sm leading-relaxed text-white/90">{t.lifeBack}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

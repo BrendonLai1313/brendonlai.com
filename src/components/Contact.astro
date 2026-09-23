@@ -1,0 +1,117 @@
+---
+const isEn = Astro.currentLocale === 'en';
+
+const t = isEn
+  ? {
+      h2: 'Looking for kindred spirits',
+      p: "If you care about going global, moving up, or AI automation — and if you share the values of staying true and doing good — let's connect.",
+      wa: 'Chat on WhatsApp',
+      wechat: 'Connect on WeChat',
+      modalTitle: 'Add on WeChat',
+      modalDesc: 'Scan the QR code below, or search WeChat ID',
+      aiNote: 'Soon, my AI assistant will be here to handle inquiries around the clock.',
+      footerSlogan: 'Stay true. Do good.',
+    }
+  : {
+      h2: '寻找志同道合的你',
+      p: '如果你对企业出海、阶层跃升、或是 AI 自动化感兴趣；如果你也认同“坚守真实、行善业”的价值观，欢迎随时与我连结。',
+      wa: 'WhatsApp 交流',
+      wechat: 'WeChat 合作',
+      modalTitle: '添加 WeChat',
+      modalDesc: '扫描下方二维码，或搜索微信号',
+      aiNote: '未来，这里将接入我的 AI 助理，为您提供全天候的自动化对接。',
+      footerSlogan: '坚守真实，行善业。',
+    };
+---
+
+<section id="contact" class="py-24 bg-hk-primary relative overflow-hidden">
+    <!-- 背景装饰 -->
+    <div class="absolute top-0 left-0 w-full h-full opacity-5" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-6">{t.h2}</h2>
+        <p class="mb-12 text-stone-300 text-lg max-w-2xl mx-auto leading-relaxed">
+            {t.p}
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+            <!-- WhatsApp 按钮 -->
+            <a href="https://wa.me/85200000000" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-[#25D366] hover:bg-[#20b858] text-white rounded-lg font-bold transition duration-300 shadow-lg hover:shadow-[#25D366]/30 hover:-translate-y-1">
+                <i class="fab fa-whatsapp text-2xl mr-3 group-hover:scale-110 transition-transform"></i>
+                <span>{t.wa}</span>
+            </a>
+            <!-- WeChat 按钮 (触发弹窗) -->
+            <button id="wechat-btn" class="group flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-[#07C160] hover:bg-[#06ad56] text-white rounded-lg font-bold transition duration-300 shadow-lg hover:shadow-[#07C160]/30 hover:-translate-y-1">
+                <i class="fab fa-weixin text-2xl mr-3 group-hover:scale-110 transition-transform"></i>
+                <span>{t.wechat}</span>
+            </button>
+        </div>
+        <p class="mt-8 text-stone-400 text-sm">
+            <i class="fas fa-robot mr-1"></i> {t.aiNote}
+        </p>
+    </div>
+
+    <!-- WeChat 二维码弹窗 (默认隐藏) -->
+    <div id="wechat-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl p-8 max-w-sm w-full mx-4 shadow-2xl transform scale-95 transition-transform duration-300 flex flex-col items-center relative">
+            <button id="close-modal" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 transition">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <div class="w-16 h-16 bg-[#07C160]/10 rounded-full flex items-center justify-center mb-4">
+                <i class="fab fa-weixin text-3xl text-[#07C160]"></i>
+            </div>
+            <h3 class="text-xl font-bold text-stone-800 mb-2">{t.modalTitle}</h3>
+            <p class="text-stone-500 text-sm mb-6 text-center">{t.modalDesc} <span class="font-bold text-stone-700 select-all">BrendonLai_WeChat</span></p>
+            <div class="w-48 h-48 bg-stone-100 rounded-lg border border-stone-200 flex items-center justify-center mb-2 overflow-hidden">
+                <!-- 替换为你真实的微信二维码图片 -->
+                <div class="text-stone-400 text-sm text-center px-4">
+                    [请在 public 文件夹放入 wechat-qr.png]
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // 处理微信弹窗逻辑
+    const wechatBtn = document.getElementById('wechat-btn');
+    const wechatModal = document.getElementById('wechat-modal');
+    const closeModalBtn = document.getElementById('close-modal');
+
+    if (wechatBtn && wechatModal && closeModalBtn) {
+        // 打开弹窗
+        wechatBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            wechatModal.classList.remove('hidden');
+            // 延迟一点点以触发过渡动画
+            setTimeout(() => {
+                wechatModal.classList.remove('opacity-0');
+                wechatModal.firstElementChild.classList.remove('scale-95');
+            }, 10);
+        });
+
+        // 关闭弹窗 (点击按钮)
+        const closeModal = () => {
+            wechatModal.classList.add('opacity-0');
+            wechatModal.firstElementChild.classList.add('scale-95');
+            setTimeout(() => {
+                wechatModal.classList.add('hidden');
+            }, 300);
+        };
+
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // 关闭弹窗 (点击背景外边距)
+        wechatModal.addEventListener('click', (e) => {
+            if (e.target === wechatModal) {
+                closeModal();
+            }
+        });
+    }
+</script>
+
+<footer class="py-10 bg-slate-900 text-center text-stone-400 text-sm">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p>&copy; 2026 Brendon Lai. All rights reserved.</p>
+        <p class="font-medium tracking-widest">{t.footerSlogan}</p>
+    </div>
+</footer>

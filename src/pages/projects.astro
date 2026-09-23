@@ -1,0 +1,217 @@
+---
+import Header from '../components/Header.astro';
+import Lab from '../components/Lab.astro';
+import Contact from '../components/Contact.astro';
+import '../styles/global.css';
+
+// 商业/逻辑用途: 硬核阵地与冰山防御策略落地页
+// 采用复古档案柜 (Retro File Cabinet) 布局，展示深层系统架构与代码，并用表单锁定核心资源
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>矩阵档案柜 | Brendon Lai 的硬核阵地</title>
+    <link rel="alternate" hreflang="zh-CN" href="https://brendonlai.com/projects" />
+    <link rel="alternate" hreflang="en" href="https://brendonlai.com/en/projects" />
+    <link rel="canonical" href="https://brendonlai.com/projects" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style is:global>
+        body { 
+            background-color: #Fdfbf7; /* 老香港暖石色底 */
+            color: #333333; 
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* 复古档案柜纹理 */
+        .file-cabinet-bg {
+            background-image: 
+                linear-gradient(rgba(217, 119, 87, 0.05) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(217, 119, 87, 0.05) 2px, transparent 2px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="font-sans leading-relaxed selection:bg-hk-accent selection:text-white file-cabinet-bg">
+    <Header />
+
+    <!-- 页面头部 (Page Header) -->
+    <main class="pt-32 pb-20 px-6 max-w-5xl mx-auto min-h-screen">
+        <div class="mb-16 border-b-4 border-stone-800 pb-8 relative">
+            <div class="absolute -top-4 right-0 opacity-10">
+                <i class="fas fa-folder-open text-9xl text-hk-accent"></i>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black text-stone-900 tracking-tight font-mono">
+                <span class="text-hk-accent">#</span> 矩阵档案柜
+            </h1>
+            <p class="text-xl text-stone-500 mt-4 font-medium max-w-2xl">
+                系统级思维的幕后解剖。水面之上是架构与逻辑，水面之下是代码与资源。
+            </p>
+        </div>
+
+        <Lab />
+
+        <!-- 看板/档案柜列表 (Kanban/File Cabinet Layout) -->
+        <div class="space-y-12">
+            <!-- ==============================================
+                 档案 02: 跨境贸易 AI 引擎
+                 ============================================== -->
+            <article class="bg-white rounded-xl border-2 border-stone-300 shadow-[8px_8px_0_rgba(41,37,36,1)] overflow-hidden transition-transform hover:-translate-y-1">
+                <div class="bg-stone-800 text-stone-300 px-6 py-3 flex items-center justify-between border-b-2 border-stone-800">
+                    <div class="flex items-center gap-3 font-mono text-sm font-bold tracking-widest">
+                        <i class="fas fa-globe-asia text-amber-500"></i> 
+                        FILE_ID: CROSS_BORDER_AI
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                    </div>
+                </div>
+
+                <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- 🌊 水面之上 -->
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-3xl font-black text-stone-900 mb-2">跨境贸易 AI 引擎</h2>
+                            <p class="text-amber-600 font-bold tracking-wider text-sm uppercase">欧标设计 + 中国制造，AI 提速供应链</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="font-bold text-stone-900 border-l-4 border-stone-300 pl-3">商业痛点与 ROI 预期</h3>
+                            <p class="text-stone-600 leading-relaxed text-sm">
+                                <strong>Why:</strong> 传统外贸询盘处理低效，跨文化沟通与供应链筛选成本极高。<br/>
+                                <strong>What (ROI):</strong> 打造 AI 询盘过滤与报价系统，精准识别高意向客户，缩短 50% 沟通周期。
+                            </p>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="font-bold text-stone-900 border-l-4 border-stone-300 pl-3">核心 Tech Stack</h3>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="px-2 py-1 bg-stone-100 text-stone-700 text-xs font-mono rounded">LLM Prompts</span>
+                                <span class="px-2 py-1 bg-stone-100 text-stone-700 text-xs font-mono rounded">CRM 整合</span>
+                                <span class="px-2 py-1 bg-stone-100 text-stone-700 text-xs font-mono rounded">数据清洗脚本</span>
+                            </div>
+                        </div>
+                        <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                            <h3 class="font-bold text-stone-900 mb-2 flex items-center gap-2">
+                                <i class="fas fa-terminal text-stone-500"></i> Build in Public 进度日志
+                            </h3>
+                            <ul class="space-y-3 text-sm font-mono text-stone-600">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-spinner fa-spin text-amber-500 mt-1"></i>
+                                    <span>[测试中] 欧美市场询盘语气情感分析模型微调。</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 🧊 水面之下 -->
+                    <div class="relative bg-stone-900 rounded-xl p-8 flex flex-col justify-center items-center text-center overflow-hidden border-2 border-stone-800">
+                        <div class="absolute -bottom-10 opacity-10 w-full flex justify-center pointer-events-none">
+                            <i class="fas fa-ship text-9xl text-white"></i>
+                        </div>
+                        <div class="relative z-10 space-y-6 w-full">
+                            <div class="w-16 h-16 bg-stone-800 rounded-full flex items-center justify-center mx-auto border border-stone-700 shadow-inner">
+                                <i class="fas fa-lock text-2xl text-amber-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">RESTRICTED ACCESS</h3>
+                                <p class="text-stone-400 text-sm">水面之下的硬核资源已锁定</p>
+                            </div>
+                            <a href="https://forms.google.com/YOUR_FORM_ID" target="_blank" rel="noopener noreferrer" class="group relative w-full flex items-center justify-center gap-3 px-6 py-4 bg-amber-600 text-white font-bold font-mono rounded-lg overflow-hidden transition-all duration-300 hover:bg-amber-700 shadow-[0_0_20px_rgba(214,158,46,0.4)] hover:shadow-[0_0_30px_rgba(214,158,46,0.6)] hover:-translate-y-0.5">
+                                <i class="fas fa-key group-hover:rotate-90 transition-transform duration-300"></i>
+                                <span>获取 AI 跨境询盘过滤 Prompt 📝</span>
+                            </a>
+                            <p class="text-xs text-stone-500 mt-4 font-mono leading-relaxed">
+                                <i class="fas fa-shield-alt opacity-70"></i> 供应链资源与核心话术库仅对同频者开放，<br/>填写申请单自动获取。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ==============================================
+                 档案 03: 工具与内在修炼
+                 ============================================== -->
+            <article class="bg-white rounded-xl border-2 border-stone-300 shadow-[8px_8px_0_rgba(41,37,36,1)] overflow-hidden transition-transform hover:-translate-y-1">
+                <div class="bg-stone-800 text-stone-300 px-6 py-3 flex items-center justify-between border-b-2 border-stone-800">
+                    <div class="flex items-center gap-3 font-mono text-sm font-bold tracking-widest">
+                        <i class="fas fa-yin-yang text-green-400"></i> 
+                        FILE_ID: BIO_HACKING
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                    </div>
+                </div>
+
+                <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- 🌊 水面之上 -->
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-3xl font-black text-stone-900 mb-2">工具与内在修炼</h2>
+                            <p class="text-green-600 font-bold tracking-wider text-sm uppercase">Google Workspace 迁移与生物效率 SOP</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="font-bold text-stone-900 border-l-4 border-stone-300 pl-3">商业痛点与 ROI 预期</h3>
+                            <p class="text-stone-600 leading-relaxed text-sm">
+                                <strong>Why:</strong> 资讯过载导致注意力涣散，工作与家庭边界模糊。<br/>
+                                <strong>What (ROI):</strong> 建立数位极简主义系统与冥想觉察习惯，恢复深度工作能力，提升决策质量。
+                            </p>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="font-bold text-stone-900 border-l-4 border-stone-300 pl-3">核心 Tech Stack</h3>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="px-2 py-1 bg-stone-100 text-stone-700 text-xs font-mono rounded">Google Workspace</span>
+                                <span class="px-2 py-1 bg-stone-100 text-stone-700 text-xs font-mono rounded">GTD 方法论</span>
+                                <span class="px-2 py-1 bg-stone-100 text-stone-700 text-xs font-mono rounded">Vipassana (内观)</span>
+                            </div>
+                        </div>
+                        <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                            <h3 class="font-bold text-stone-900 mb-2 flex items-center gap-2">
+                                <i class="fas fa-terminal text-stone-500"></i> Build in Public 进度日志
+                            </h3>
+                            <ul class="space-y-3 text-sm font-mono text-stone-600">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-green-500 mt-1"></i>
+                                    <span>[完成] 全面迁移至 Google Workspace，构建单一真理源 (SSOT)。</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 🧊 水面之下 -->
+                    <div class="relative bg-stone-900 rounded-xl p-8 flex flex-col justify-center items-center text-center overflow-hidden border-2 border-stone-800">
+                        <div class="absolute -bottom-10 opacity-10 w-full flex justify-center pointer-events-none">
+                            <i class="fas fa-brain text-9xl text-white"></i>
+                        </div>
+                        <div class="relative z-10 space-y-6 w-full">
+                            <div class="w-16 h-16 bg-stone-800 rounded-full flex items-center justify-center mx-auto border border-stone-700 shadow-inner">
+                                <i class="fas fa-lock text-2xl text-green-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">RESTRICTED ACCESS</h3>
+                                <p class="text-stone-400 text-sm">水面之下的硬核资源已锁定</p>
+                            </div>
+                            <a href="https://forms.google.com/YOUR_FORM_ID" target="_blank" rel="noopener noreferrer" class="group relative w-full flex items-center justify-center gap-3 px-6 py-4 bg-green-600 text-white font-bold font-mono rounded-lg overflow-hidden transition-all duration-300 hover:bg-green-700 shadow-[0_0_20px_rgba(72,187,120,0.4)] hover:shadow-[0_0_30px_rgba(72,187,120,0.6)] hover:-translate-y-0.5">
+                                <i class="fas fa-key group-hover:rotate-90 transition-transform duration-300"></i>
+                                <span>解锁个人效能管理 SOP 笔记 📝</span>
+                            </a>
+                            <p class="text-xs text-stone-500 mt-4 font-mono leading-relaxed">
+                                <i class="fas fa-shield-alt opacity-70"></i> 高浓度生物黑客经验与习惯养成指南仅对同频者开放，<br/>填写申请单自动获取。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <Contact />
+</body>
+</html>

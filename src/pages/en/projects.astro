@@ -1,0 +1,203 @@
+---
+import Header from '../../components/Header.astro';
+import Lab from '../../components/Lab.astro';
+import Contact from '../../components/Contact.astro';
+import '../../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Cabinet | Brendon Lai's hardcore HQ</title>
+    <link rel="alternate" hreflang="zh-CN" href="https://brendonlai.com/projects" />
+    <link rel="alternate" hreflang="en" href="https://brendonlai.com/en/projects" />
+    <link rel="canonical" href="https://brendonlai.com/en/projects" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style is:global>
+        body {
+            background-color: #Fdfbf7;
+            color: #333333;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .file-cabinet-bg {
+            background-image:
+                linear-gradient(rgba(217, 119, 87, 0.05) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(217, 119, 87, 0.05) 2px, transparent 2px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="font-sans leading-relaxed selection:bg-hk-accent selection:text-white file-cabinet-bg">
+    <Header />
+
+    <main class="pt-32 pb-20 px-6 max-w-5xl mx-auto min-h-screen">
+        <div class="mb-16 border-b-4 border-stone-800 pb-8 relative">
+            <div class="absolute -top-4 right-0 opacity-10">
+                <i class="fas fa-folder-open text-9xl text-hk-accent"></i>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black text-stone-900 tracking-tight font-mono">
+                <span class="text-hk-accent">#</span> File Cabinet
+            </h1>
+            <p class="text-xl text-stone-500 mt-4 font-medium max-w-2xl">
+                The behind-the-scenes anatomy of systems thinking. Above the surface: architecture and logic. Below: code and resources.
+            </p>
+        </div>
+
+        <Lab />
+
+        <div class="space-y-12">
+            <!-- FILE 02: Cross-border Trade AI Engine -->
+            <article class="bg-white rounded-xl border-2 border-stone-300 shadow-[8px_8px_0_rgba(41,37,36,1)] overflow-hidden transition-transform hover:-translate-y-1">
+                <div class="bg-stone-800 text-stone-300 px-6 py-3 flex items-center justify-between border-b-2 border-stone-800">
+                    <div class="flex items-center gap-3 font-mono text-sm font-bold tracking-widest">
+                        <i class="fas fa-globe-asia text-amber-500"></i>
+                        FILE_ID: CROSS_BORDER_AI
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                    </div>
+                </div>
+
+                <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-3xl font-black text-stone-900 mb-2">Cross-border Trade AI Engine</h2>
+                            <p class="text-amber-600 font-bold tracking-wider text-sm uppercase">European design + Chinese manufacturing, AI-accelerated supply chain</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="font-bold text-stone-900 border-l-4 border-stone-300 pl-3">Business pain & ROI</h3>
+                            <p class="text-stone-600 leading-relaxed text-sm">
+                                <strong>Why:</strong> Traditional foreign-trade inquiry handling is slow, and cross-cultural communication plus supplier screening is costly.<br/>
+                                <strong>What (ROI):</strong> Build an AI inquiry-filtering and quoting system that spots high-intent buyers and cuts the communication cycle by 50%.
+                            </p>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="font-bold text-stone-900 border-l-4 border-stone-300 pl-3">Core Tech Stack</h3>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="px-2 py-1 bg-stone-100 text-stone-700 text-xs font-mono rounded">LLM Prompts</span>
+                                <span class="px-2 py-1 bg-stone-100 text-stone-700 text-xs font-mono rounded">CRM integration</span>
+                                <span class="px-2 py-1 bg-stone-100 text-stone-700 text-xs font-mono rounded">Data-cleaning scripts</span>
+                            </div>
+                        </div>
+                        <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                            <h3 class="font-bold text-stone-900 mb-2 flex items-center gap-2">
+                                <i class="fas fa-terminal text-stone-500"></i> Build in Public progress log
+                            </h3>
+                            <ul class="space-y-3 text-sm font-mono text-stone-600">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-spinner fa-spin text-amber-500 mt-1"></i>
+                                    <span>[Testing] Fine-tuning sentiment analysis for EU & US inquiry tone.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="relative bg-stone-900 rounded-xl p-8 flex flex-col justify-center items-center text-center overflow-hidden border-2 border-stone-800">
+                        <div class="absolute -bottom-10 opacity-10 w-full flex justify-center pointer-events-none">
+                            <i class="fas fa-ship text-9xl text-white"></i>
+                        </div>
+                        <div class="relative z-10 space-y-6 w-full">
+                            <div class="w-16 h-16 bg-stone-800 rounded-full flex items-center justify-center mx-auto border border-stone-700 shadow-inner">
+                                <i class="fas fa-lock text-2xl text-amber-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">RESTRICTED ACCESS</h3>
+                                <p class="text-stone-400 text-sm">Hardcore resources below the surface are locked</p>
+                            </div>
+                            <a href="https://forms.google.com/YOUR_FORM_ID" target="_blank" rel="noopener noreferrer" class="group relative w-full flex items-center justify-center gap-3 px-6 py-4 bg-amber-600 text-white font-bold font-mono rounded-lg overflow-hidden transition-all duration-300 hover:bg-amber-700 shadow-[0_0_20px_rgba(214,158,46,0.4)] hover:shadow-[0_0_30px_rgba(214,158,46,0.6)] hover:-translate-y-0.5">
+                                <i class="fas fa-key group-hover:rotate-90 transition-transform duration-300"></i>
+                                <span>Get the AI cross-border inquiry filter prompt 📝</span>
+                            </a>
+                            <p class="text-xs text-stone-500 mt-4 font-mono leading-relaxed">
+                                <i class="fas fa-shield-alt opacity-70"></i> Supply-chain resources & core scripts are reserved for aligned peers,<br/>fill in the form for instant access.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- FILE 03: Tools & Inner Practice -->
+            <article class="bg-white rounded-xl border-2 border-stone-300 shadow-[8px_8px_0_rgba(41,37,36,1)] overflow-hidden transition-transform hover:-translate-y-1">
+                <div class="bg-stone-800 text-stone-300 px-6 py-3 flex items-center justify-between border-b-2 border-stone-800">
+                    <div class="flex items-center gap-3 font-mono text-sm font-bold tracking-widest">
+                        <i class="fas fa-yin-yang text-green-400"></i>
+                        FILE_ID: BIO_HACKING
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                    </div>
+                </div>
+
+                <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-3xl font-black text-stone-900 mb-2">Tools & Inner Practice</h2>
+                            <p class="text-green-600 font-bold tracking-wider text-sm uppercase">Google Workspace migration & bio-efficiency SOPs</p>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="font-bold text-stone-900 border-l-4 border-stone-300 pl-3">Business pain & ROI</h3>
+                            <p class="text-stone-600 leading-relaxed text-sm">
+                                <strong>Why:</strong> Information overload scatters attention and blurs the line between work and family.<br/>
+                                <strong>What (ROI):</strong> Build a digital-minimalism system and meditation practice to restore deep work and sharpen decisions.
+                            </p>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="font-bold text-stone-900 border-l-4 border-stone-300 pl-3">Core Tech Stack</h3>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="px-2 py-1 bg-stone-100 text-stone-700 text-xs font-mono rounded">Google Workspace</span>
+                                <span class="px-2 py-1 bg-stone-100 text-stone-700 text-xs font-mono rounded">GTD method</span>
+                                <span class="px-2 py-1 bg-stone-100 text-stone-700 text-xs font-mono rounded">Vipassana</span>
+                            </div>
+                        </div>
+                        <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+                            <h3 class="font-bold text-stone-900 mb-2 flex items-center gap-2">
+                                <i class="fas fa-terminal text-stone-500"></i> Build in Public progress log
+                            </h3>
+                            <ul class="space-y-3 text-sm font-mono text-stone-600">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-green-500 mt-1"></i>
+                                    <span>[Done] Fully migrated to Google Workspace, building a single source of truth (SSOT).</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="relative bg-stone-900 rounded-xl p-8 flex flex-col justify-center items-center text-center overflow-hidden border-2 border-stone-800">
+                        <div class="absolute -bottom-10 opacity-10 w-full flex justify-center pointer-events-none">
+                            <i class="fas fa-brain text-9xl text-white"></i>
+                        </div>
+                        <div class="relative z-10 space-y-6 w-full">
+                            <div class="w-16 h-16 bg-stone-800 rounded-full flex items-center justify-center mx-auto border border-stone-700 shadow-inner">
+                                <i class="fas fa-lock text-2xl text-green-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">RESTRICTED ACCESS</h3>
+                                <p class="text-stone-400 text-sm">Hardcore resources below the surface are locked</p>
+                            </div>
+                            <a href="https://forms.google.com/YOUR_FORM_ID" target="_blank" rel="noopener noreferrer" class="group relative w-full flex items-center justify-center gap-3 px-6 py-4 bg-green-600 text-white font-bold font-mono rounded-lg overflow-hidden transition-all duration-300 hover:bg-green-700 shadow-[0_0_20px_rgba(72,187,120,0.4)] hover:shadow-[0_0_30px_rgba(72,187,120,0.6)] hover:-translate-y-0.5">
+                                <i class="fas fa-key group-hover:rotate-90 transition-transform duration-300"></i>
+                                <span>Unlock personal effectiveness SOP notes 📝</span>
+                            </a>
+                            <p class="text-xs text-stone-500 mt-4 font-mono leading-relaxed">
+                                <i class="fas fa-shield-alt opacity-70"></i> High-density biohacking experience & habit guides are reserved for aligned peers,<br/>fill in the form for instant access.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <Contact />
+</body>
+</html>

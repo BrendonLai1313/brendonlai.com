@@ -1,0 +1,72 @@
+---
+const lang = Astro.currentLocale === 'en' ? 'en' : 'zh';
+const isEn = lang === 'en';
+
+// 生成带语言前缀的站内链接
+const lp = (path: string) => {
+  if (path === '/') return isEn ? '/en/' : '/';
+  return isEn ? `/en${path}` : path;
+};
+
+const nav = isEn
+  ? [
+      { href: lp('/'), label: 'Home' },
+      { href: lp('/about-brendon'), label: 'About' },
+      { href: lp('/hub'), label: 'Brendon Hub' },
+      { href: lp('/projects'), label: 'Projects' },
+      { href: lp('/insights'), label: 'Insights' },
+    ]
+  : [
+      { href: lp('/'), label: '首页' },
+      { href: lp('/about-brendon'), label: 'Brendon 是谁' },
+      { href: lp('/hub'), label: 'Brendon Hub' },
+      { href: lp('/projects'), label: '在途项目' },
+      { href: lp('/insights'), label: '专栏' },
+    ];
+
+// 语言切换：目标路径 + 目标语言
+const path = Astro.url.pathname;
+const altPath = isEn
+  ? path.replace(/^\/en(?=\/|$)/, '') || '/'
+  : path === '/' ? '/en/' : `/en${path}`;
+const altLabel = isEn ? '中文' : 'EN';
+---
+
+<header class="fixed w-full top-0 bg-hk-bg/90 backdrop-blur-md z-50 border-b border-stone-200/60 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href={lp('/')} class="text-2xl font-black tracking-wider text-hk-primary flex items-center">
+            <span class="mr-2">赖</span> Brendon <span class="text-hk-accent ml-1">.</span>
+        </a>
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-stone-600">
+            {nav.map((item) => (
+                <a href={item.href} class="hover:text-hk-accent transition">{item.label}</a>
+            ))}
+            <a href={altPath} class="px-3 py-1.5 border border-stone-300 rounded-md text-xs font-bold text-stone-500 hover:border-hk-accent hover:text-hk-accent transition">{altLabel}</a>
+        </nav>
+        <!-- 手机端菜单按钮 -->
+        <button class="md:hidden text-hk-primary text-xl" id="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <!-- 手机端下拉菜单 -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-stone-100">
+        <div class="px-4 pt-2 pb-6 space-y-1 shadow-lg">
+            {nav.map((item) => (
+                <a href={item.href} class="block px-3 py-2 rounded-md text-base font-medium text-stone-600 hover:text-stone-900 hover:bg-stone-50">{item.label}</a>
+            ))}
+            <a href={altPath} class="block px-3 py-2 rounded-md text-base font-bold text-hk-accent hover:bg-stone-50">{altLabel}</a>
+        </div>
+    </div>
+</header>
+
+<script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    if (btn && menu) {
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    }
+</script>
