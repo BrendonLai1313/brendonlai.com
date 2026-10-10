@@ -7,19 +7,17 @@
 
 - [首页](https://brendonlai.com/)：帮中国工业，落地东南亚。
 - [关于 Brendon](https://brendonlai.com/about-brendon)：三幕人生故事与 20 年工业品目录分销实战背景。
-- [Brendon Hub 内容书架](https://brendonlai.com/hub)：内容枢纽，索引所有视频 / 文章 / 短文（飞轮索引层）。
+- [Brendon Hub 内容书架](https://brendonlai.com/hub)：内容枢纽，索引所有视频 / 文章 / 短文；含「方法论手册」柜（SOP 与清单）（飞轮索引层）。
 - [专栏](https://brendonlai.com/insights)：长文根据地。
 - [在途项目](https://brendonlai.com/projects)：build in public 实时看板。
-- [升级手册](https://brendonlai.com/manuals)：方法论与 SOP。
 
 ## English
 
 - [Home](https://brendonlai.com/en/)：Helping Chinese industry land in Southeast Asia.
 - [About Brendon](https://brendonlai.com/en/about-brendon)：A three-act story and 20 years of industrial catalog distribution.
-- [Brendon Hub](https://brendonlai.com/en/hub)：The content hub indexing all videos / articles / shorts.
+- [Brendon Hub](https://brendonlai.com/en/hub)：The content hub indexing all videos / articles / shorts; includes the "Methodology" cabinet (SOPs & checklists).
 - [Insights](https://brendonlai.com/en/insights)：Long-form home base.
 - [Projects](https://brendonlai.com/en/projects)：Build-in-public progress board.
-- [Manuals](https://brendonlai.com/en/manuals)：Methods & SOPs.
 
 ## 转化入口 / Conversion entries
 

@@ -1,44 +1,30 @@
 ---
-import Header from '../../components/Header.astro';
+import Layout from '../../layouts/Layout.astro';
 import JourneyTimeline from '../../components/JourneyTimeline.astro';
 import Contact from '../../components/Contact.astro';
-import '../../styles/global.css';
-
-const aboutImages = {
-    origin: '/hero-life.jpg',
-    career: '/hero-work.jpg',
-    growth: '/hero-main.jpg'
-};
 ---
 
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Brendon | A three-act story</title>
-    <link rel="alternate" hreflang="zh-CN" href="https://brendonlai.com/about-brendon" />
-    <link rel="alternate" hreflang="en" href="https://brendonlai.com/en/about-brendon" />
-    <link rel="canonical" href="https://brendonlai.com/en/about-brendon" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="font-sans leading-relaxed selection:bg-hk-accent selection:text-white bg-white text-hk-text">
-    <Header />
-    <main class="pt-28">
-        <section class="px-6 max-w-6xl mx-auto pb-16">
-            <p class="text-xs font-bold tracking-[0.28em] text-hk-accent mb-5">ABOUT BRENDON</p>
-            <h1 class="text-4xl md:text-5xl font-black text-hk-primary leading-tight mb-6">Life isn't about finding your place — it's choosing who you want to be.</h1>
-            <p class="text-stone-600 max-w-3xl text-lg mb-8">
-                I'm Brendon Lai — a father, a husband, and a business advisor. This page isn't a résumé; it's the three-act story of how I walked out of reality and toward the version of life I chose.
-            </p>
-            <a href="#journey-timeline" class="inline-flex items-center gap-2 px-6 py-3 bg-stone-900 text-white rounded-full text-sm font-bold hover:bg-amber-600 transition-colors shadow-lg">
-                <i class="fas fa-route"></i> View the level-up roadmap
-            </a>
-        </section>
+<Layout
+  title="About Brendon | A three-act story"
+  description="I'm Brendon Lai — a father, a husband and a business advisor. This page isn't a résumé; it's the three-act story of how I walked out of reality and toward the version of life I chose."
+  canonicalPath="/about-brendon"
+>
+  <section class="px-6 max-w-6xl mx-auto pb-16">
+    <p class="text-xs font-bold tracking-[0.28em] text-hk-accent mb-5">ABOUT BRENDON</p>
+    <h1 class="text-4xl md:text-5xl font-black text-hk-primary leading-tight mb-6">
+      Life isn't about finding your place — it's choosing who you want to be.
+    </h1>
+    <p class="text-stone-600 max-w-3xl text-lg mb-8">
+      I'm Brendon Lai — a father, a husband, and a business advisor. This page isn't a résumé; it's the three-act story of how I walked out of reality and toward the version of life I chose.
+    </p>
+    <a
+      href="#journey-timeline"
+      class="inline-flex items-center gap-2 px-6 py-3 bg-stone-900 text-white rounded-full text-sm font-bold hover:bg-amber-600 transition-colors shadow-lg"
+    >
+      <i class="fas fa-route"></i> View the level-up roadmap
+    </a>
+  </section>
 
-        <JourneyTimeline />
-    </main>
-    <Contact />
-</body>
-</html>
+  <JourneyTimeline />
+  <Contact />
+</Layout>

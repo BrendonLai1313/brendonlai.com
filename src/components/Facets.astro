@@ -1,38 +1,68 @@
 ---
+// 首頁「核心身份與信任背書」區塊（原本是孤兒元件，R6 接回首頁）
+const isEn = Astro.currentLocale === 'en';
+const lp = (path: string) => (isEn ? `/en${path}` : path);
+
+const t = isEn
+  ? {
+      eyebrow: 'HOME OVERVIEW',
+      h2: 'Core identity & proof of trust',
+      sub: "I'm a father, a husband, and a business advisor. More than any title, I hope to be someone people can trust.",
+      cardTitle: 'From Factory Floor to Regional Strategy',
+      cardBody:
+        'From the factory floor in China, through cross-border trade, e-commerce platforms and building factories in Southeast Asia, to helping companies design a 1+1 globalization strategy. After all this practice, I believe long-termism and executability are the core abilities that carry you through any cycle.',
+      link: 'Read the full story',
+      stats: [
+        { value: '1500+', label: 'Clients served' },
+        { value: '5', label: 'Countries worked in' },
+        { value: '15', label: 'Years of experience' },
+      ],
+    }
+  : {
+      eyebrow: 'HOME OVERVIEW',
+      h2: '核心身份与信任背书',
+      sub: '我是一位爸爸、一位丈夫、也是一位企业顾问。比起头衔，更希望成为一个让人感到信任的人。',
+      cardTitle: 'From Factory Floor to Regional Strategy',
+      cardBody:
+        '从中国工厂一线，到跨境贸易、电商平台、东南亚建厂，再到协助企业设计 1+1 全球化策略。一路实践后我更相信：长期主义与可执行，才是穿越周期的底层能力。',
+      link: '阅读完整人生故事',
+      stats: [
+        { value: '1500+', label: '客户满意服务' },
+        { value: '5', label: '不同国家工作经验' },
+        { value: '15', label: 'Years of experience' },
+      ],
+    };
 ---
 
 <section id="facets" class="py-24 bg-stone-50/50 border-y border-stone-200/50">
-    <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-14">
-            <p class="text-xs font-bold tracking-[0.28em] text-hk-accent mb-4">HOME OVERVIEW</p>
-            <h2 class="text-3xl md:text-4xl font-black text-hk-primary mb-4">核心身份与信任背书</h2>
-            <p class="text-stone-500 max-w-2xl mx-auto">我是一位爸爸、一位丈夫、也是一位企业顾问。比起头衔，更希望成为一个让人感到信任的人。</p>
-        </div>
-        <div class="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 items-stretch">
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100">
-                <h3 class="text-2xl font-black mb-4 text-hk-primary">From Factory Floor to Regional Strategy</h3>
-                <p class="text-stone-600 leading-relaxed mb-6">
-                    从中国工厂一线，到跨境贸易、电商平台、东南亚建厂，再到协助企业设计 1+1 全球化策略。一路实践后我更相信：长期主义与可执行，才是穿越周期的底层能力。
-                </p>
-                <a href="/about-brendon" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-hk-primary text-hk-primary text-sm font-bold hover:bg-hk-primary hover:text-white transition">
-                    阅读完整人生故事
-                    <i class="fas fa-arrow-right text-xs"></i>
-                </a>
-            </div>
-            <div class="grid grid-cols-3 lg:grid-cols-1 gap-4">
-                <div class="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm text-center lg:text-left">
-                    <div class="text-3xl font-black text-hk-primary">1500+</div>
-                    <p class="text-xs tracking-[0.2em] text-stone-500 mt-2">客户满意服务</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm text-center lg:text-left">
-                    <div class="text-3xl font-black text-hk-primary">5</div>
-                    <p class="text-xs tracking-[0.2em] text-stone-500 mt-2">不同国家工作经验</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm text-center lg:text-left">
-                    <div class="text-3xl font-black text-hk-primary">15</div>
-                    <p class="text-xs tracking-[0.2em] text-stone-500 mt-2">Years of experience</p>
-                </div>
-            </div>
-        </div>
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <p class="text-xs font-bold tracking-[0.28em] text-hk-accent mb-4">{t.eyebrow}</p>
+      <h2 class="text-3xl md:text-4xl font-black text-hk-primary mb-4">{t.h2}</h2>
+      <p class="text-stone-500 max-w-2xl mx-auto">{t.sub}</p>
     </div>
+    <div class="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 items-stretch">
+      <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100">
+        <h3 class="text-2xl font-black mb-4 text-hk-primary">{t.cardTitle}</h3>
+        <p class="text-stone-600 leading-relaxed mb-6">{t.cardBody}</p>
+        <a
+          href={lp('/about-brendon')}
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-hk-primary text-hk-primary text-sm font-bold hover:bg-hk-primary hover:text-white transition"
+        >
+          {t.link}
+          <i class="fas fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+      <div class="grid grid-cols-3 lg:grid-cols-1 gap-4">
+        {
+          t.stats.map((s) => (
+            <div class="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm text-center lg:text-left">
+              <div class="text-3xl font-black text-hk-primary">{s.value}</div>
+              <p class="text-xs tracking-[0.2em] text-stone-500 mt-2">{s.label}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </section>

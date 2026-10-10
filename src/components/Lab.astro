@@ -1,6 +1,12 @@
 ---
 // src/components/Lab.astro
+import { FORMS } from '../data/site';
+
 const isEn = Astro.currentLocale === 'en';
+
+// R5：解鎖連結走 SSOT；未設定時退回站內轉化入口，永不輸出死連結。
+const formHref = FORMS.resourceRequest || (isEn ? '/en/#conversion' : '/#conversion');
+const formExternal = Boolean(FORMS.resourceRequest);
 
 const t = isEn
   ? {
@@ -168,7 +174,7 @@ const t = isEn
 
                 <!-- 行动呼吁 (Primary CTA) -->
                 <div class="pt-4">
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-stone-900 text-white font-bold rounded-lg overflow-hidden transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                    <a href={formHref} target={formExternal ? '_blank' : undefined} rel={formExternal ? 'noopener noreferrer' : undefined} class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-stone-900 text-white font-bold rounded-lg overflow-hidden transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
                         <!-- 按钮扫光效果 -->
                         <span class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
 

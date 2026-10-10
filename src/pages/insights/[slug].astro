@@ -1,0 +1,168 @@
+---
+// /insights/[slug] —— 站內靜態文章頁（PLAN §6）
+// -----------------------------------------------------------------------------
+// build-time 由 src/data/posts.ts 取得文章，靜態生成獨立 URL 的內頁。
+// canonical 歸主域（即本頁），原文以博客為出處並回連。
+// -----------------------------------------------------------------------------
+import Layout from '../../layouts/Layout.astro';
+import Contact from '../../components/Contact.astro';
+import { getPosts, BLOG_URL, type Post } from '../../data/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const isEn = false;
+const { post } = Astro.props as { post: Post };
+
+const toIso = (s: string) => {
+  const d = new Date(s);
+  return isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString();
+};
+
+const backLabel = '返回专栏';
+const sourceLabel = '原文出处';
+const authorLabel = '作者';
+const authorName = 'Brendon Lai';
+const authorJob = '中国工业企业进入东南亚实战顾问';
+const moreLabel = '更多文章';
+const emptyText = '本文正文暂未同步，请前往原文阅读。';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.title,
+  description: post.excerpt,
+  datePublished: toIso(post.date),
+  dateModified: toIso(post.modified),
+  author: {
+    '@type': 'Person',
+    name: authorName,
+    jobTitle: authorJob,
+    url: 'https://brendonlai.com/about-brendon',
+  },
+  publisher: {
+    '@type': 'Person',
+    name: authorName,
+    url: 'https://brendonlai.com',
+  },
+  mainEntityOfPage: `https://brendonlai.com/insights/${post.slug}`,
+  url: `https://brendonlai.com/insights/${post.slug}`,
+  isBasedOn: post.link,
+  inLanguage: 'zh-CN',
+};
+---
+
+<Layout
+  title={`${post.title} | Brendon Lai 专栏`}
+  description={post.excerpt}
+  ogType="article"
+  canonicalPath={`/insights/${post.slug}`}
+  mainClass="pt-28 pb-20 px-6 max-w-3xl mx-auto"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <article>
+    <a
+      href="/insights"
+      class="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-hk-accent transition mb-6"
+    >
+      <i class="fas fa-arrow-left"></i> {backLabel}
+    </a>
+
+    <div class="flex items-center gap-3 mb-4">
+      <span class="px-2.5 py-1 bg-stone-100 text-stone-600 text-xs font-bold rounded-full">文章</span>
+      <time datetime={toIso(post.date)} class="text-sm text-stone-400 font-mono">
+        {toIso(post.date).slice(0, 10)}
+      </time>
+    </div>
+
+    <h1 class="text-3xl md:text-4xl font-black text-hk-primary leading-tight mb-4">{post.title}</h1>
+    <p class="text-stone-500 mb-2">{authorLabel}：<strong class="text-hk-primary">{authorName}</strong> · {authorJob}</p>
+
+    {post.excerpt && <p class="text-stone-600 text-lg leading-relaxed mb-8">{post.excerpt}</p>}
+
+    {post.html ? (
+      <div class="article-body" set:html={post.html} />
+    ) : (
+      <p class="text-stone-500 leading-relaxed my-8">{emptyText}</p>
+    )}
+
+    <div class="mt-10 pt-6 border-t border-stone-200 flex flex-wrap items-center gap-4">
+      <a
+        href={post.link}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-hk-accent transition"
+      >
+        <i class="fas fa-arrow-up-right-from-square text-xs"></i> {sourceLabel}
+      </a>
+      <a
+        href={`${BLOG_URL}`}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-hk-accent transition"
+      >
+        {moreLabel} <i class="fas fa-arrow-right text-xs"></i>
+      </a>
+    </div>
+  </article>
+
+  <Contact />
+</Layout>
+
+<style is:global>
+  /* 讓 Google Docs 匯出的正文在本站也能讀、能看（GEO 可讀性 > 美觀） */
+  .article-body {
+    color: var(--color-hk-text);
+    line-height: 1.85;
+    font-size: 1.0625rem;
+  }
+  .article-body h1,
+  .article-body h2,
+  .article-body h3,
+  .article-body h4 {
+    color: var(--color-hk-primary);
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 2rem 0 0.75rem;
+  }
+  .article-body h1 { font-size: 1.75rem; }
+  .article-body h2 { font-size: 1.5rem; }
+  .article-body h3 { font-size: 1.25rem; }
+  .article-body h4 { font-size: 1.125rem; }
+  .article-body p { margin: 0 0 1.1rem; }
+  .article-body ul,
+  .article-body ol { margin: 0 0 1.1rem 1.5rem; }
+  .article-body ul { list-style: disc; }
+  .article-body ol { list-style: decimal; }
+  .article-body li { margin: 0.35rem 0; }
+  .article-body a { color: var(--color-hk-accent); text-decoration: underline; }
+  .article-body strong { color: var(--color-hk-primary); font-weight: 700; }
+  .article-body blockquote {
+    border-left: 3px solid var(--color-hk-accent);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: #555;
+  }
+  .article-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    margin: 1.5rem 0;
+  }
+  .article-body hr { border: 0; border-top: 1px solid #e5e5e5; margin: 2rem 0; }
+  .article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
+  .article-body th,
+  .article-body td { border: 1px solid #e5e5e5; padding: 0.5rem 0.75rem; text-align: left; }
+  .article-body pre {
+    background: #f5f5f4;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    font-size: 0.9rem;
+  }
+</style>

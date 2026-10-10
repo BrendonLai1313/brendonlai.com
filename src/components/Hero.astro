@@ -1,4 +1,6 @@
 ---
+import { SOCIAL } from '../data/site';
+
 const lang = Astro.currentLocale === 'en' ? 'en' : 'zh';
 const isEn = lang === 'en';
 
@@ -14,6 +16,7 @@ const t = isEn
       p2: 'Here I also openly document how one Hong Kong boy lifts his family up the ladder, one "level" at a time.',
       cta1: 'See how I can help',
       cta2: 'View my field notes →',
+      cta3: 'Who is Brendon',
       workBack: 'Practitioner view: manufacturing expansion, growth, and execution on the ground.',
       realBack: 'Beyond work: growth, family, and the beliefs I hold.',
       lifeBack: 'Real-life snapshots — warmth and long-term thinking.',
@@ -29,6 +32,7 @@ const t = isEn
       p2: '在这里，我也真实记录一个香港男孩如何带领家庭阶层升级、一路「打怪升级」的过程。',
       cta1: '了解我能帮你做什么',
       cta2: '看我的实战实录 →',
+      cta3: 'Brendon是谁',
       workBack: '实战顾问视角，聚焦制造业出海、增长与落地执行。',
       realBack: '工作之外，也分享成长、家庭与坚持信念的自己。',
       lifeBack: '真实生活切片，保留烟火气与长期主义的温度。',
@@ -64,17 +68,24 @@ const t = isEn
             {t.p2}
         </p>
         <div class="pt-4 flex flex-wrap gap-4">
-            <a href={isEn ? '/en/about-brendon' : '/about-brendon'} class="px-8 py-3 bg-hk-primary text-white rounded-md shadow-lg hover:bg-slate-700 transition font-medium">
+            <a href="#conversion" class="px-8 py-3 bg-hk-primary text-white rounded-md shadow-lg hover:bg-slate-700 transition font-medium">
                 {t.cta1}
             </a>
             <a href={isEn ? '/en/hub' : '/hub'} class="bg-amber-600 text-white px-8 py-3 rounded-full hover:bg-amber-700 transition shadow-md font-medium">
                 {t.cta2}
             </a>
-            <div class="flex items-center space-x-5 text-2xl text-stone-400 pl-2">
-                <a href="#" class="hover:text-[#0077b5] transition"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="hover:text-[#E1306C] transition"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="hover:text-[#1DA1F2] transition"><i class="fab fa-twitter"></i></a>
-            </div>
+            {/* R2：改為連結到 ABOUT BRENDON 頁 */}
+            <a href={isEn ? '/en/about-brendon' : '/about-brendon'} class="inline-flex items-center gap-2 px-5 py-3 text-hk-primary/60 hover:text-hk-accent transition font-medium">
+                {t.cta3}
+                <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+            {/* R6：領英按鈕取代原本的圖示 */}
+            {SOCIAL.linkedin && (
+                <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 border border-stone-300 text-hk-primary hover:border-hk-accent hover:text-hk-accent rounded-full transition font-medium">
+                    <i class="fab fa-linkedin text-[#0077b5]"></i>
+                    {isEn ? 'My LinkedIn' : '我的领英'}
+                </a>
+            )}
         </div>
     </div>
     <div class="w-full md:w-1/2 relative md:pl-6">
@@ -86,7 +97,7 @@ const t = isEn
                         <div class="relative w-full h-full [transform-style:preserve-3d] transition-transform duration-700 delay-100 hover:[transform:rotateY(180deg)]">
                             <div class="absolute inset-0 rounded-2xl overflow-hidden border-4 border-white shadow-xl [backface-visibility:hidden]">
                                 <img
-                                    src="/hero-work.jpg"
+                                    src="/hero-work-hands.jpg"
                                     alt="Brendon Lai work"
                                     class="w-full h-full object-cover"
                                     loading="lazy"
@@ -106,7 +117,7 @@ const t = isEn
                         <div class="relative w-full h-full [transform-style:preserve-3d] transition-transform duration-700 delay-100 hover:[transform:rotateY(180deg)]">
                             <div class="absolute inset-0 rounded-2xl overflow-hidden border-4 border-white shadow-2xl [backface-visibility:hidden]">
                                 <img
-                                    src="/hero-main.jpg"
+                                    src="/hero-real-me.jpg"
                                     alt="Brendon Lai real me"
                                     class="w-full h-full object-cover"
                                     loading="eager"
@@ -126,7 +137,7 @@ const t = isEn
                         <div class="relative w-full h-full [transform-style:preserve-3d] transition-transform duration-700 delay-100 hover:[transform:rotateY(180deg)]">
                             <div class="absolute inset-0 rounded-2xl overflow-hidden border-4 border-white shadow-xl [backface-visibility:hidden]">
                                 <img
-                                    src="/hero-life.jpg"
+                                    src="/hero-life-2.jpg"
                                     alt="Brendon Lai life"
                                     class="w-full h-full object-cover"
                                     loading="lazy"

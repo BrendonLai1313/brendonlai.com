@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+/* ---------------------------------------------------------------
+   品牌设计令牌 (Tailwind v4 写法)
+   v4 不会再自动读取 tailwind.config.mjs，
+   必须用 @theme 在 CSS 里声明，否则 hk-* 颜色类不会生成，
+   会出现「白底 + 白字」导致文字看不见的问题。
+   --------------------------------------------------------------- */
+@theme {
+  --color-hk-bg: #ffffff;
+  --color-hk-primary: #1e293b;
+  --color-hk-accent: #d97757;
+  --color-hk-text: #333333;
+
+  --font-sans: "Noto Sans HK", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+
+/* 全站基本排版 */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-hk-bg);
+  color: var(--color-hk-text);
+  -webkit-font-smoothing: antialiased;
+}

@@ -1,0 +1,91 @@
+---
+// R1「轉化收口層」元件
+// -----------------------------------------------------------------------------
+// 全站唯一的「三個轉化出口」渲染處，資料全部來自 src/data/site.ts。
+// 有兩個樣式：
+//   variant="full"    → 首頁第一屏下方的大區塊（卡片式，帶說明）
+//   variant="compact" → 全站 Footer 的固定入口條（深色底）
+// 只要改 site.ts 的 CONVERSION_ENTRIES，兩種版位同步更新。
+// -----------------------------------------------------------------------------
+import { CONVERSION_ENTRIES } from '../data/site';
+
+interface Props {
+  variant?: 'full' | 'compact';
+}
+const { variant = 'full' } = Astro.props;
+const isEn = Astro.currentLocale === 'en';
+
+const t = isEn
+  ? {
+      eyebrow: 'Plan small. Move fast.',
+      h2: 'Three ways I add value to your business today',
+      sub: 'Simple and to the point — pick the one that fits where you are right now.',
+      compactTitle: 'Three conversion entries',
+    }
+  : {
+      eyebrow: '小心规划，小步快跑',
+      h2: '三个今天就能帮你企业增值的专业领域',
+      sub: '简单明了，一针见血 —— 按你现在的情况，挑一个走进去。',
+      compactTitle: '三个转化入口',
+    };
+---
+
+{
+  variant === 'compact' ? (
+    <div class="w-full">
+      <p class="text-xs font-bold tracking-[0.28em] text-hk-accent mb-4 text-center md:text-left">
+        {t.compactTitle}
+      </p>
+      <div class="grid sm:grid-cols-3 gap-3">
+        {CONVERSION_ENTRIES.map((e) => (
+          <a
+            href={e.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 hover:border-hk-accent/60 hover:bg-white/[0.06] transition"
+          >
+            <i class={`fas ${e.icon} text-hk-accent text-lg`} />
+            <span class="flex-1 min-w-0">
+              <span class="block text-sm font-bold text-white truncate">
+                {isEn ? e.name.en : e.name.zh}
+              </span>
+              <span class="block text-xs text-stone-400 font-mono truncate">{e.brand}</span>
+            </span>
+            <i class="fas fa-arrow-right text-xs text-stone-500 group-hover:text-hk-accent group-hover:translate-x-0.5 transition" />
+          </a>
+        ))}
+      </div>
+    </div>
+  ) : (
+    <section id="conversion" class="py-20 md:py-24 bg-stone-50 border-y border-stone-200/60">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <p class="text-xs font-bold tracking-[0.28em] text-hk-accent mb-4">{t.eyebrow}</p>
+          <h2 class="text-3xl md:text-4xl font-black text-hk-primary mb-4">{t.h2}</h2>
+          <p class="text-stone-500 max-w-2xl mx-auto leading-relaxed">{t.sub}</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          {CONVERSION_ENTRIES.map((e) => (
+            <a
+              href={e.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group bg-white rounded-2xl border border-stone-200 p-7 shadow-sm hover:border-hk-accent hover:-translate-y-1 hover:shadow-lg transition duration-300 flex flex-col"
+            >
+              <div class="w-12 h-12 rounded-xl bg-hk-accent/10 text-hk-accent flex items-center justify-center mb-5">
+                <i class={`fas ${e.icon} text-xl`} />
+              </div>
+              <p class="text-xs font-mono tracking-widest text-stone-400 mb-1">{e.brand}</p>
+              <h3 class="text-xl font-black text-hk-primary mb-2">{isEn ? e.name.en : e.name.zh}</h3>
+              <p class="text-sm text-stone-600 leading-relaxed flex-1">{isEn ? e.desc.en : e.desc.zh}</p>
+              <span class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-hk-accent">
+                {isEn ? e.cta.en : e.cta.zh}
+                <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform" />
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

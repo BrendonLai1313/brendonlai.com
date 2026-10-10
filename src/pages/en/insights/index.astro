@@ -1,31 +1,96 @@
 ---
-import Header from '../../../components/Header.astro';
-import '../../../styles/global.css';
+// /en/insights —— Column articles list
+// -----------------------------------------------------------------------------
+// R3: remove the iframe / no JS dynamic loading (PLAN §6: never use iframes for
+// primary content). Replaced with build-time static rendering: the list comes
+// from src/data/posts.ts (fetched from the WordPress REST API at build time) and
+// is baked into static HTML. Card titles and "Read more" link to the in-site
+// article page /en/insights/[slug] (canonical on the main domain); the original
+// post on the blog remains linked as the source.
+//
+// Graceful fallback: if the fetch fails, show a guidance note + link out, so the
+// build never breaks.
+// -----------------------------------------------------------------------------
+import Layout from '../../../layouts/Layout.astro';
+import Contact from '../../../components/Contact.astro';
+import { getPosts, BLOG_URL } from '../../../data/posts';
 
-const wordpressUrl = import.meta.env.PUBLIC_WORDPRESS_URL || 'https://blog.brendonlai.com';
+const isEn = true;
+const posts = await getPosts();
+
+const pageTitle = 'Insights | Brendon Lai — Industrial expansion & one-person company';
+const pageDesc =
+  "Brendon Lai's column: field notes on industrial expansion into Southeast Asia, AI automation and running a one-person company.";
+const eyebrow = 'BRENDON COLUMN';
+const h1 = 'Insights';
+const h1Sub =
+  'Field notes from the blog — industrial expansion, AI automation and one-person-company operations.';
+const readMore = 'Read more';
+const visitBlog = 'See all posts on the blog';
+const emptyText = 'Articles are being organised — head to the blog for the latest in the meantime.';
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Insights - Brendon Lai</title>
-    <link rel="alternate" hreflang="zh-CN" href="https://brendonlai.com/insights" />
-    <link rel="alternate" hreflang="en" href="https://brendonlai.com/en/insights" />
-    <link rel="canonical" href="https://brendonlai.com/en/insights" />
-  </head>
-  <body class="bg-stone-50 text-stone-900 font-sans antialiased min-h-screen flex flex-col overflow-hidden">
-    <Header />
+<Layout title={pageTitle} description={pageDesc} canonicalPath="/insights" mainClass="pt-28 pb-16">
+  <section class="px-6 max-w-6xl mx-auto pb-12">
+    <p class="text-xs font-bold tracking-[0.28em] text-hk-accent mb-4">{eyebrow}</p>
+    <h1 class="text-4xl md:text-5xl font-black text-hk-primary leading-tight">{h1}</h1>
+    <p class="text-stone-500 mt-3 max-w-2xl text-lg">{h1Sub}</p>
+  </section>
 
-    <main class="flex-grow pt-[72px] h-screen">
-      <iframe
-        src={wordpressUrl}
-        class="w-full h-full border-none"
-        title="Brendon Insights"
-        loading="eager"
-      ></iframe>
-    </main>
+  <section class="px-6 max-w-6xl mx-auto pb-14">
+    {posts.length > 0 ? (
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {posts.map((post) => (
+          <article class="group bg-white border border-stone-200 rounded-2xl p-6 hover:border-hk-accent/50 hover:-translate-y-1 transition duration-300 shadow-sm flex flex-col gap-3">
+            <time datetime={post.date} class="text-xs text-stone-400 font-mono">
+              {post.date.slice(0, 10)}
+            </time>
+            <h2 class="text-lg font-bold text-hk-primary leading-snug">
+              <a href={`/en/insights/${post.slug}`} class="hover:text-hk-accent transition">
+                {post.title}
+              </a>
+            </h2>
+            {post.excerpt && <p class="text-sm text-stone-600 leading-relaxed flex-1">{post.excerpt}</p>}
+            <a
+              href={`/en/insights/${post.slug}`}
+              class="text-sm font-bold text-hk-accent inline-flex items-center gap-2 pt-1"
+            >
+              {readMore}
+              <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="bg-white border border-stone-200 rounded-2xl p-10 text-center max-w-2xl mx-auto">
+        <i class="fas fa-feather text-hk-accent text-2xl mb-4"></i>
+        <p class="text-stone-600 leading-relaxed mb-6">{emptyText}</p>
+        <a
+          href={BLOG_URL}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-hk-primary text-white font-bold rounded-full hover:bg-hk-accent transition"
+        >
+          {visitBlog}
+          <i class="fas fa-arrow-up-right-from-square text-xs"></i>
+        </a>
+      </div>
+    )}
 
-  </body>
-</html>
+    {posts.length > 0 && (
+      <div class="text-center pt-12">
+        <a
+          href={BLOG_URL}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 text-hk-primary/70 hover:text-hk-accent font-bold transition"
+        >
+          {visitBlog}
+          <i class="fas fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    )}
+  </section>
+
+  <Contact />
+</Layout>

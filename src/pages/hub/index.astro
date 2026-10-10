@@ -1,8 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import Header from '../../components/Header.astro';
+import Layout from '../../layouts/Layout.astro';
 import Contact from '../../components/Contact.astro';
-import '../../styles/global.css';
 
 const isEn = Astro.currentLocale === 'en';
 
@@ -54,61 +53,45 @@ const h1Sub = isEn
 const eyebrow = 'BRENDON HUB';
 ---
 
-<!DOCTYPE html>
-<html lang={isEn ? 'en' : 'zh-CN'} class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{pageTitle}</title>
-  <meta name="description" content={pageDesc} />
-  <link rel="alternate" hreflang="zh-CN" href={`https://brendonlai.com${isEn ? '/hub' : '/hub'}`} />
-  <link rel="alternate" hreflang="en" href={`https://brendonlai.com/en/hub`} />
-  <link rel="canonical" href={`https://brendonlai.com${isEn ? '/en/hub' : '/hub'}`} />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-</head>
-<body class="font-sans leading-relaxed selection:bg-hk-accent selection:text-white bg-white text-hk-text">
-  <Header />
-  <main class="pt-28 pb-16">
-    <section class="px-6 max-w-6xl mx-auto pb-14">
-      <p class="text-xs font-bold tracking-[0.28em] text-hk-accent mb-4">{eyebrow}</p>
-      <h1 class="text-4xl md:text-5xl font-black text-hk-primary leading-tight">{h1}</h1>
-      <p class="text-stone-500 mt-3 max-w-2xl text-lg">{h1Sub}</p>
-    </section>
+<Layout title={pageTitle} description={pageDesc} canonicalPath="/hub" mainClass="pt-28 pb-16">
+  <section class="px-6 max-w-6xl mx-auto pb-14">
+    <p class="text-xs font-bold tracking-[0.28em] text-hk-accent mb-4">{eyebrow}</p>
+    <h1 class="text-4xl md:text-5xl font-black text-hk-primary leading-tight">{h1}</h1>
+    <p class="text-stone-500 mt-3 max-w-2xl text-lg">{h1Sub}</p>
+  </section>
 
-    {cabinets.map((cabinet) => {
-      const items = booksOf(cabinet.id);
-      if (items.length === 0) return null;
-      return (
-        <section class="px-6 max-w-6xl mx-auto pb-14">
-          <div class="flex items-center gap-3 mb-6">
-            <i class={`fas ${cabinet.icon} text-hk-accent`}></i>
-            <h2 class="text-2xl font-black text-hk-primary">{cabinet.title}</h2>
-            <span class="text-stone-400 text-sm">{cabinet.meta}</span>
-          </div>
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {items.map((book) => (
-              <article class="group bg-white border border-stone-200 rounded-2xl p-6 hover:border-hk-accent/50 hover:-translate-y-1 transition duration-300 shadow-sm flex flex-col gap-3">
-                <div class="flex items-center justify-between">
-                  <span class="px-2.5 py-1 bg-stone-100 text-stone-600 text-xs font-bold rounded-full">{typeLabel[book.data.type]}</span>
-                  <time datetime={book.data.publishedAt.toISOString()} class="text-xs text-stone-400 font-mono">{formatDate(book.data.publishedAt)}</time>
-                </div>
-                <h3 class="text-lg font-bold text-hk-primary leading-snug">
-                  <a href={`${isEn ? '/en' : ''}/hub/${book.id}`} class="hover:text-hk-accent transition">{title(book)}</a>
-                </h3>
-                <p class="text-sm text-stone-600 leading-relaxed flex-1">{summary(book)}</p>
-                <div class="flex flex-wrap gap-2 pt-1">
-                  {keywords(book).map((k) => (
-                    <span class="text-xs text-hk-accent">{k}</span>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-      );
-    })}
-  </main>
+  {cabinets.map((cabinet) => {
+    const items = booksOf(cabinet.id);
+    if (items.length === 0) return null;
+    return (
+      <section class="px-6 max-w-6xl mx-auto pb-14">
+        <div class="flex items-center gap-3 mb-6">
+          <i class={`fas ${cabinet.icon} text-hk-accent`}></i>
+          <h2 class="text-2xl font-black text-hk-primary">{cabinet.title}</h2>
+          <span class="text-stone-400 text-sm">{cabinet.meta}</span>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {items.map((book) => (
+            <article class="group bg-white border border-stone-200 rounded-2xl p-6 hover:border-hk-accent/50 hover:-translate-y-1 transition duration-300 shadow-sm flex flex-col gap-3">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 bg-stone-100 text-stone-600 text-xs font-bold rounded-full">{typeLabel[book.data.type]}</span>
+                <time datetime={book.data.publishedAt.toISOString()} class="text-xs text-stone-400 font-mono">{formatDate(book.data.publishedAt)}</time>
+              </div>
+              <h3 class="text-lg font-bold text-hk-primary leading-snug">
+                <a href={`${isEn ? '/en' : ''}/hub/${book.id}`} class="hover:text-hk-accent transition">{title(book)}</a>
+              </h3>
+              <p class="text-sm text-stone-600 leading-relaxed flex-1">{summary(book)}</p>
+              <div class="flex flex-wrap gap-2 pt-1">
+                {keywords(book).map((k) => (
+                  <span class="text-xs text-hk-accent">{k}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    );
+  })}
+
   <Contact />
-</body>
-</html>
+</Layout>

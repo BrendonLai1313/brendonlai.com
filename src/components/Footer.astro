@@ -1,0 +1,178 @@
+---
+// 全站共用 Footer（R6 抽出）
+// -----------------------------------------------------------------------------
+// 內容：
+//   1. 品牌 + 一句定位（定位語）
+//   2. 快速導航（沿用 Header 的 5 頁地圖）
+//   3. R1「轉化收口層」compact 版：三個轉化入口，全站固定出現
+//   4. 聯絡方式（WhatsApp / 微信 / Email）——資料為空則自動隱藏，不出現死連結
+//   5. 版權 + 品牌 slogan
+// -----------------------------------------------------------------------------
+import { CONTACT, SOCIAL } from '../data/site';
+import ConversionEntries from './ConversionEntries.astro';
+
+const isEn = Astro.currentLocale === 'en';
+const lp = (path: string) =>
+  path === '/' ? (isEn ? '/en/' : '/') : isEn ? `/en${path}` : path;
+
+const t = isEn
+  ? {
+      tagline: 'A hands-on advisor helping Chinese industry land in Southeast Asia.',
+      navTitle: 'Explore',
+      contactTitle: 'Connect',
+      whatsapp: 'WhatsApp',
+      wechat: 'WeChat',
+      email: 'Email',
+      rights: 'All rights reserved.',
+      slogan: 'Stay true. Do good.',
+    }
+  : {
+      tagline: '帮中国工业落地东南亚的实战顾问。',
+      navTitle: '快速导航',
+      contactTitle: '与我连结',
+      whatsapp: 'WhatsApp',
+      wechat: '微信',
+      email: 'Email',
+      rights: '版权所有。',
+      slogan: '坚守真实，行善业。',
+    };
+
+const nav = isEn
+  ? [
+      { href: lp('/'), label: 'Home' },
+      { href: lp('/about-brendon'), label: 'About' },
+      { href: lp('/hub'), label: 'Brendon Hub' },
+      { href: lp('/projects'), label: 'Projects' },
+      { href: lp('/insights'), label: 'Insights' },
+    ]
+  : [
+      { href: lp('/'), label: '首页' },
+      { href: lp('/about-brendon'), label: 'Brendon 是谁' },
+      { href: lp('/hub'), label: 'Brendon Hub' },
+      { href: lp('/projects'), label: '在途项目' },
+      { href: lp('/insights'), label: '专栏' },
+    ];
+
+// 只有「真的有填」的聯絡渠道才會渲染
+const contactLinks = [
+  CONTACT.whatsapp && {
+    href: `https://wa.me/${CONTACT.whatsapp.replace(/[^0-9]/g, '')}`,
+    label: t.whatsapp,
+    icon: 'fa-whatsapp',
+    external: true,
+  },
+  CONTACT.wechatId && {
+    href: '#contact',
+    label: `${t.wechat}`,
+    icon: 'fa-weixin',
+    external: false,
+  },
+  CONTACT.email && {
+    href: `mailto:${CONTACT.email}`,
+    label: t.email,
+    icon: 'fa-envelope',
+    external: false,
+  },
+].filter(Boolean) as { href: string; label: string; icon: string; external: boolean }[];
+
+const socialLinks = [
+  SOCIAL.linkedin && { href: SOCIAL.linkedin, label: 'LinkedIn', icon: 'fa-linkedin-in' },
+  SOCIAL.instagram && { href: SOCIAL.instagram, label: 'Instagram', icon: 'fa-instagram' },
+  SOCIAL.twitter && { href: SOCIAL.twitter, label: 'X', icon: 'fa-x-twitter' },
+].filter(Boolean) as { href: string; label: string; icon: string }[];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-slate-900 text-stone-300">
+  <div class="max-w-6xl mx-auto px-6 py-14">
+    <!-- 上半：品牌 + 導航 + 聯絡 -->
+    <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr] pb-10 border-b border-white/10">
+      <div>
+        <a href={lp('/')} class="text-2xl font-black tracking-wider text-white inline-flex items-center">
+          <span class="mr-2 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white p-0.5">
+            <img
+              src="/brendon-logo.png"
+              alt="Brendon Lai 赖"
+              width="36"
+              height="36"
+              class="h-full w-full object-contain"
+            />
+          </span>
+          Brendon <span class="text-hk-accent ml-1">.</span>
+        </a>
+        <p class="mt-4 text-sm text-stone-400 leading-relaxed max-w-xs">{t.tagline}</p>
+        {
+          socialLinks.length > 0 && (
+            <div class="flex items-center gap-4 mt-5">
+              {socialLinks.map((s) => (
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  class="text-stone-400 hover:text-hk-accent transition"
+                >
+                  <i class={`fab ${s.icon} text-lg`} />
+                </a>
+              ))}
+            </div>
+          )
+        }
+      </div>
+
+      <div>
+        <p class="text-xs font-bold tracking-[0.28em] text-stone-500 mb-4 uppercase">{t.navTitle}</p>
+        <ul class="space-y-2.5">
+          {nav.map((item) => (
+            <li>
+              <a href={item.href} class="text-sm text-stone-300 hover:text-hk-accent transition">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-xs font-bold tracking-[0.28em] text-stone-500 mb-4 uppercase">{t.contactTitle}</p>
+        {
+          contactLinks.length > 0 ? (
+            <ul class="space-y-2.5">
+              {contactLinks.map((c) => (
+                <li>
+                  <a
+                    href={c.href}
+                    target={c.external ? '_blank' : undefined}
+                    rel={c.external ? 'noopener noreferrer' : undefined}
+                    class="text-sm text-stone-300 hover:text-hk-accent transition inline-flex items-center gap-2"
+                  >
+                    <i class={`fab ${c.icon} text-base`} />
+                    {c.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p class="text-sm text-stone-500 leading-relaxed">
+              {isEn
+                ? 'Channel details are being set up — meanwhile, use one of the three entries below.'
+                : '渠道資料整理中 —— 期間請直接由下方三個轉化入口找我。'}
+            </p>
+          )
+        }
+      </div>
+    </div>
+
+    <!-- 中段：R1 三個轉化入口（全站固定） -->
+    <div class="py-10">
+      <ConversionEntries variant="compact" />
+    </div>
+
+    <!-- 下段：版權 + slogan -->
+    <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-stone-500">
+      <p>&copy; {year} Brendon Lai. {t.rights}</p>
+      <p class="font-medium tracking-widest text-stone-400">{t.slogan}</p>
+    </div>
+  </div>
+</footer>

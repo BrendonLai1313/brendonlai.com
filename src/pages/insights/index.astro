@@ -1,31 +1,92 @@
 ---
-import Header from '../../components/Header.astro';
-import '../../styles/global.css';
+// /insights —— 專欄文章列表
+// -----------------------------------------------------------------------------
+// R3：去 iframe / 去 JS 動態載入（PLAN §6 鐵律：主內容不用 iframe）。
+// 改為 build-time 靜態化：文章列表由 src/data/posts.ts（建置時抓 WP REST API）
+// 靜態「烤」成純 HTML，標題與「閱讀全文」連到站內文章頁 /insights/[slug]
+// （canonical 歸主域），正文出處仍回連博客。
+//
+// 抓取失敗時 graceful fallback：顯示引導文字 + 直接前往博客，建置永不中斷。
+// -----------------------------------------------------------------------------
+import Layout from '../../layouts/Layout.astro';
+import Contact from '../../components/Contact.astro';
+import { getPosts, BLOG_URL } from '../../data/posts';
 
-const wordpressUrl = import.meta.env.PUBLIC_WORDPRESS_URL || 'https://blog.brendonlai.com';
+const isEn = false;
+const posts = await getPosts();
+
+const pageTitle = '专栏文章 | Brendon Lai · 工业出海与一人公司实战';
+const pageDesc =
+  'Brendon Lai 的专栏：持续输出工业品出海东南亚、AI 自动化与一人公司运营的实战思考。';
+const eyebrow = 'BRENDON COLUMN';
+const h1 = '专栏文章';
+const h1Sub = '来自博客的实战思考 —— 工业出海、AI 自动化与一人公司运营。';
+const readMore = '阅读全文';
+const visitBlog = '前往博客看全部文章';
+const emptyText = '文章正在整理中，欢迎先前往博客浏览最新内容。';
 ---
 
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>专栏 - Brendon Lai</title>
-    <link rel="alternate" hreflang="zh-CN" href="https://brendonlai.com/insights" />
-    <link rel="alternate" hreflang="en" href="https://brendonlai.com/en/insights" />
-    <link rel="canonical" href="https://brendonlai.com/insights" />
-  </head>
-  <body class="bg-stone-50 text-stone-900 font-sans antialiased min-h-screen flex flex-col overflow-hidden">
-    <Header />
+<Layout title={pageTitle} description={pageDesc} canonicalPath="/insights" mainClass="pt-28 pb-16">
+  <section class="px-6 max-w-6xl mx-auto pb-12">
+    <p class="text-xs font-bold tracking-[0.28em] text-hk-accent mb-4">{eyebrow}</p>
+    <h1 class="text-4xl md:text-5xl font-black text-hk-primary leading-tight">{h1}</h1>
+    <p class="text-stone-500 mt-3 max-w-2xl text-lg">{h1Sub}</p>
+  </section>
 
-    <main class="flex-grow pt-[72px] h-screen">
-      <iframe 
-        src={wordpressUrl} 
-        class="w-full h-full border-none"
-        title="Brendon 专栏"
-        loading="eager"
-      ></iframe>
-    </main>
+  <section class="px-6 max-w-6xl mx-auto pb-14">
+    {posts.length > 0 ? (
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {posts.map((post) => (
+          <article class="group bg-white border border-stone-200 rounded-2xl p-6 hover:border-hk-accent/50 hover:-translate-y-1 transition duration-300 shadow-sm flex flex-col gap-3">
+            <time datetime={post.date} class="text-xs text-stone-400 font-mono">
+              {post.date.slice(0, 10)}
+            </time>
+            <h2 class="text-lg font-bold text-hk-primary leading-snug">
+              <a href={`/insights/${post.slug}`} class="hover:text-hk-accent transition">
+                {post.title}
+              </a>
+            </h2>
+            {post.excerpt && <p class="text-sm text-stone-600 leading-relaxed flex-1">{post.excerpt}</p>}
+            <a
+              href={`/insights/${post.slug}`}
+              class="text-sm font-bold text-hk-accent inline-flex items-center gap-2 pt-1"
+            >
+              {readMore}
+              <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="bg-white border border-stone-200 rounded-2xl p-10 text-center max-w-2xl mx-auto">
+        <i class="fas fa-feather text-hk-accent text-2xl mb-4"></i>
+        <p class="text-stone-600 leading-relaxed mb-6">{emptyText}</p>
+        <a
+          href={BLOG_URL}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-hk-primary text-white font-bold rounded-full hover:bg-hk-accent transition"
+        >
+          {visitBlog}
+          <i class="fas fa-arrow-up-right-from-square text-xs"></i>
+        </a>
+      </div>
+    )}
 
-  </body>
-</html>
+    {posts.length > 0 && (
+      <div class="text-center pt-12">
+        <a
+          href={BLOG_URL}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 text-hk-primary/70 hover:text-hk-accent font-bold transition"
+        >
+          {visitBlog}
+          <i class="fas fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    )}
+  </section>
+
+  <Contact />
+</Layout>

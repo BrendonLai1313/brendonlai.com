@@ -1,8 +1,7 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content';
-import Header from '../../../components/Header.astro';
+import Layout from '../../../layouts/Layout.astro';
 import Contact from '../../../components/Contact.astro';
-import '../../../styles/global.css';
 
 export async function getStaticPaths() {
   const books = await getCollection('books');
@@ -46,51 +45,48 @@ const jsonLd = {
   datePublished: publishedAt.toISOString(),
   author: { '@type': 'Person', name: authorName, jobTitle: authorJob },
   mainEntityOfPage: Astro.url.href,
+  inLanguage: isEn ? 'en' : 'zh-CN',
   ...(externalUrl ? { url: externalUrl } : {}),
 };
 ---
 
-<!DOCTYPE html>
-<html lang={isEn ? 'en' : 'zh-CN'} class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title} | Brendon Hub</title>
-  <meta name="description" content={summary} />
-  <meta name="keywords" content={keywords.join(', ')} />
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-</head>
-<body class="font-sans leading-relaxed selection:bg-hk-accent selection:text-white bg-white text-hk-text">
-  <Header />
-  <main class="pt-28 pb-20 px-6 max-w-3xl mx-auto">
-    <article>
-      <a href={`${isEn ? '/en' : ''}/hub`} class="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-hk-accent transition mb-6">
-        <i class="fas fa-arrow-left"></i> {backLabel}
+<Layout
+  title={`${title} | Brendon Hub`}
+  description={summary}
+  keywords={keywords.join(', ')}
+  ogType={type === 'video' ? 'video.other' : 'article'}
+  canonicalPath={`/hub/${slug}`}
+  mainClass="pt-28 pb-20 px-6 max-w-3xl mx-auto"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <article>
+    <a href={`${isEn ? '/en' : ''}/hub`} class="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-hk-accent transition mb-6">
+      <i class="fas fa-arrow-left"></i> {backLabel}
+    </a>
+    <div class="flex items-center gap-3 mb-4">
+      <span class="px-2.5 py-1 bg-stone-100 text-stone-600 text-xs font-bold rounded-full">{typeLabel[type]}</span>
+      <time datetime={publishedAt.toISOString()} class="text-sm text-stone-400 font-mono">{publishedAt.toISOString().slice(0, 10)}</time>
+    </div>
+    <h1 class="text-3xl md:text-4xl font-black text-hk-primary leading-tight mb-4">{title}</h1>
+    <p class="text-stone-500 mb-6">{authorLabel}：<strong class="text-hk-primary">{authorName}</strong> · {authorJob}</p>
+    <p class="text-stone-600 text-lg leading-relaxed mb-8">{summary}</p>
+    <div class="space-y-4 text-stone-600 leading-relaxed">
+      <Content />
+    </div>
+    <div class="flex flex-wrap gap-2 my-8">
+      {keywords.map((k) => (
+        <span class="px-3 py-1 bg-stone-100 text-stone-600 text-xs rounded-full">{k}</span>
+      ))}
+    </div>
+    {externalUrl && (
+      <a href={externalUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-hk-primary text-white rounded-md font-bold hover:bg-slate-700 transition">
+        <i class="fas fa-arrow-up-right-from-square"></i> {ctaLabel}
       </a>
-      <div class="flex items-center gap-3 mb-4">
-        <span class="px-2.5 py-1 bg-stone-100 text-stone-600 text-xs font-bold rounded-full">{typeLabel[type]}</span>
-        <time datetime={publishedAt.toISOString()} class="text-sm text-stone-400 font-mono">{publishedAt.toISOString().slice(0, 10)}</time>
-      </div>
-      <h1 class="text-3xl md:text-4xl font-black text-hk-primary leading-tight mb-4">{title}</h1>
-      <p class="text-stone-500 mb-6">{authorLabel}：<strong class="text-hk-primary">{authorName}</strong> · {authorJob}</p>
-      <p class="text-stone-600 text-lg leading-relaxed mb-8">{summary}</p>
-      <div class="space-y-4 text-stone-600 leading-relaxed">
-        <Content />
-      </div>
-      <div class="flex flex-wrap gap-2 my-8">
-        {keywords.map((k) => (
-          <span class="px-3 py-1 bg-stone-100 text-stone-600 text-xs rounded-full">{k}</span>
-        ))}
-      </div>
-      {externalUrl && (
-        <a href={externalUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-hk-primary text-white rounded-md font-bold hover:bg-slate-700 transition">
-          <i class="fas fa-arrow-up-right-from-square"></i> {ctaLabel}
-        </a>
-      )}
-    </article>
-  </main>
+    )}
+  </article>
+
   <Contact />
-</body>
-</html>
+</Layout>

@@ -1,23 +1,140 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+// 全站共用 Layout（R6 抽出）
+// -----------------------------------------------------------------------------
+// 一次承載：<head>（title / description / canonical / hreflang / OG / 字體 / FA）
+//          + Header + <main> + Footer（含 R1 轉化入口條）
+// 各頁面只需要：傳入 title/description/canonicalPath，然後把「內容」放進 slot。
+//
+// 使用方式：
+//   <Layout title="..." description="..." canonicalPath="/hub">  內容  </Layout>
+// 語言前綴、canonical、hreflang 全部由 canonicalPath 自動推導，不必手抄。
+// -----------------------------------------------------------------------------
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_URL } from '../data/site';
+import '../styles/global.css';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title: string;
+  description?: string;
+  /** 不帶語言前綴的邏輯路徑，例：'/'、'/hub'、'/projects'。預設取當前路徑。 */
+  canonicalPath?: string;
+  ogType?: string;
+  keywords?: string;
+  bodyClass?: string;
+  mainClass?: string;
+  /** 社群分享圖（站內路徑或絕對網址）。預設 /og-default.png。 */
+  ogImage?: string;
+  /** og:image 的替代文字，預設用 title。 */
+  ogImageAlt?: string;
+}
+
+const {
+  title,
+  description = '',
+  canonicalPath,
+  ogType = 'website',
+  keywords,
+  bodyClass = 'bg-white text-hk-text',
+  mainClass = 'pt-28',
+  ogImage = '/og-default.png',
+  ogImageAlt,
+} = Astro.props;
+
+const isEn = Astro.currentLocale === 'en';
+
+// 由路徑推導 canonical 與中英 hreflang
+const rawPath = Astro.url.pathname;
+const logical = (canonicalPath ?? rawPath).replace(/^\/en(?=\/|$)/, '') || '/';
+const zhPath = logical;
+const enPath = logical === '/' ? '/en/' : `/en${logical}`;
+
+const canonical = new URL(isEn ? enPath : zhPath, SITE_URL).href;
+const zhHref = new URL(zhPath, SITE_URL).href;
+const enHref = new URL(enPath, SITE_URL).href;
+
+const defaultDesc = isEn
+  ? 'Brendon Lai — a hands-on advisor helping Chinese industry land in Southeast Asia: market entry, channel building and local distribution.'
+  : '赖先生 —— 帮中国工业落地东南亚的实战顾问：市场进入、渠道搭建与本地分销。';
+const metaDesc = description || defaultDesc;
+
+// 社群分享圖：把站內路徑轉成絕對網址（社群平台要求絕對 URL）
+const ogImageAbs = new URL(ogImage, SITE_URL).href;
+const ogAlt = ogImageAlt ?? title;
+---
+
+<!DOCTYPE html>
+<html lang={isEn ? 'en' : 'zh-CN'} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={metaDesc} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="zh-CN" href={zhHref} />
+    <link rel="alternate" hreflang="en" href={enHref} />
+    <link rel="alternate" hreflang="x-default" href={zhHref} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={metaDesc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Brendon Lai" />
+    <meta property="og:locale" content={isEn ? 'en_US' : 'zh_CN'} />
+    <meta property="og:locale:alternate" content={isEn ? 'zh_CN' : 'en_US'} />
+    <meta property="og:image" content={ogImageAbs} />
+    <meta property="og:image:secure_url" content={ogImageAbs} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={metaDesc} />
+    <meta name="twitter:image" content={ogImageAbs} />
+    <meta name="twitter:image:alt" content={ogAlt} />
+    <link rel="icon" type="image/png" href="/brendon-logo.png" />
+    <link rel="apple-touch-icon" href="/brendon-logo.png" />
+    <link rel="mask-icon" href="/favicon.svg" color="#d97757" />
+    <meta name="generator" content={Astro.generator} />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style is:global>
+      body {
+        background-color: #ffffff;
+        color: #333333;
+        -webkit-font-smoothing: antialiased;
+      }
+      .timeline-dot {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background-color: #d97757;
+        border: 4px solid #ffffff;
+        box-shadow: 0 0 0 2px #1e293b;
+        transition: all 0.3s ease;
+      }
+      .hk-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px -5px rgba(30, 41, 59, 0.1);
+      }
+    </style>
+
+    <!-- 頁面專屬樣式 / JSON-LD（放在最後，可覆寫上方全域樣式） -->
+    <slot name="head" />
+  </head>
+  <body class={`font-sans leading-relaxed selection:bg-hk-accent selection:text-white ${bodyClass}`}>
+    <Header />
+    <main class={mainClass}>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
