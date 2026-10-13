@@ -1,0 +1,46 @@
+# brendonlai.com 靜態站容器
+# 完全照抄 VPS 上 gai-site / his-site 嘅模式：nginx:alpine + Traefik labels。
+# 只係多咗用 compose 管理（好過記住一條超長 docker run），可隨時 `docker compose down` 清走。
+#
+# 用法（喺 VPS 上）：
+#   cd /docker/brendonlai
+#   docker compose up -d       # 起站
+#   docker compose down        # 停站 + 刪容器（唔會刪 /var/www 檔案）
+#   docker compose logs -f     # 睇 log
+#
+# ⚠️ 唔可以喺主機層裝 nginx，會同 Traefik 撞 port 80/443。
+
+services:
+  brendon-site:
+    image: nginx:alpine
+    container_name: brendon-site
+    restart: unless-stopped
+    networks:
+      - web
+    volumes:
+      # 靜態檔（唯讀掛載）—— GitHub Actions 會 rsync 新版本入呢個目錄
+      - /var/www/brendonlai.com:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=n8n_default"
+
+      # --- HTTP (80) -> 自動轉 HTTPS ---
+      - "traefik.http.routers.brendon-http.rule=Host(`brendonlai.com`) || Host(`www.brendonlai.com`)"
+      - "traefik.http.routers.brendon-http.entrypoints=web"
+      - "traefik.http.routers.brendon-http.middlewares=brendon-https-redirect"
+      - "traefik.http.middlewares.brendon-https-redirect.redirectscheme.scheme=https"
+
+      # --- HTTPS (443) + 自動 Let's Encrypt 憑證 ---
+      - "traefik.http.routers.brendon-https.rule=Host(`brendonlai.com`) || Host(`www.brendonlai.com`)"
+      - "traefik.http.routers.brendon-https.entrypoints=websecure"
+      - "traefik.http.routers.brendon-https.tls=true"
+      - "traefik.http.routers.brendon-https.tls.certresolver=mytlschallenge"
+
+      # --- 容器內部 nginx 聽 80 ---
+      - "traefik.http.services.brendon.loadbalancer.server.port=80"
+
+# 沿用已經存在嘅 Traefik network（由 /docker/n8n 個 compose 建立，external）
+networks:
+  web:
+    external: true
+    name: n8n_default

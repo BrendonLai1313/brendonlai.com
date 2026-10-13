@@ -1,0 +1,48 @@
+name: Deploy to VPS (brendonlai.com)
+
+# 每次 push 到 main，雲端 build 好再 rsync 上 VPS。
+# 完全唔會喺 VPS 上跑 npm，符合「唔喺 VPS build」嘅約束。
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {} # 允許喺 GitHub 手動撳 Run workflow
+
+concurrency:
+  group: deploy-brendonlai
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build (Astro -> dist/)
+        run: npm run build
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p "${{ secrets.VPS_PORT }}" -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Rsync dist/ -> VPS:/var/www/brendonlai.com/
+        run: |
+          rsync -avzr --delete \
+            -e "ssh -p ${{ secrets.VPS_PORT }}" \
+            dist/ \
+            "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/brendonlai.com/"
+
+      - name: Done
+        run: echo "Deployed. nginx container serves files directly (read-only bind mount) — no restart needed."
