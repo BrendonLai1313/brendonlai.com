@@ -94,7 +94,7 @@ const t = isEn
             <div class="relative z-10 w-full max-w-[560px] group/covers [perspective:1500px]">
                 <div class="flex items-center justify-center gap-3 sm:gap-5">
                     <div class="w-36 h-52 sm:w-40 sm:h-56 lg:w-44 lg:h-60 [perspective:1200px] transition-all duration-500 ease-out [transform:rotateY(14deg)_translateY(14px)] opacity-85 group-hover/covers:opacity-50 group-hover/covers:scale-95 hover:!opacity-100 hover:!scale-[1.08] hover:!translate-y-[-12px] hover:![transform:rotateY(0deg)] hover:!z-30">
-                        <div class="relative w-full h-full [transform-style:preserve-3d] transition-transform duration-700 delay-100 hover:[transform:rotateY(180deg)]">
+                        <div class="flip-card-inner relative w-full h-full [transform-style:preserve-3d] transition-transform duration-700 delay-100 hover:[transform:rotateY(180deg)]">
                             <div class="absolute inset-0 rounded-2xl overflow-hidden border-4 border-white shadow-xl [backface-visibility:hidden]">
                                 <img
                                     src="/hero-work-hands.jpg"
@@ -114,7 +114,7 @@ const t = isEn
                         </div>
                     </div>
                     <div class="w-36 h-52 sm:w-40 sm:h-56 lg:w-44 lg:h-60 [perspective:1200px] transition-all duration-500 ease-out [transform:translateY(-8px)] z-20 group-hover/covers:opacity-50 group-hover/covers:scale-95 hover:!opacity-100 hover:!scale-[1.08] hover:!translate-y-[-14px] hover:!z-30">
-                        <div class="relative w-full h-full [transform-style:preserve-3d] transition-transform duration-700 delay-100 hover:[transform:rotateY(180deg)]">
+                        <div class="flip-card-inner relative w-full h-full [transform-style:preserve-3d] transition-transform duration-700 delay-100 hover:[transform:rotateY(180deg)]">
                             <div class="absolute inset-0 rounded-2xl overflow-hidden border-4 border-white shadow-2xl [backface-visibility:hidden]">
                                 <img
                                     src="/hero-real-me.jpg"
@@ -134,7 +134,7 @@ const t = isEn
                         </div>
                     </div>
                     <div class="w-36 h-52 sm:w-40 sm:h-56 lg:w-44 lg:h-60 [perspective:1200px] transition-all duration-500 ease-out [transform:rotateY(-14deg)_translateY(14px)] opacity-85 group-hover/covers:opacity-50 group-hover/covers:scale-95 hover:!opacity-100 hover:!scale-[1.08] hover:!translate-y-[-12px] hover:!z-30 hover:![transform:rotateY(0deg)]">
-                        <div class="relative w-full h-full [transform-style:preserve-3d] transition-transform duration-700 delay-100 hover:[transform:rotateY(180deg)]">
+                        <div class="flip-card-inner relative w-full h-full [transform-style:preserve-3d] transition-transform duration-700 delay-100 hover:[transform:rotateY(180deg)]">
                             <div class="absolute inset-0 rounded-2xl overflow-hidden border-4 border-white shadow-xl [backface-visibility:hidden]">
                                 <img
                                     src="/hero-life-2.jpg"
@@ -158,3 +158,18 @@ const t = isEn
         </div>
     </div>
 </section>
+
+<script>
+    // 手机点击翻卡（电脑 hover 照旧翻，唔會衝突）
+    document.querySelectorAll('.flip-card-inner').forEach(function (card) {
+        card.addEventListener('click', function () {
+            card.classList.toggle('is-flipped');
+        });
+    });
+</script>
+
+<style is:global>
+    .flip-card-inner.is-flipped {
+        transform: rotateY(180deg) !important;
+    }
+</style>
