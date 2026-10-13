@@ -160,12 +160,26 @@ const t = isEn
 </section>
 
 <script>
-    // 手机点击翻卡（电脑 hover 照旧翻，唔會衝突）
-    document.querySelectorAll('.flip-card-inner').forEach(function (card) {
-        card.addEventListener('click', function () {
-            card.classList.toggle('is-flipped');
+    // 手機 / 觸控裝置：輕觸卡片翻面；桌面維持純 hover 翻卡，兩者互不影響。
+    var isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    if (isTouch) {
+        document.querySelectorAll('.flip-card-inner').forEach(function (card) {
+            card.setAttribute('role', 'button');
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('aria-pressed', 'false');
+            var toggle = function () {
+                var flipped = card.classList.toggle('is-flipped');
+                card.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+            };
+            card.addEventListener('click', toggle);
+            card.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggle();
+                }
+            });
         });
-    });
+    }
 </script>
 
 <style is:global>
