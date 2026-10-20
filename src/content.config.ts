@@ -24,6 +24,8 @@ const books = defineCollection({
     externalUrl: z.string(),
     // 封面缩略图（可选）
     image: z.string().optional(),
+    // 所属实证项目（可选；刻意用 string 而非 enum，避免写错一个字就 build fail）
+    project: z.string().optional(),
   }),
 });
 
