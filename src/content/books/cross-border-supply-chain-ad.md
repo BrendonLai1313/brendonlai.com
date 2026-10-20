@@ -8,7 +8,7 @@ keywordsEn: ["cross-border supply chain", "brand ad", "industrial goods", "video
 publishedAt: 2023-08-15
 type: "video"
 cabinet: "corporate"
-externalUrl: "https://www.youtube.com/@brendonlai"
+externalUrl: ""
 ---
 
 为跨境供应链企业制作的品牌广告片，把「欧标设计 + 中国制造」的价值主张用一段 30 秒的视觉讲清楚。这是我在企业端积累的实战作品之一。
