@@ -3,17 +3,18 @@ import Layout from '../layouts/Layout.astro';
 import Lab from '../components/Lab.astro';
 import Contact from '../components/Contact.astro';
 import CaseFile from '../components/CaseFile.astro';
-import { CASE_FILES } from '../data/projects';
+import { CASE_FILES, CASES_COPY } from '../data/projects';
 
-// 商业/逻辑用途: 硬核阵地与冰山防御策略落地页
-// 采用复古档案柜 (Retro File Cabinet) 布局，展示深层系统架构与代码，并用表单锁定核心资源
+const c = CASES_COPY.zh;
 
-// 案例资料见 src/data/projects.ts；档案卡外壳见 CaseFile.astro（解锁 CTA 的 FORMS 回退逻辑在元件内）。
+// 实证案例（Case Files）：首页「三个实证」的完整拆解，沿用复古档案柜视觉。
+// 案例资料见 src/data/projects.ts；档案卡外壳见 CaseFile.astro。
+// 次序：页面标题 → 三个实证案例 → Lab（这个网站本身怎样用 AI 搭建）→ Contact。
 ---
 
 <Layout
-  title="矩阵档案柜 | Brendon Lai 的硬核阵地"
-  description="系统级思维的幕后解剖：跨境贸易 AI 引擎、Google Workspace 迁移与生物效率 SOP 的实战拆解，水面之下是代码与资源。"
+  title={c.title}
+  description={c.description}
   canonicalPath="/projects"
   bodyClass="file-cabinet-bg text-hk-text"
   mainClass="pt-32 pb-20 px-6 max-w-5xl mx-auto min-h-screen"
@@ -42,19 +43,18 @@ import { CASE_FILES } from '../data/projects';
       <i class="fas fa-folder-open text-9xl text-hk-accent"></i>
     </div>
     <h1 class="text-4xl md:text-6xl font-black text-stone-900 tracking-tight font-mono">
-      <span class="text-hk-accent">#</span> 矩阵档案柜
+      <span class="text-hk-accent">#</span> {c.h1}
     </h1>
     <p class="text-xl text-stone-500 mt-4 font-medium max-w-2xl">
-      系统级思维的幕后解剖。水面之上是架构与逻辑，水面之下是代码与资源。
+      {c.sub}
     </p>
   </div>
 
-  <Lab />
-
-  <!-- 看板/档案柜列表 (Kanban/File Cabinet Layout) -->
   <div class="space-y-12">
-    {CASE_FILES.map((c) => <CaseFile data={c} />)}
+    {CASE_FILES.map((item) => <CaseFile data={item} />)}
   </div>
+
+  <Lab />
 
   <Contact />
 </Layout>

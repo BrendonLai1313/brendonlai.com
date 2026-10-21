@@ -87,16 +87,16 @@ export const PROOFS: Proof[] = [
     icon: 'fa-clapperboard',
     tag: { zh: '实证 C · EduStory', en: 'Proof C · EduStory' },
     question: {
-      zh: 'AI 能不能帮一个爸爸，把想教给孩子的道理拍成动画？',
-      en: 'Can AI help a dad turn the lessons he wants to teach his kid into animation?',
+      zh: '几万年前，人类在洞壁上画下生存的方法，留给下一代。今天，一个爸爸能用什么？',
+      en: 'Tens of thousands of years ago, people painted survival lessons on cave walls for the next generation. What can a dad use today?',
     },
     title: {
-      zh: '和孩子俊宇（Joey）用 AI 拍品格动画',
-      en: 'Making character-building cartoons with my kid Joey, using AI',
+      zh: '用 AI，把我走过的路画成动画，留给孩子',
+      en: "Turning the road I've walked into cartoons for my kid, with AI",
     },
     result: {
-      zh: '从第 1 集开始公开做，每一集都由一个人 + AI 完成。',
-      en: 'Built in public from episode 1 — every episode made by one person + AI.',
+      zh: '每一集取材自孩子真实的行为与我亲身吃过的亏，由三个 AI 智能体组成的动画团队完成。',
+      en: 'Every episode starts from my kid\'s real behaviour and a lesson I learned the hard way — made by an AI crew of three agents.',
     },
     roles: {
       zh: ['编剧', '分镜', '动画', '配音', '剪辑'],
