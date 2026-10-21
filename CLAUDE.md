@@ -1,7 +1,7 @@
 # brendonlai.com — AI 協作規則
 
 任何 AI（Claude、Trae 或其他）喺呢個 repo 做嘢之前，必須先讀完呢份文件。
-完整背景見 `docs/SITE_HANDOFF.md`（2026-10-20 盤點）。有疑問就問 Brendon，唔好「先做再算」。
+完整背景見 `docs/SITE_HANDOFF.md`（2026-10-20 盤點）；**已確認嘅決定見 `docs/DECISIONS.md`**（兩者有衝突時以 DECISIONS 為準）。有疑問就問 Brendon，唔好「先做再算」。
 
 ## 1. 呢個站係咩
 
