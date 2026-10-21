@@ -25,6 +25,8 @@ export interface Milestone {
   image: string;
   /** 照片角落的年份标签（可选）。照片年份与里程碑年份不同时用，例如童年照实为 1983 年拍。 */
   imageLabel?: string;
+  /** 照片填充方式：默认 cover（裁切填满）；横向证书 / 奖牌用 contain（完整显示）。 */
+  imageFit?: 'cover' | 'contain';
   align: 'left' | 'right';
 }
 
@@ -39,7 +41,7 @@ export interface JourneyPhase {
 export type Lang = 'zh' | 'en';
 
 // 2026-10-21 按 Brendon 的 LinkedIn 履历与本人补充重写（Brendon 1979 年 12 月出生）。
-// 事实来源：LinkedIn（2000–2025 职位与年份）＋ Brendon 补充（2003–2006 香港本地中小企、2018–2020 猎芯网）。
+// 事实来源：LinkedIn（2000–2025 职位与年份）＋ Brendon 补充（2003–2006 香港本地中小企、2018–2020 猎芯网）＋ 2023 年个人 CV（奖项、团队与营业额百分比）。
 // 已批准点名的前雇主：Suntan Technology、Sumida、United Chemi-Con、RS Components、猎芯网 ichunt、Hoffmann Group（只写雇佣事实）。
 // 2025 年的东南亚公司保持匿名（见 docs/DECISIONS.md）。
 export const journeyPhases: Record<Lang, JourneyPhase[]> = {
@@ -61,8 +63,8 @@ export const journeyPhases: Record<Lang, JourneyPhase[]> = {
       yearRange: '2000 - 2018',
       milestones: [
         { id: 'stage-youth-1', age: '20岁', year: '2000', title: '第一份工：一个人跑完整条线', desc: '在香港 Suntan Technology 担任销售与市场经理，从客户拜访、市场活动到活动策划，一个人跑完整条线；之后在香港本地中小企继续磨练。', impact: '最早学会：销售、市场和执行，本来就是同一件事。', image: '', align: 'left' },
-        { id: 'stage-youth-2', age: '26岁', year: '2006', title: '日系电子元件：品质与纪律', desc: '先后加入日系电子元件企业 Sumida 与 United Chemi-Con，由销售做到带团队的销售主管，负责销售、支援与报告。', impact: '在日本企业学会：可靠，比聪明更值钱。', image: '/photos/timeline-2006.jpg', align: 'right' },
-        { id: 'stage-youth-3', age: '32岁', year: '2012', title: '欧洲目录分销：RS Components', desc: '加入欧洲工业品目录分销商 RS Components，由客户经理升任区域销售经理，带团队冲刺目标，FY15 多次获香港区 Top Sales；同期在职读完英国兰开夏大学市场学学士，获 2013 年最佳学生奖。', impact: '目录分销的本质，是让急需的客户随时找得到、等得起。', image: '/photos/timeline-2013-vote-of-thanks.jpg', imageLabel: '2013', align: 'left' },
+        { id: 'stage-youth-2', age: '26岁', year: '2006', title: '日系电子元件：品质与纪律', desc: '先后加入日系电子元件企业 Sumida 与 United Chemi-Con：由销售专员做起，负责 OEM 订单份额与设计端推广；升任销售主管后协调新产品开发、管理大客户与季度商务谈判，并获大客户颁发「最佳供应商」与「最佳交货」奖项。', impact: '在日本企业学会：可靠，比聪明更值钱。', image: '/photos/timeline-2011-chemicon-expo.jpg', imageLabel: '2011', align: 'right' },
+        { id: 'stage-youth-3', age: '32岁', year: '2012', title: '欧洲目录分销：RS Components', desc: '加入欧洲工业品目录分销商 RS Components，由客户经理升任区域销售经理。2015 财年连续四季获香港区 Top Sales，最高单季超出任务 514.8%，所在办事处获评 2015 财年最佳办事处；2017 年担任欧时工业园中国路演主讲。同期在职读完英国兰开夏大学市场学学士，获 2013 年最佳学生奖，并代表毕业生致谢辞。', impact: '目录分销的本质，是让急需的客户随时找得到、等得起。', image: '/photos/timeline-2015-rs-top-sales.jpg', imageLabel: '2015', imageFit: 'contain', align: 'left' },
       ],
     },
     {
@@ -71,8 +73,8 @@ export const journeyPhases: Record<Lang, JourneyPhase[]> = {
       subtitle: '从中国供应链平台到德国工具品牌',
       yearRange: '2018 - 2025',
       milestones: [
-        { id: 'stage-adult-1', age: '38岁', year: '2018', title: '中国电子元器件平台：猎芯网', desc: '出任深圳电子元器件 B2B 平台猎芯网（ichunt）的销售总监，负责国际与中国市场。', impact: '从平台内部看见中国供应链的速度，也看见它出海时要补的那一块。', image: '/photos/timeline-2018-ichunt.jpg', align: 'right' },
-        { id: 'stage-adult-2', age: '40岁', year: '2020', title: '德国工具品牌：一个人，用数码带动全国团队', desc: '出任德国工具品牌 Hoffmann Group 马来西亚公司销售总监。自发用数码工具带领全国销售团队：把销售理念、产品知识和数据做成视频与报表，让分散各州的同事随时能看、能对齐。', impact: '一个人 + 好工具，可以放大一整支团队。这是「一个人 × AI = 一支团队」的起点。', image: '/photos/timeline-2020-hoffmann.jpg', align: 'left' },
+        { id: 'stage-adult-1', age: '38岁', year: '2018', title: '中国电子元器件平台：猎芯网', desc: '出任深圳电子元器件 B2B 平台猎芯网（ichunt）的销售总监，负责国际与中国市场：完成销售架构调整，把销售团队扩充一倍，并设立香港办事处与供应链分公司。', impact: '从平台内部看见中国供应链的速度，也看见它出海时要补的那一块。', image: '/photos/timeline-2018-ichunt.jpg', align: 'right' },
+        { id: 'stage-adult-2', age: '40岁', year: '2020', title: '德国工具品牌：一个人，用数码带动全国团队', desc: '出任德国工具品牌 Hoffmann Group 马来西亚公司销售总监（国家经理），完成各部门架构调整与办事处搬迁。自发用数码工具带领全国销售团队：把销售理念、产品知识和数据做成视频、报表与网页工具。任内 36 个月，国家营业额增长超过 44%，团队人数却减少了 43%。', impact: '人少了 43%，营业额多了 44%：一个人 + 好工具，可以放大一整支团队。这是「一个人 × AI = 一支团队」的起点。', image: '/photos/timeline-2020-hoffmann.jpg', align: 'left' },
       ],
     },
     {
@@ -105,8 +107,8 @@ export const journeyPhases: Record<Lang, JourneyPhase[]> = {
       yearRange: '2000 - 2018',
       milestones: [
         { id: 'stage-youth-1', age: '20', year: '2000', title: 'First job: running the whole line alone', desc: 'Sales & Marketing Manager at Suntan Technology in Hong Kong — client visits, marketing activities and events, end to end on my own; then more years in a local Hong Kong SME.', impact: 'Learned early that sales, marketing and execution are really one job.', image: '', align: 'left' },
-        { id: 'stage-youth-2', age: '26', year: '2006', title: 'Japanese components: quality & discipline', desc: 'Joined Japanese electronic-component makers Sumida and then United Chemi-Con, growing from sales executive to a sales supervisor leading a team across sales, support and reporting.', impact: 'Japanese companies taught me that reliability is worth more than cleverness.', image: '/photos/timeline-2006.jpg', align: 'right' },
-        { id: 'stage-youth-3', age: '32', year: '2012', title: 'European catalogue distribution: RS Components', desc: 'Joined European industrial catalogue distributor RS Components, rising from account manager to area sales manager, leading the team to target and winning Hong Kong Top Sales awards several times in FY15 — while completing a part-time BA in Marketing at the University of Lancashire (Best Student Award 2013).', impact: 'The essence of catalogue distribution: urgent customers can always find it, and can count on it arriving.', image: '/photos/timeline-2013-vote-of-thanks.jpg', imageLabel: '2013', align: 'left' },
+        { id: 'stage-youth-2', age: '26', year: '2006', title: 'Japanese components: quality & discipline', desc: 'Joined Japanese electronic-component makers Sumida and then United Chemi-Con — starting as a sales executive tracking OEM order share and design-in promotion, then as sales supervisor coordinating new product development, key accounts and quarterly business reviews, with "Best Supplier" and "Best Delivery" awards from key customers.', impact: 'Japanese companies taught me that reliability is worth more than cleverness.', image: '/photos/timeline-2011-chemicon-expo.jpg', imageLabel: '2011', align: 'right' },
+        { id: 'stage-youth-3', age: '32', year: '2012', title: 'European catalogue distribution: RS Components', desc: 'Joined European industrial catalogue distributor RS Components, rising from account manager to area sales manager. Hong Kong Top Sales for four straight quarters in FY15, peaking at 514.8% of quarterly budget, in the FY15 Best Office; main speaker at the 2017 RS Industry Park roadshow in China. Meanwhile completed a part-time BA in Marketing at the University of Lancashire — 2013 Best Student Award, and the graduates\' vote of thanks.', impact: 'The essence of catalogue distribution: urgent customers can always find it, and can count on it arriving.', image: '/photos/timeline-2015-rs-top-sales.jpg', imageLabel: '2015', imageFit: 'contain', align: 'left' },
       ],
     },
     {
@@ -115,8 +117,8 @@ export const journeyPhases: Record<Lang, JourneyPhase[]> = {
       subtitle: 'From a Chinese supply-chain platform to a German tool brand',
       yearRange: '2018 - 2025',
       milestones: [
-        { id: 'stage-adult-1', age: '38', year: '2018', title: 'Chinese components platform: ichunt', desc: 'Sales Director (International & China) at ichunt (猎芯网), a Shenzhen B2B platform for electronic components.', impact: 'Saw the speed of China\'s supply chain from the inside — and the piece it still needs when going global.', image: '/photos/timeline-2018-ichunt.jpg', align: 'right' },
-        { id: 'stage-adult-2', age: '40', year: '2020', title: 'A German tool brand: one person, a nationwide team, made digital', desc: "Sales Director at Hoffmann Group's Malaysian company. I took it on myself to lead the nationwide sales team with digital tools — turning sales thinking, product knowledge and data into videos and reports the team could watch and align on from any state.", impact: 'One person with good tools can amplify a whole team — the seed of "one person × AI = a whole team".', image: '/photos/timeline-2020-hoffmann.jpg', align: 'left' },
+        { id: 'stage-adult-1', age: '38', year: '2018', title: 'Chinese components platform: ichunt', desc: 'Sales Director (International & China) at ichunt (猎芯网), a Shenzhen B2B platform for electronic components: restructured sales, doubled the sales team, and set up a Hong Kong office and a supply-chain subsidiary.', impact: 'Saw the speed of China\'s supply chain from the inside — and the piece it still needs when going global.', image: '/photos/timeline-2018-ichunt.jpg', align: 'right' },
+        { id: 'stage-adult-2', age: '40', year: '2020', title: 'A German tool brand: one person, a nationwide team, made digital', desc: 'Sales Director (Country Manager) at Hoffmann Group\'s Malaysian company — restructured departments and relocated the office. I took it on myself to lead the nationwide sales team with digital tools: videos, reports and web tools carrying our sales thinking, product knowledge and data. Over 36 months, country turnover grew by more than 44% while the team shrank by 43%.', impact: '43% fewer people, 44% more turnover: one person with good tools can amplify a whole team — the seed of "one person × AI = a whole team".', image: '/photos/timeline-2020-hoffmann.jpg', align: 'left' },
       ],
     },
     {

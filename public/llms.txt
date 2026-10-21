@@ -15,7 +15,7 @@
 ## 中文（简体）
 
 - [首页](https://brendonlai.com/)：一个人 × AI，帮中国工业落地东南亚；三个实证。
-- [关于 Brendon](https://brendonlai.com/about-brendon)：人生时间线。2000 年起在香港做工业品销售：日系电子元件（Sumida、United Chemi-Con）、欧洲目录分销（RS Components）、中国电子元器件平台（猎芯网）、德国工具品牌（Hoffmann Group 马来西亚销售总监，2020–2025），再到 2025 年起的一人公司。
+- [关于 Brendon](https://brendonlai.com/about-brendon)：人生时间线。2000 年起在香港做工业品销售：日系电子元件（Sumida、United Chemi-Con）、欧洲目录分销（RS Components）、中国电子元器件平台（猎芯网）、德国工具品牌（Hoffmann Group 马来西亚销售总监，2020–2025；任内 36 个月营业额 +44%、团队 −43%），再到 2025 年起的一人公司。RS Components 期间 2015 财年连续四季获香港区 Top Sales。
 - [Brendon Hub 内容书架](https://brendonlai.com/hub)：内容枢纽，索引所有视频 / 文章 / 短文；含「方法论手册」柜（SOP 与清单）（飞轮索引层）。
 - [专栏](https://brendonlai.com/insights)：长文根据地。
 - [实证案例](https://brendonlai.com/projects)：三个实证的完整拆解——问题、做法、结果，以及各自的出口。
@@ -23,7 +23,7 @@
 ## English
 
 - [Home](https://brendonlai.com/en/)：One person × AI, helping Chinese industry land in Southeast Asia; three proofs.
-- [About Brendon](https://brendonlai.com/en/about-brendon)：Life timeline. Industrial sales in Hong Kong since 2000: Japanese components (Sumida, United Chemi-Con), European catalogue distribution (RS Components), a Chinese components platform (ichunt), a German tool brand (Sales Director, Hoffmann Group Malaysia, 2020–2025), then a one-person company from 2025.
+- [About Brendon](https://brendonlai.com/en/about-brendon)：Life timeline. Industrial sales in Hong Kong since 2000: Japanese components (Sumida, United Chemi-Con), European catalogue distribution (RS Components), a Chinese components platform (ichunt), a German tool brand (Sales Director, Hoffmann Group Malaysia, 2020–2025; +44% turnover with a 43% smaller team over 36 months), then a one-person company from 2025. Hong Kong Top Sales four quarters running at RS Components in FY15.
 - [Brendon Hub](https://brendonlai.com/en/hub)：The content hub indexing all videos / articles / shorts; includes the "Methodology" cabinet (SOPs & checklists).
 - [Insights](https://brendonlai.com/en/insights)：Long-form home base.
 - [Case Files](https://brendonlai.com/en/projects)：The three proofs taken apart — problem, method, result, and where each one leads.
