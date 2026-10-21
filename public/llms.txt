@@ -1,20 +1,29 @@
-# Brendon Lai — brendonlai.com | 帮中国工业落地东南亚
+# Brendon Lai — brendonlai.com | 一个人 × AI，帮中国工业落地东南亚
 
-> Brendon Lai 是中国工业企业进入东南亚的实战顾问。这个网站是个人 IP 枢纽，持续输出关于工业出海、AI 自动化与一人公司运营的实战内容。
-> Brendon Lai is a hands-on advisor helping Chinese industry enter Southeast Asia. This site is his personal IP hub, publishing field notes on industrial expansion, AI automation and one-person-company operations.
+> Brendon Lai 帮中国工业企业进入东南亚。他的主张是「一个人 × AI = 一支团队」：用 AI 一个人完成过去需要一支团队的工作。这个网站是他的个人 IP 枢纽，持续输出工业出海、AI 自动化与一人公司运营的实战内容。
+> Brendon Lai helps Chinese industrial companies enter Southeast Asia. His thesis is "one person × AI = a whole team": using AI, one person does work that used to need a team. This site is his personal IP hub, publishing field notes on industrial expansion, AI automation and one-person-company operations.
+
+## 三个实证 / Three proofs
+
+- 实证 A · 东南亚 0→1：一个人把一间东南亚工业品公司从 0 搭起来，3 套自建系统（产品数据管线、自建 ERP、B2B 产品商城）。
+- 实证 B · 跨境出海：把出海最繁琐的合规工序做成工具（SDS 文件生成、进口税务查核、清关与贸易文件）。
+- 实证 C · EduStory：和孩子俊宇（Joey）用 AI 拍品格动画，编剧、分镜、动画、配音、剪辑由一个人 + AI 完成。
+- Proof A · Southeast Asia 0→1: one person built a Southeast Asian industrial-supply company from zero, with 3 self-built systems (product data pipeline, ERP, B2B product store).
+- Proof B · Cross-border: the most tedious go-global compliance work turned into tools (SDS generation, import tax checks, customs & trade documents).
+- Proof C · EduStory: character-building cartoons made with his kid Joey using AI — script, storyboard, animation, voice-over and editing by one person + AI.
 
 ## 中文（简体）
 
-- [首页](https://brendonlai.com/)：帮中国工业，落地东南亚。
-- [关于 Brendon](https://brendonlai.com/about-brendon)：三幕人生故事与 20 年工业品目录分销实战背景。
+- [首页](https://brendonlai.com/)：一个人 × AI，帮中国工业落地东南亚；三个实证。
+- [关于 Brendon](https://brendonlai.com/about-brendon)：三幕人生故事与 20 年以上工业品目录分销实战背景。
 - [Brendon Hub 内容书架](https://brendonlai.com/hub)：内容枢纽，索引所有视频 / 文章 / 短文；含「方法论手册」柜（SOP 与清单）（飞轮索引层）。
 - [专栏](https://brendonlai.com/insights)：长文根据地。
 - [在途项目](https://brendonlai.com/projects)：build in public 实时看板。
 
 ## English
 
-- [Home](https://brendonlai.com/en/)：Helping Chinese industry land in Southeast Asia.
-- [About Brendon](https://brendonlai.com/en/about-brendon)：A three-act story and 20 years of industrial catalog distribution.
+- [Home](https://brendonlai.com/en/)：One person × AI, helping Chinese industry land in Southeast Asia; three proofs.
+- [About Brendon](https://brendonlai.com/en/about-brendon)：A three-act story and 20+ years of industrial catalog distribution.
 - [Brendon Hub](https://brendonlai.com/en/hub)：The content hub indexing all videos / articles / shorts; includes the "Methodology" cabinet (SOPs & checklists).
 - [Insights](https://brendonlai.com/en/insights)：Long-form home base.
 - [Projects](https://brendonlai.com/en/projects)：Build-in-public progress board.
@@ -23,4 +32,8 @@
 
 - 出海咨询 Consulting：[sea-leap.com](https://sea-leap.com)
 - B2B 贸易平台 Trade：[gai-store.com](https://gai-store.com)
-- 马来西亚分销 Distribution：[hoff-industrial.com](https://hoff-industrial.com)
+
+## 频道 / Channels
+
+- YouTube：[youtube.com/@laibrendon](https://www.youtube.com/@laibrendon)
+- LinkedIn：[linkedin.com/in/lai-brendon-winwinwin](https://www.linkedin.com/in/lai-brendon-winwinwin)

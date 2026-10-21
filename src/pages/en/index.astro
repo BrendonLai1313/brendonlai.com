@@ -4,7 +4,7 @@ import Hero from '../../components/Hero.astro';
 import ConversionEntries from '../../components/ConversionEntries.astro';
 import Facets from '../../components/Facets.astro';
 import Milestones from '../../components/Milestones.astro';
-import MatrixPreview from '../../components/MatrixPreview.astro';
+import ProofPoints from '../../components/ProofPoints.astro';
 import Contact from '../../components/Contact.astro';
 import { siteJsonLd } from '../../data/schema';
 
@@ -12,8 +12,8 @@ const siteSchema = siteJsonLd('en');
 ---
 
 <Layout
-  title="Brendon Lai | Helping Chinese industry land in Southeast Asia"
-  description="Brendon Lai — a hands-on advisor helping Chinese industry land in Southeast Asia: market entry, channel building and local distribution."
+  title="Brendon Lai | One person × AI, helping Chinese industry land in Southeast Asia"
+  description="Brendon Lai — one person × AI, helping Chinese industry land in Southeast Asia. Three proofs: a Southeast Asian industrial-supply company built from zero, cross-border compliance tools, and AI-made character-building cartoons."
   canonicalPath="/"
   mainClass=""
 >
@@ -21,9 +21,9 @@ const siteSchema = siteJsonLd('en');
     <script type="application/ld+json" set:html={JSON.stringify(siteSchema)} />
   </Fragment>
   <Hero />
+  <ProofPoints />
   <ConversionEntries />
   <Facets />
   <Milestones />
-  <MatrixPreview />
   <Contact />
 </Layout>

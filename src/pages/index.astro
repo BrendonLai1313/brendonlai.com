@@ -4,7 +4,7 @@ import Hero from '../components/Hero.astro';
 import ConversionEntries from '../components/ConversionEntries.astro';
 import Facets from '../components/Facets.astro';
 import Milestones from '../components/Milestones.astro';
-import MatrixPreview from '../components/MatrixPreview.astro';
+import ProofPoints from '../components/ProofPoints.astro';
 import Contact from '../components/Contact.astro';
 import { siteJsonLd } from '../data/schema';
 
@@ -12,8 +12,8 @@ const siteSchema = siteJsonLd('zh');
 ---
 
 <Layout
-  title="Brendon Lai | 帮中国工业落地东南亚的实战顾问 · 打怪升级之路"
-  description="赖先生 —— 帮中国工业落地东南亚的实战顾问。这里是我一人的内容枢纽：工业出海、AI 自动化与一人公司运营的实战输出。"
+  title="Brendon Lai | 一个人 × AI，帮中国工业落地东南亚"
+  description="Brendon Lai —— 一个人 × AI，帮中国工业落地东南亚。三个实证：东南亚工业品公司从 0 搭建、跨境出海合规工具、与孩子用 AI 拍品格动画。"
   canonicalPath="/"
   mainClass=""
 >
@@ -21,9 +21,9 @@ const siteSchema = siteJsonLd('zh');
     <script type="application/ld+json" set:html={JSON.stringify(siteSchema)} />
   </Fragment>
   <Hero />
+  <ProofPoints />
   <ConversionEntries />
   <Facets />
   <Milestones />
-  <MatrixPreview />
   <Contact />
 </Layout>
