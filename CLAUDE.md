@@ -1,11 +1,11 @@
 # brendonlai.com — AI 協作規則
 
 任何 AI（Claude、Trae 或其他）喺呢個 repo 做嘢之前，必須先讀完呢份文件。
-完整背景見 `docs/SITE_HANDOFF.md`（2026-10-20 盤點）。有疑問就問 Brendon，唔好「先做再算」。
+完整背景見 `docs/SITE_HANDOFF.md`（2026-10-20 盤點）；**已確認嘅決定見 `docs/DECISIONS.md`**（兩者有衝突時以 DECISIONS 為準）。有疑問就問 Brendon，唔好「先做再算」。
 
 ## 1. 呢個站係咩
 
-- Brendon Lai 嘅個人 IP 樞紐：一條主線「一個人 × AI = 一支團隊」，導流去三個轉化入口（sea-leap.com、gai-store.com、hoff-industrial.com）。
+- Brendon Lai 嘅個人 IP 樞紐：一條主線「一個人 × AI = 一支團隊」，導流去轉化入口（sea-leap.com、gai-store.com）。hoff-industrial.com 已於 2026-10-21 撤出轉化入口，見 `docs/DECISIONS.md`。
 - Astro 6.1.3 純靜態站 + Tailwind CSS 4.2.2（CSS-first `@theme`，冇 `tailwind.config.mjs`）。Node ≥ 22.12。
 - 主工程就係呢個 repo 嘅根目錄（本機路徑 `REF_Brendonlai.com_Content_Hub_底层架构/website_engine/`）。Google Drive 頂層嗰個 `web/` 係廢棄舊版，唔好參考、唔好照抄。
 - `README.md` 仍係 Astro 範本原文，唔可信；以呢份文件為準。
@@ -43,6 +43,7 @@
 ## 5. 內容紅線（關乎法律，必守）
 
 - **不點名**：唔提任何具體私營公司名（尤其唔好寫合資公司嘅名）。用「一間合資公司」「過往實戰案例」等匿名寫法。
+  - **例外（2026-10-21 Brendon 批准）**：Brendon 嘅前僱主（Suntan Technology、Sumida、United Chemi-Con、RS Components、猎芯网 ichunt、Hoffmann Group）可以點名，只限僱傭事實（職位、年份、做過咩）；唔放 logo、唔寫成合作或代理、唔講公司結束或離職原因。2025 年嗰間東南亞公司**唔適用**，仍然匿名。
 - **不講金額**：唔寫營業額、盈虧、毛利、投入、薪資等具體財務數字。
 - **不指控**：唔講股東糾紛、法律爭議、離職是非。
 - 品牌分離：個人站唔係 gai-store 產品目錄，唔放產品推銷。
