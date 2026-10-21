@@ -5,7 +5,7 @@
 
 ## 1. 呢個站係咩
 
-- Brendon Lai 嘅個人 IP 樞紐：一條主線「一個人 × AI = 一支團隊」，導流去三個轉化入口（sea-leap.com、gai-store.com、hoff-industrial.com）。
+- Brendon Lai 嘅個人 IP 樞紐：一條主線「一個人 × AI = 一支團隊」，導流去轉化入口（sea-leap.com、gai-store.com）。hoff-industrial.com 已於 2026-10-21 撤出轉化入口，見 `docs/DECISIONS.md`。
 - Astro 6.1.3 純靜態站 + Tailwind CSS 4.2.2（CSS-first `@theme`，冇 `tailwind.config.mjs`）。Node ≥ 22.12。
 - 主工程就係呢個 repo 嘅根目錄（本機路徑 `REF_Brendonlai.com_Content_Hub_底层架构/website_engine/`）。Google Drive 頂層嗰個 `web/` 係廢棄舊版，唔好參考、唔好照抄。
 - `README.md` 仍係 Astro 範本原文，唔可信；以呢份文件為準。
