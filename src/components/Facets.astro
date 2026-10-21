@@ -13,7 +13,7 @@ const t = isEn
         'From the factory floor in China, through cross-border trade, e-commerce platforms and building factories in Southeast Asia, to helping companies design a 1+1 globalization strategy. After all this practice, I believe long-termism and executability are the core abilities that carry you through any cycle.',
       link: 'Read the full story',
       stats: [
-        { value: '1500+', label: 'Clients served' },
+        { value: '1500+', label: 'Clients served in Southeast Asia' },
         { value: '5', label: 'Countries worked in' },
         { value: '20+', label: 'Years of experience' },
       ],
@@ -27,7 +27,7 @@ const t = isEn
         '从中国工厂一线，到跨境贸易、电商平台、东南亚建厂，再到协助企业设计 1+1 全球化策略。一路实践后我更相信：长期主义与可执行，才是穿越周期的底层能力。',
       link: '阅读完整人生故事',
       stats: [
-        { value: '1500+', label: '客户满意服务' },
+        { value: '1500+', label: '东南亚服务客户' },
         { value: '5', label: '不同国家工作经验' },
         { value: '20+', label: '年从业经验' },
       ],
@@ -56,9 +56,9 @@ const t = isEn
       <div class="grid grid-cols-3 lg:grid-cols-1 gap-4">
         {
           t.stats.map((s) => (
-            <div class="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm text-center lg:text-left">
-              <div class="text-3xl font-black text-hk-primary">{s.value}</div>
-              <p class="text-xs tracking-[0.2em] text-stone-500 mt-2">{s.label}</p>
+            <div class="bg-white p-3 sm:p-6 rounded-2xl border border-stone-100 shadow-sm text-center lg:text-left">
+              <div class="text-2xl sm:text-3xl font-black text-hk-primary">{s.value}</div>
+              <p class="text-xs tracking-normal sm:tracking-[0.2em] text-stone-500 mt-2 text-balance">{s.label}</p>
             </div>
           ))
         }
