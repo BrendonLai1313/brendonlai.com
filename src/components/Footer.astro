@@ -4,7 +4,7 @@
 // 內容：
 //   1. 品牌 + 一句定位（定位語）
 //   2. 快速導航（沿用 Header 的 5 頁地圖）
-//   3. R1「轉化收口層」compact 版：三個轉化入口，全站固定出現
+//   3. R1「轉化收口層」compact 版：轉化入口，全站固定出現
 //   4. 聯絡方式（WhatsApp / 微信 / Email）——資料為空則自動隱藏，不出現死連結
 //   5. 版權 + 品牌 slogan
 // -----------------------------------------------------------------------------
@@ -71,14 +71,16 @@ const contactLinks = [
     href: `mailto:${CONTACT.email}`,
     label: t.email,
     icon: 'fa-envelope',
+    solid: true, // fa-envelope 屬 solid 字型，不是 brands
     external: false,
   },
-].filter(Boolean) as { href: string; label: string; icon: string; external: boolean }[];
+].filter(Boolean) as { href: string; label: string; icon: string; external: boolean; solid?: boolean }[];
 
 const socialLinks = [
   SOCIAL.linkedin && { href: SOCIAL.linkedin, label: 'LinkedIn', icon: 'fa-linkedin-in' },
   SOCIAL.instagram && { href: SOCIAL.instagram, label: 'Instagram', icon: 'fa-instagram' },
   SOCIAL.twitter && { href: SOCIAL.twitter, label: 'X', icon: 'fa-x-twitter' },
+  SOCIAL.youtube && { href: SOCIAL.youtube, label: 'YouTube', icon: 'fa-youtube' },
 ].filter(Boolean) as { href: string; label: string; icon: string }[];
 
 const year = new Date().getFullYear();
@@ -147,7 +149,7 @@ const year = new Date().getFullYear();
                     rel={c.external ? 'noopener noreferrer' : undefined}
                     class="text-sm text-stone-300 hover:text-hk-accent transition inline-flex items-center gap-2"
                   >
-                    <i class={`fab ${c.icon} text-base`} />
+                    <i class={`${c.solid ? 'fas' : 'fab'} ${c.icon} text-base`} />
                     {c.label}
                   </a>
                 </li>
@@ -156,15 +158,15 @@ const year = new Date().getFullYear();
           ) : (
             <p class="text-sm text-stone-500 leading-relaxed">
               {isEn
-                ? 'Channel details are being set up — meanwhile, use one of the three entries below.'
-                : '渠道資料整理中 —— 期間請直接由下方三個轉化入口找我。'}
+                ? 'Channel details are being set up — meanwhile, use one of the entries below.'
+                : '渠道资料整理中 —— 期间请直接由下方的转化入口找我。'}
             </p>
           )
         }
       </div>
     </div>
 
-    <!-- 中段：R1 三個轉化入口（全站固定） -->
+    <!-- 中段：R1 轉化入口（全站固定） -->
     <div class="py-10">
       <ConversionEntries variant="compact" />
     </div>

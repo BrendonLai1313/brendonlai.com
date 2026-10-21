@@ -13,7 +13,7 @@ import { SITE_URL, SOCIAL } from './site';
 export type Lang = 'zh' | 'en';
 
 // sameAs：只放入「已設定」的社群連結，避免出現空字串（死連結）。
-const sameAs = [SOCIAL.linkedin, SOCIAL.instagram, SOCIAL.twitter].filter(Boolean);
+const sameAs = [SOCIAL.linkedin, SOCIAL.instagram, SOCIAL.twitter, SOCIAL.youtube].filter(Boolean);
 
 const PROFILE = {
   zh: {

@@ -11,7 +11,7 @@
 export const SITE_URL = 'https://brendonlai.com';
 
 export interface ConversionEntry {
-  key: 'sea-leap' | 'gai-store' | 'hoff-industrial';
+  key: 'sea-leap' | 'gai-store';
   url: string;
   icon: string; // FontAwesome class
   brand: string; // 對外顯示的域名
@@ -20,7 +20,9 @@ export interface ConversionEntry {
   cta: { zh: string; en: string };
 }
 
-// PLAN §1 的三個轉化收口入口（與 public/llms.txt 完全一致）
+// 轉化收口入口（與 public/llms.txt 完全一致）
+// 2026-10-21：hoff-industrial.com 撤出轉化入口（Brendon 決定）。域名仍屬 Brendon，
+// 日後若轉指向他自己的新業務，再加回此陣列（記得同步 key 型別與 llms.txt）。
 export const CONVERSION_ENTRIES: ConversionEntry[] = [
   {
     key: 'sea-leap',
@@ -46,18 +48,6 @@ export const CONVERSION_ENTRIES: ConversionEntry[] = [
     },
     cta: { zh: '进入平台', en: 'Visit platform' },
   },
-  {
-    key: 'hoff-industrial',
-    url: 'https://hoff-industrial.com',
-    icon: 'fa-industry',
-    brand: 'hoff-industrial.com',
-    name: { zh: '马来西亚分销', en: 'Malaysia distribution' },
-    desc: {
-      zh: '马来西亚本地仓储、分销与售后，让产品真正落地。',
-      en: 'Local warehousing, distribution and after-sales in Malaysia — so products actually land.',
-    },
-    cta: { zh: '查看分销', en: 'See distribution' },
-  },
 ];
 
 export const CONTACT = {
@@ -78,6 +68,10 @@ export const SOCIAL = {
   // TODO: 建議日後改為自訂短網址 'https://www.linkedin.com/in/brendonlai'（與 brendonlai.com 一致）。
   instagram: '',
   twitter: '',
+  // Brendon 本人的 YouTube 频道（注意：youtube.com/@BrendonLai 不是他的频道）。
+  youtube: 'https://www.youtube.com/@laibrendon',
+  // EduStory 播放清单（实证 C 的出口）。留空 → 实证 C 的链接不渲染。
+  edustoryPlaylist: 'https://www.youtube.com/playlist?list=PLfFWb1UvxzOU',
 };
 
 export const FORMS = {

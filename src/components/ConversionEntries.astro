@@ -1,7 +1,7 @@
 ---
 // R1「轉化收口層」元件
 // -----------------------------------------------------------------------------
-// 全站唯一的「三個轉化出口」渲染處，資料全部來自 src/data/site.ts。
+// 全站唯一的「轉化出口」渲染處，資料全部來自 src/data/site.ts（數量跟隨陣列長度）。
 // 有兩個樣式：
 //   variant="full"    → 首頁第一屏下方的大區塊（卡片式，帶說明）
 //   variant="compact" → 全站 Footer 的固定入口條（深色底）
@@ -18,15 +18,15 @@ const isEn = Astro.currentLocale === 'en';
 const t = isEn
   ? {
       eyebrow: 'Plan small. Move fast.',
-      h2: 'Three ways I add value to your business today',
+      h2: 'Two ways I can add value to your business today',
       sub: 'Simple and to the point — pick the one that fits where you are right now.',
-      compactTitle: 'Three conversion entries',
+      compactTitle: 'Work with me',
     }
   : {
       eyebrow: '小心规划，小步快跑',
-      h2: '三个今天就能帮你企业增值的专业领域',
+      h2: '两个今天就能为你企业增值的入口',
       sub: '简单明了，一针见血 —— 按你现在的情况，挑一个走进去。',
-      compactTitle: '三个转化入口',
+      compactTitle: '转化入口',
     };
 ---
 
@@ -36,7 +36,7 @@ const t = isEn
       <p class="text-xs font-bold tracking-[0.28em] text-hk-accent mb-4 text-center md:text-left">
         {t.compactTitle}
       </p>
-      <div class="grid sm:grid-cols-3 gap-3">
+      <div class="grid sm:grid-cols-2 gap-3">
         {CONVERSION_ENTRIES.map((e) => (
           <a
             href={e.url}
@@ -64,7 +64,7 @@ const t = isEn
           <h2 class="text-3xl md:text-4xl font-black text-hk-primary mb-4">{t.h2}</h2>
           <p class="text-stone-500 max-w-2xl mx-auto leading-relaxed">{t.sub}</p>
         </div>
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {CONVERSION_ENTRIES.map((e) => (
             <a
               href={e.url}
