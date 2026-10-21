@@ -7,10 +7,10 @@
 
 - 实证 A · 东南亚 0→1：一个人把一间东南亚工业品公司从 0 搭起来，3 套自建系统（产品数据管线、自建 ERP、B2B 产品商城）。
 - 实证 B · 跨境出海：把出海最繁琐的合规工序做成工具（SDS 文件生成、进口税务查核、清关与贸易文件）。
-- 实证 C · EduStory：和孩子俊宇（Joey）用 AI 拍品格动画，编剧、分镜、动画、配音、剪辑由一个人 + AI 完成。
+- 实证 C · EduStory：把父亲走过的路画成动画留给孩子；每一集取材自孩子真实的行为与父亲亲身吃过的亏，由监制、编剧、画师三个 AI 智能体组成的动画团队完成。
 - Proof A · Southeast Asia 0→1: one person built a Southeast Asian industrial-supply company from zero, with 3 self-built systems (product data pipeline, ERP, B2B product store).
 - Proof B · Cross-border: the most tedious go-global compliance work turned into tools (SDS generation, import tax checks, customs & trade documents).
-- Proof C · EduStory: character-building cartoons made with his kid Joey using AI — script, storyboard, animation, voice-over and editing by one person + AI.
+- Proof C · EduStory: a father turning his own hard-won lessons into cartoons for his kid; every episode starts from the child's real behaviour, made by an AI crew of three agents (producer, scriptwriter, artist).
 
 ## 中文（简体）
 
@@ -18,7 +18,7 @@
 - [关于 Brendon](https://brendonlai.com/about-brendon)：三幕人生故事与 20 年以上工业品目录分销实战背景。
 - [Brendon Hub 内容书架](https://brendonlai.com/hub)：内容枢纽，索引所有视频 / 文章 / 短文；含「方法论手册」柜（SOP 与清单）（飞轮索引层）。
 - [专栏](https://brendonlai.com/insights)：长文根据地。
-- [在途项目](https://brendonlai.com/projects)：build in public 实时看板。
+- [实证案例](https://brendonlai.com/projects)：三个实证的完整拆解——问题、做法、结果，以及各自的出口。
 
 ## English
 
@@ -26,7 +26,7 @@
 - [About Brendon](https://brendonlai.com/en/about-brendon)：A three-act story and 20+ years of industrial catalog distribution.
 - [Brendon Hub](https://brendonlai.com/en/hub)：The content hub indexing all videos / articles / shorts; includes the "Methodology" cabinet (SOPs & checklists).
 - [Insights](https://brendonlai.com/en/insights)：Long-form home base.
-- [Projects](https://brendonlai.com/en/projects)：Build-in-public progress board.
+- [Case Files](https://brendonlai.com/en/projects)：The three proofs taken apart — problem, method, result, and where each one leads.
 
 ## 转化入口 / Conversion entries
 
