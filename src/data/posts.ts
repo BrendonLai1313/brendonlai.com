@@ -29,6 +29,10 @@ export interface Post {
 // 留空即可 —— 非 ASCII 的原生 slug 會自動退回 `post-<id>`。
 export const SLUG_OVERRIDES: Record<number, string> = {};
 
+// 不在本站展示的 WP 文章 ID（例如 n8n 发文流程的测试稿）。
+// 根治方法是在 WordPress 把测试稿改成草稿或删除；这里是保险。
+export const EXCLUDED_IDS: number[] = [7]; // 7 = 「n8n 測試：第一篇自動發文」
+
 // Astro 動態路由對非 ASCII slug 的編碼比對不穩（會出現 NoMatchingStaticPathFound），
 // 因此站內路由一律使用 ASCII slug：原生 slug 已是 ASCII 者沿用，否則退回 post-<id>。
 function routeSlug(wpSlug: string, id: number): string {
@@ -106,7 +110,7 @@ async function load(): Promise<Post[]> {
     const data: any[] = await res.json();
     if (!Array.isArray(data)) return [];
     return data
-      .filter((p) => p && p.slug && p.id)
+      .filter((p) => p && p.slug && p.id && !EXCLUDED_IDS.includes(Number(p.id)))
       .map((p) => {
         const id = Number(p.id);
         const wpSlug = String(p.slug);
