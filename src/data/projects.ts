@@ -25,6 +25,11 @@ export interface CaseStep {
   body: Bi;
 }
 
+export interface CasePhoto {
+  src: string; // public/ 下的路径；只放真实现场照片，已清 EXIF
+  alt: Bi;
+}
+
 export interface CaseLogItem {
   status: 'ongoing' | 'done';
   text: Bi;
@@ -44,6 +49,8 @@ export interface CaseFileData {
   closing: Bi; // 结语
   note?: Bi; // 小字附注（例如税率免责）
   roles: BiList; // 顶替的岗位
+  photos?: CasePhoto[]; // 现场照片（可选）：1 张 = 横幅；2–3 张 = 并排
+  photoCaption?: Bi; // 照片说明（不写客户名、不写年份）
   log?: CaseLogItem[];
   exit: { href: string; brand: string; label: Bi }; // 唯一出口；href 空 → 不渲染按钮
 }
@@ -99,6 +106,15 @@ export const CASE_FILES: CaseFileData[] = [
     closing: {
       zh: '按传统做法，这是一支小团队几个月的工作。我想说的不是 AI 有多厉害，而是当你清楚要做什么，AI 会把「做」的时间压缩。判断力，仍然是你的。',
       en: "Done the traditional way, this is months of work for a small team. My point isn't how powerful AI is — it's that when you know exactly what to do, AI compresses the doing. The judgement is still yours.",
+    },
+    photos: [
+      { src: '/photos/case-a-delivery-team.jpg', alt: { zh: '客户现场交付后的合照', en: 'Team photo after an on-site client delivery' } },
+      { src: '/photos/case-a-workbench.jpg', alt: { zh: '安装工作台与挂板', en: 'Installing a workbench and pegboard' } },
+      { src: '/photos/case-a-trolley.jpg', alt: { zh: '组装移动推车', en: 'Assembling a mobile trolley' } },
+    ],
+    photoCaption: {
+      zh: '客户现场交付：工作台、挂板与移动推车，从报价到安装一手跟进。',
+      en: 'On-site client delivery: workbenches, pegboards and mobile trolleys — followed through from quote to installation.',
     },
     roles: {
       zh: ['数据专员', '定价分析', 'ERP 实施', '网站开发'],
@@ -170,10 +186,23 @@ export const CASE_FILES: CaseFileData[] = [
       zh: '税率与豁免条件以马来西亚官方最新公告为准。',
       en: "Duty rates and exemption conditions are subject to Malaysia's latest official notices.",
     },
+    photos: [
+      { src: '/photos/case-b-client-site.jpg', alt: { zh: '在客户的化工车间现场工作', en: "Working on site in a client's chemical workshop" } },
+    ],
+    photoCaption: {
+      zh: '首位付费客户的车间：SDS 生成工具在这里落地。',
+      en: "At the first paying client's workshop, where the SDS generator was put to work.",
+    },
     roles: {
       zh: ['合规专员', '报关前期查核', '单证文员'],
       en: ['Compliance specialist', 'Pre-clearance checks', 'Documentation clerk'],
     },
+    log: [
+      {
+        status: 'done',
+        text: { zh: '[已落地] SDS 生成工具迎来首位付费客户。', en: '[Live] The SDS generator has its first paying client.' },
+      },
+    ],
     exit: {
       href: entryUrl('gai-store'),
       brand: 'gai-store.com',
