@@ -9,6 +9,13 @@
 //   <Layout title="..." description="..." canonicalPath="/hub">  內容  </Layout>
 // 語言前綴、canonical、hreflang 全部由 canonicalPath 自動推導，不必手抄。
 // -----------------------------------------------------------------------------
+// 字体自托管（不经 Google Fonts）：中国大陆访客连不上 fonts.gstatic.com，
+// 只载入部分分片会令同一句混用两套字体、粗幼不一。Fontsource 按 unicode-range 切片，访客只下载用到的字。
+// 用到的字重：400 / 500 / 700 / 900（600 由浏览器就近用 700）。
+import '@fontsource/noto-sans-sc/400.css';
+import '@fontsource/noto-sans-sc/500.css';
+import '@fontsource/noto-sans-sc/700.css';
+import '@fontsource/noto-sans-sc/900.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_URL } from '../data/site';
@@ -97,10 +104,6 @@ const ogAlt = ogImageAlt ?? title;
     <link rel="apple-touch-icon" href="/brendon-logo.png" />
     <link rel="mask-icon" href="/favicon.svg" color="#d97757" />
     <meta name="generator" content={Astro.generator} />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"

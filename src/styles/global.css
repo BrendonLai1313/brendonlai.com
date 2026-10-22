@@ -12,8 +12,11 @@
   --color-hk-accent: #d97757;
   --color-hk-text: #333333;
 
-  --font-sans: "Noto Sans HK", ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", "Microsoft YaHei", sans-serif;
+  /* 简体中文：Noto Sans SC（自托管，见 Layout.astro 的 @fontsource 导入）。
+     后备字体先放简体系统字体（PingFang SC / 微软雅黑），再放 system-ui，
+     避免 Windows 按字逐个挑不同后备字体造成粗幼不一。 */
+  --font-sans: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 /* 全站基本排版 */
