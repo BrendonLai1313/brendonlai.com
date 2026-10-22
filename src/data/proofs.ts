@@ -69,8 +69,8 @@ export const PROOFS: Proof[] = [
       en: 'Turning the most tedious compliance work into tools',
     },
     result: {
-      zh: 'SDS 文件生成 · 进口税务查核 · 清关与贸易文件',
-      en: 'SDS generation · import tax checks · customs & trade documents',
+      zh: 'SDS 文件生成（已有付费客户）· 进口税务查核 · 清关与贸易文件',
+      en: 'SDS generation (first paying customer) · import tax checks · customs & trade documents',
     },
     roles: {
       zh: ['合规专员', '报关前期查核', '单证文员'],
