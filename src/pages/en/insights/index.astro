@@ -16,7 +16,7 @@ import Contact from '../../../components/Contact.astro';
 import { getPosts, BLOG_URL } from '../../../data/posts';
 
 const isEn = true;
-const posts = await getPosts();
+const posts = await getPosts('en');
 
 const pageTitle = 'Insights | Brendon Lai — Industrial expansion & one-person company';
 const pageDesc =

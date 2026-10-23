@@ -38,7 +38,7 @@
 - content collection（`src/content.config.ts`）係嚴格驗證：新欄位一定要 `.optional()`，否則現有 md 全部 build fail。
 - 唔好引入 View Transitions（`projects.astro` 嘅 `is:global` body 背景會殘留全站）。
 - 唔好一次過換走 Font Awesome 或重構成 i18n 字典。
-- `public/llms.txt` 係人手維護：改主張、入口或案例時要同步更新。
+- `llms.txt` 主體係人手維護（`src/data/llms-base.txt`）：改主張、入口或案例時要同步更新；專欄文章清單由 build 自動附加（`src/pages/llms.txt.ts`）。
 
 ## 5. 內容紅線（關乎法律，必守）
 

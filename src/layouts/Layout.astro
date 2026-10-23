@@ -34,6 +34,10 @@ interface Props {
   ogImage?: string;
   /** og:image 的替代文字，預設用 title。 */
   ogImageAlt?: string;
+  /** 有冇對應另一語言版本。false = 唔輸出 hreflang（例如只有單一語言嘅專欄文章）。預設 true。 */
+  alternates?: boolean;
+  /** 语言切换按钮目标（单语言文章用：指去另一语言的专栏首页）。 */
+  altHref?: string;
 }
 
 const {
@@ -46,6 +50,8 @@ const {
   mainClass = 'pt-28',
   ogImage = '/og-default.png',
   ogImageAlt,
+  alternates = true,
+  altHref,
 } = Astro.props;
 
 const isEn = Astro.currentLocale === 'en';
@@ -79,16 +85,16 @@ const ogAlt = ogImageAlt ?? title;
     <meta name="description" content={metaDesc} />
     {keywords && <meta name="keywords" content={keywords} />}
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="zh-CN" href={zhHref} />
-    <link rel="alternate" hreflang="en" href={enHref} />
-    <link rel="alternate" hreflang="x-default" href={zhHref} />
+    {alternates && <link rel="alternate" hreflang="zh-CN" href={zhHref} />}
+    {alternates && <link rel="alternate" hreflang="en" href={enHref} />}
+    {alternates && <link rel="alternate" hreflang="x-default" href={zhHref} />}
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={metaDesc} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="Brendon Lai" />
     <meta property="og:locale" content={isEn ? 'en_US' : 'zh_CN'} />
-    <meta property="og:locale:alternate" content={isEn ? 'zh_CN' : 'en_US'} />
+    {alternates && <meta property="og:locale:alternate" content={isEn ? 'zh_CN' : 'en_US'} />}
     <meta property="og:image" content={ogImageAbs} />
     <meta property="og:image:secure_url" content={ogImageAbs} />
     <meta property="og:image:type" content="image/png" />
@@ -134,7 +140,7 @@ const ogAlt = ogImageAlt ?? title;
     <slot name="head" />
   </head>
   <body class={`font-sans leading-relaxed selection:bg-hk-accent selection:text-white ${bodyClass}`}>
-    <Header />
+    <Header altHref={altHref} />
     <main class={mainClass}>
       <slot />
     </main>

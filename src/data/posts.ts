@@ -12,8 +12,18 @@
 const WORDPRESS_URL =
   import.meta.env.PUBLIC_WORDPRESS_URL || 'https://blog.brendonlai.com';
 
+export type Lang = 'zh' | 'en';
+
+export interface FaqItem {
+  q: string;
+  a: string;
+}
+
 export interface Post {
-  slug: string; // 站內路由 slug（保證 ASCII）
+  slug: string; // 站內路由 slug（保證 ASCII；英文版已去掉結尾 -en）
+  lang: Lang; // 依 WP 分類 zh / en 判斷；冇分類就按標題有冇中文字推斷
+  hasPair: boolean; // 另一語言有冇同 slug 嘅版本（有先輸出 hreflang）
+  faq: FaqItem[]; // 由正文「FAQ / 常见问题」段落抽出，供 FAQPage JSON-LD
   wpSlug: string; // WordPress 原始 slug（可含中文）
   id: number; // WordPress 文章 ID
   title: string;
@@ -98,42 +108,93 @@ function sanitize(input: string): string {
   return s.trim();
 }
 
+// 中英配對規則（2026-10-23 確認）：同一篇文中英各一篇 WP 文章，
+// 中文 slug = x，英文 slug = x-en，WP 分類分別為 zh / en。
+// 網站：中文 → /insights/x，英文 → /en/insights/x，兩者互相 hreflang。
+const CJK = /[\u3400-\u9fff]/;
+
+function detectLang(catSlugs: string[], title: string): Lang {
+  if (catSlugs.includes('en')) return 'en';
+  if (catSlugs.includes('zh') || catSlugs.includes('zh-cn')) return 'zh';
+  return CJK.test(title) ? 'zh' : 'en';
+}
+
+// 正文入面標題含「FAQ / 常见问题 / 常見問題」嘅段落：其後每個 h3 = 問題，跟住嘅段落 = 答案。
+function extractFaq(html: string): FaqItem[] {
+  const m = html.match(/<h2>[^<]*(FAQ|常见问题|常見問題)[^<]*<\/h2>([\s\S]*?)(?=<h2>|$)/i);
+  if (!m) return [];
+  const items: FaqItem[] = [];
+  const re = /<h3>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3>|$)/gi;
+  let r: RegExpExecArray | null;
+  while ((r = re.exec(m[2]))) {
+    const q = plain(r[1]);
+    const a = plain(r[2]);
+    if (q && a) items.push({ q, a });
+  }
+  return items;
+}
+
 let cached: Promise<Post[]> | null = null;
 
 async function load(): Promise<Post[]> {
   const endpoint =
     `${WORDPRESS_URL}/wp-json/wp/v2/posts` +
-    `?per_page=100&_fields=id,slug,title,excerpt,content,date,modified,link`;
+    `?per_page=100&_fields=id,slug,title,excerpt,content,date,modified,link,categories`;
   try {
+    const catMap = new Map<number, string>();
+    try {
+      const cr = await fetch(`${WORDPRESS_URL}/wp-json/wp/v2/categories?per_page=100&_fields=id,slug`);
+      if (cr.ok) {
+        const cats: any[] = await cr.json();
+        if (Array.isArray(cats)) cats.forEach((c) => catMap.set(Number(c.id), String(c.slug).toLowerCase()));
+      }
+    } catch {
+      /* 分類攞唔到就用標題推斷語言 */
+    }
     const res = await fetch(endpoint);
     if (!res.ok) return [];
     const data: any[] = await res.json();
     if (!Array.isArray(data)) return [];
-    return data
+    const list: Post[] = data
       .filter((p) => p && p.slug && p.id && !EXCLUDED_IDS.includes(Number(p.id)))
       .map((p) => {
         const id = Number(p.id);
         const wpSlug = String(p.slug);
+        const title = decodeEntities(String(p?.title?.rendered ?? ''));
+        const catSlugs = (Array.isArray(p.categories) ? p.categories : []).map((c: any) => catMap.get(Number(c)) ?? '');
+        const lang = detectLang(catSlugs, title);
+        let slug = routeSlug(wpSlug, id);
+        if (lang === 'en') slug = slug.replace(/-en$/, '');
+        const html = sanitize(String(p?.content?.rendered ?? ''));
         return {
-          slug: routeSlug(wpSlug, id),
+          slug,
+          lang,
+          hasPair: false,
+          faq: extractFaq(html),
           wpSlug,
           id,
-          title: decodeEntities(String(p?.title?.rendered ?? '')),
+          title,
           excerpt: plain(String(p?.excerpt?.rendered ?? '')),
-          html: sanitize(String(p?.content?.rendered ?? '')),
+          html,
           date: String(p?.date ?? ''),
           modified: String(p?.modified ?? p?.date ?? ''),
           link: String(p?.link ?? WORDPRESS_URL),
         };
       });
+    const key = (p: Post) => `${p.lang}:${p.slug}`;
+    const keys = new Set(list.map(key));
+    list.forEach((p) => (p.hasPair = keys.has(`${p.lang === 'zh' ? 'en' : 'zh'}:${p.slug}`)));
+    return list;
   } catch {
     return [];
   }
 }
 
-export function getPosts(): Promise<Post[]> {
+/** 全部文章；傳 lang 就只返回該語言。 */
+export async function getPosts(lang?: Lang): Promise<Post[]> {
   if (!cached) cached = load();
-  return cached;
+  const all = await cached;
+  return lang ? all.filter((p) => p.lang === lang) : all;
 }
 
 export const BLOG_URL = WORDPRESS_URL;

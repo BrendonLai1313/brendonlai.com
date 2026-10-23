@@ -7,10 +7,11 @@
 // -----------------------------------------------------------------------------
 import Layout from '../../../layouts/Layout.astro';
 import Contact from '../../../components/Contact.astro';
+import { SOCIAL } from '../../../data/site';
 import { getPosts, BLOG_URL, type Post } from '../../../data/posts';
 
 export async function getStaticPaths() {
-  const posts = await getPosts();
+  const posts = await getPosts('en');
   return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
 }
 
@@ -29,6 +30,20 @@ const authorName = 'Brendon Lai';
 const authorJob = 'Hands-on advisor helping Chinese industry enter Southeast Asia';
 const moreLabel = 'More posts';
 const emptyText = 'This article has not been synced yet — please read it on the original blog.';
+
+// FAQ 段落 → FAQPage（AI / 搜索引擎直接引用问答）
+const faqLd = post.faq.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      inLanguage: 'en',
+      mainEntity: post.faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    }
+  : null;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -60,10 +75,13 @@ const jsonLd = {
   description={post.excerpt}
   ogType="article"
   canonicalPath={`/en/insights/${post.slug}`}
+  alternates={post.hasPair}
+  altHref={post.hasPair ? undefined : '/insights'}
   mainClass="pt-28 pb-20 px-6 max-w-3xl mx-auto"
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
   </Fragment>
 
   <article>
