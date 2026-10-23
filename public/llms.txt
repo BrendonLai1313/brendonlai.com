@@ -6,10 +6,10 @@
 ## 三个实证 / Three proofs
 
 - 实证 A · 东南亚 0→1：一个人把一间东南亚工业品公司从 0 搭起来，3 套自建系统（产品数据管线、自建 ERP、B2B 产品商城）。
-- 实证 B · 跨境出海：把出海最繁琐的合规工序做成工具（SDS 文件生成、进口税务查核、清关与贸易文件）。
+- 实证 B · 跨境出海：把出海最繁琐的合规工序做成工具（SDS 文件生成——已有付费客户、进口税务查核、清关与贸易文件）。
 - 实证 C · EduStory：把父亲走过的路画成动画留给孩子；每一集取材自孩子真实的行为与父亲亲身吃过的亏，由监制、编剧、画师三个 AI 智能体组成的动画团队完成。
 - Proof A · Southeast Asia 0→1: one person built a Southeast Asian industrial-supply company from zero, with 3 self-built systems (product data pipeline, ERP, B2B product store).
-- Proof B · Cross-border: the most tedious go-global compliance work turned into tools (SDS generation, import tax checks, customs & trade documents).
+- Proof B · Cross-border: the most tedious go-global compliance work turned into tools (SDS generation — now with a first paying customer, import tax checks, customs & trade documents).
 - Proof C · EduStory: a father turning his own hard-won lessons into cartoons for his kid; every episode starts from the child's real behaviour, made by an AI crew of three agents (producer, scriptwriter, artist).
 
 ## 中文（简体）
