@@ -1,4 +1,8 @@
 ---
+interface Props {
+  /** 语言切换按钮的目标路径；不传就自动加 / 减 /en 前缀。 */
+  altHref?: string;
+}
 const lang = Astro.currentLocale === 'en' ? 'en' : 'zh';
 const isEn = lang === 'en';
 
@@ -26,9 +30,9 @@ const nav = isEn
 
 // 语言切换：目标路径 + 目标语言
 const path = Astro.url.pathname;
-const altPath = isEn
-  ? path.replace(/^\/en(?=\/|$)/, '') || '/'
-  : path === '/' ? '/en/' : `/en${path}`;
+const altPath =
+  Astro.props.altHref ??
+  (isEn ? path.replace(/^\/en(?=\/|$)/, '') || '/' : path === '/' ? '/en/' : `/en${path}`);
 const altLabel = isEn ? '中文' : 'EN';
 ---
 

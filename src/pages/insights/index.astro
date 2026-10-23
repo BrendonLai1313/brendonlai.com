@@ -13,7 +13,7 @@ import Contact from '../../components/Contact.astro';
 import { getPosts, BLOG_URL } from '../../data/posts';
 
 const isEn = false;
-const posts = await getPosts();
+const posts = await getPosts('zh');
 
 const pageTitle = '专栏文章 | Brendon Lai · 工业出海与一人公司实战';
 const pageDesc =
