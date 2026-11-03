@@ -1,0 +1,31 @@
+---
+// 「关于我」页顶的 33 秒介绍短片（2026-11-03）
+// preload="none" + poster：未撳播放前只载入一张封面图，唔影响开页速度。
+// 自家伺服器托管（唔用 YouTube 嵌入）：中国大陆访客睇得到，亦唔载入第三方脚本。
+const isEn = Astro.currentLocale === 'en';
+const t = isEn
+  ? {
+      label: 'A 33-second introduction (in Chinese)',
+      caption: 'An AI-driven lean team helping Chinese industry land in Southeast Asia — speed goes to AI, judgement stays with people.',
+    }
+  : {
+      label: '33 秒认识 Brendon',
+      caption: 'AI 驱动的精干团队，帮中国工业落地东南亚——速度交给 AI，判断留给人。',
+    };
+---
+
+<figure id="intro-video" class="scroll-mt-28 mt-10 max-w-4xl">
+  <video
+    class="w-full aspect-video rounded-2xl shadow-xl bg-stone-900"
+    controls
+    preload="none"
+    playsinline
+    poster="/video/brendon-intro-poster.jpg"
+    aria-label={t.label}
+  >
+    <source src="/video/brendon-intro-720p.mp4" type="video/mp4" />
+  </video>
+  <figcaption class="mt-3 text-sm text-stone-500">
+    <span class="font-bold text-hk-primary">▶ {t.label}</span> · {t.caption}
+  </figcaption>
+</figure>
