@@ -53,6 +53,7 @@
 
 - **2026-10-21** Brendon 批准喺网站点名前雇主 **Hoffmann**，只限「关于我」页、只写雇佣事实；唔放 logo、唔写成合作或代理、唔讲公司结束原因。（已于 2026-10-21 扩大，见下一行。）
 - **2026-10-21** 例外扩大至所有前雇主：Suntan Technology、Sumida、United Chemi-Con、RS Components、猎芯网 ichunt、Hoffmann Group。可用于「关于我」时间线同 Hub，只写雇佣事实。2025 年嗰间东南亚公司仍然匿名。`CLAUDE.md` §5 已同步。
+- **2026-11-03** 例外（Brendon 批准）：「关于我」页顶嘅 33 秒介绍短片（IP 宣传片 v6 网站版）入面出现嘅前雇主 logo（Hoffmann Group、RS Components、United Chemi-Con 展台）**可以保留**。只限呢条短片；网站相片仍然要模糊 logo。（PR #21）
 
 ## 6a. 履历事实（来源：LinkedIn + Brendon 补充）
 
