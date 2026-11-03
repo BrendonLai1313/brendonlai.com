@@ -10,6 +10,9 @@ export default defineConfig({
   redirects: {
     '/manuals': '/hub',
     '/en/manuals': '/en/hub',
+    // 2026-11-03：内容线改名「工业出海 AI 实录」，旧 Hub 作品网址导向新网址。
+    '/hub/one-person-company-lesson-1': '/hub/industrial-ai-diary-lesson-1',
+    '/en/hub/one-person-company-lesson-1': '/en/hub/industrial-ai-diary-lesson-1',
   },
   // 固定 dev 端口，避免多個 agent 開 server 時端口跳來跳去（4321 → 4322 → 4323…）
   server: {
