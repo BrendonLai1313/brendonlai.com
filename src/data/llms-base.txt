@@ -1,29 +1,29 @@
-# Brendon Lai — brendonlai.com | 一个人 × AI，帮中国工业落地东南亚
+# Brendon Lai — brendonlai.com | AI 驱动的精干团队，帮中国工业落地东南亚
 
-> Brendon Lai 帮中国工业企业进入东南亚。他的主张是「一个人 × AI = 一支团队」：用 AI 一个人完成过去需要一支团队的工作。这个网站是他的个人 IP 枢纽，持续输出工业出海、AI 自动化与一人公司运营的实战内容。
-> Brendon Lai helps Chinese industrial companies enter Southeast Asia. His thesis is "one person × AI = a whole team": using AI, one person does work that used to need a team. This site is his personal IP hub, publishing field notes on industrial expansion, AI automation and one-person-company operations.
+> Brendon Lai 帮中国工业企业进入东南亚。他的主张是「AI 驱动的精干团队」：速度交给 AI，判断留给人——把 AI 落地在制造企业的传统流程（选型、报价、合规文件、交付跟进），让同一套流程更快、更准、更少出错。这个网站是他的个人 IP 枢纽，持续输出工业出海、AI 自动化与AI 落地服务生产企业的实战内容。
+> Brendon Lai helps Chinese industrial companies enter Southeast Asia. His thesis is "an AI-driven lean team": speed goes to AI, judgement stays with people — putting AI to work on manufacturers' traditional workflows (product selection, quoting, compliance documents, delivery follow-up) so they run faster, more accurately and with fewer errors. This site is his personal IP hub, publishing field notes on industrial expansion, AI automation and AI-driven team operations.
 
 ## 三个实证 / Three proofs
 
-- 实证 A · 东南亚 0→1：一个人把一间东南亚工业品公司从 0 搭起来，3 套自建系统（产品数据管线、自建 ERP、B2B 产品商城）。
+- 实证 A · 东南亚 0→1：用 AI 把一间东南亚工业品公司的骨架从 0 搭起来，3 套自建系统（产品数据管线、自建 ERP、B2B 产品商城）。
 - 实证 B · 跨境出海：把出海最繁琐的合规工序做成工具（SDS 文件生成——已有付费客户、进口税务查核、清关与贸易文件）。
 - 实证 C · EduStory：把父亲走过的路画成动画留给孩子；每一集取材自孩子真实的行为与父亲亲身吃过的亏，由监制、编剧、画师三个 AI 智能体组成的动画团队完成。
-- Proof A · Southeast Asia 0→1: one person built a Southeast Asian industrial-supply company from zero, with 3 self-built systems (product data pipeline, ERP, B2B product store).
+- Proof A · Southeast Asia 0→1: the backbone of a Southeast Asian industrial-supply company built from zero with AI, with 3 self-built systems (product data pipeline, ERP, B2B product store).
 - Proof B · Cross-border: the most tedious go-global compliance work turned into tools (SDS generation — now with a first paying customer, import tax checks, customs & trade documents).
 - Proof C · EduStory: a father turning his own hard-won lessons into cartoons for his kid; every episode starts from the child's real behaviour, made by an AI crew of three agents (producer, scriptwriter, artist).
 
 ## 中文（简体）
 
-- [首页](https://brendonlai.com/)：一个人 × AI，帮中国工业落地东南亚；三个实证。
-- [关于 Brendon](https://brendonlai.com/about-brendon)：人生时间线。2000 年起在香港做工业品销售：日系电子元件（Sumida、United Chemi-Con）、欧洲目录分销（RS Components）、中国电子元器件平台（猎芯网）、德国工具品牌（Hoffmann Group 马来西亚销售总监，2020–2025；任内 36 个月营业额 +44%、团队 −43%），再到 2025 年起的一人公司。RS Components 期间任华南区销售总监，2015 财年连续四季获香港区 Top Sales。
+- [首页](https://brendonlai.com/)：AI 驱动的精干团队，帮中国工业落地东南亚；三个实证。
+- [关于 Brendon](https://brendonlai.com/about-brendon)：人生时间线。2000 年起在香港做工业品销售：日系电子元件（Sumida、United Chemi-Con）、欧洲目录分销（RS Components）、中国电子元器件平台（猎芯网）、德国工具品牌（Hoffmann Group 马来西亚销售总监，2020–2025；任内 36 个月营业额 +44%、团队 −43%），再到 2025 年起以 AI 驱动的工业出海服务。RS Components 期间任华南区销售总监，2015 财年连续四季获香港区 Top Sales。
 - [Brendon Hub 内容书架](https://brendonlai.com/hub)：内容枢纽，索引所有视频 / 文章 / 短文；含「方法论手册」柜（SOP 与清单）（飞轮索引层）。
 - [专栏](https://brendonlai.com/insights)：长文根据地。
 - [实证案例](https://brendonlai.com/projects)：三个实证的完整拆解——问题、做法、结果，以及各自的出口。
 
 ## English
 
-- [Home](https://brendonlai.com/en/)：One person × AI, helping Chinese industry land in Southeast Asia; three proofs.
-- [About Brendon](https://brendonlai.com/en/about-brendon)：Life timeline. Industrial sales in Hong Kong since 2000: Japanese components (Sumida, United Chemi-Con), European catalogue distribution (RS Components), a Chinese components platform (ichunt), a German tool brand (Sales Director, Hoffmann Group Malaysia, 2020–2025; +44% turnover with a 43% smaller team over 36 months), then a one-person company from 2025. South China Sales Director at RS Components, with Hong Kong Top Sales four quarters running in FY15.
+- [Home](https://brendonlai.com/en/)：An AI-driven lean team helping Chinese industry land in Southeast Asia; three proofs.
+- [About Brendon](https://brendonlai.com/en/about-brendon)：Life timeline. Industrial sales in Hong Kong since 2000: Japanese components (Sumida, United Chemi-Con), European catalogue distribution (RS Components), a Chinese components platform (ichunt), a German tool brand (Sales Director, Hoffmann Group Malaysia, 2020–2025; +44% turnover with a 43% smaller team over 36 months), then, from 2025, AI-driven go-global services for industry. South China Sales Director at RS Components, with Hong Kong Top Sales four quarters running in FY15.
 - [Brendon Hub](https://brendonlai.com/en/hub)：The content hub indexing all videos / articles / shorts; includes the "Methodology" cabinet (SOPs & checklists).
 - [Insights](https://brendonlai.com/en/insights)：Long-form home base.
 - [Case Files](https://brendonlai.com/en/projects)：The three proofs taken apart — problem, method, result, and where each one leads.

@@ -4,7 +4,7 @@
 // 由 src/components/CaseFile.astro 渲染；两个 projects.astro 只负责 map。
 // 新增 / 修改案例：只改这里，中英同步。
 //
-// 主线：一个人 × AI = 一支团队。三个案例 = 首页「三个实证」的完整拆解，
+// 主线（2026-11-03）：AI 驱动的精干团队，帮中国工业落地东南亚。三个案例 = 首页「三个实证」的完整拆解，
 // 每个案例只接一个出口；出口网址一律由 src/data/site.ts 解析，这里不写死。
 //
 // 内容红线（CLAUDE.md §5）：
@@ -67,8 +67,8 @@ export const CASE_FILES: CaseFileData[] = [
     theme: 'amber',
     tag: { zh: '实证 A · 东南亚 0→1', en: 'Proof A · Southeast Asia 0→1' },
     title: {
-      zh: '一个人，把一间东南亚工业品公司从 0 搭起来',
-      en: 'One person, building a Southeast Asian industrial-supply company from zero',
+      zh: '用 AI，把一间东南亚工业品公司的骨架从 0 搭起来',
+      en: 'Building the backbone of a Southeast Asian industrial-supply company from zero, with AI',
     },
     question: {
       zh: '一间新公司没有 IT 部门，怎样在第一天就有接得住订单的系统？',
@@ -76,8 +76,8 @@ export const CASE_FILES: CaseFileData[] = [
     },
     intro: [
       {
-        zh: '一间新公司最缺的往往不是订单，而是一套接得住订单的系统。没有 IT 部门，也没有预算请实施顾问，营运由我一个人负责，所以我用 AI 自己搭。',
-        en: "What a new company lacks most is rarely orders — it's a system that can handle them. No IT department, no budget for implementation consultants, and operations run by me alone. So I built it myself, with AI.",
+        zh: '一间新公司最缺的往往不是订单，而是一套接得住订单的系统。新公司没有 IT 部门，也没有预算请实施顾问，所以用 AI 自建系统，让订单从第一天就接得住。',
+        en: "What a new company lacks most is rarely orders — it's a system that can handle them. No IT department and no budget for implementation consultants — so we built the systems with AI, able to handle orders from day one.",
       },
     ],
     steps: [
@@ -179,8 +179,8 @@ export const CASE_FILES: CaseFileData[] = [
       },
     ],
     closing: {
-      zh: '结论只有一句：规则写在官方原文里，AI 让一个人也读得完。',
-      en: 'The takeaway is one line: the rules are written in the official texts, and AI lets one person read all of them.',
+      zh: '结论只有一句：规则写在官方原文里，AI 让精干团队也读得完。',
+      en: 'The takeaway is one line: the rules are written in the official texts, and AI lets a lean team read all of them.',
     },
     note: {
       zh: '税率与豁免条件以马来西亚官方最新公告为准。',
@@ -284,17 +284,17 @@ export const CASE_FILES: CaseFileData[] = [
 // 页面标题文案
 export const CASES_COPY = {
   zh: {
-    title: '实证案例 | Brendon Lai · 一个人 × AI = 一支团队',
+    title: '实证案例 | Brendon Lai · AI 驱动的精干团队',
     description:
-      '一个人 × AI = 一支团队的完整拆解：一个人把东南亚工业品公司从 0 搭起来、把出海合规工序做成工具、用 AI 动画团队为孩子拍品格故事。',
+      'AI 落地工业现场的完整拆解：用 AI 把东南亚工业品公司从 0 搭起来、把出海合规工序做成工具、用 AI 动画团队为孩子拍品格故事。',
     h1: '实证案例',
-    sub: '一个人 × AI = 一支团队的完整拆解：问题、做法、结果。',
+    sub: 'AI 落地工业现场的完整拆解：问题、做法、结果。',
   },
   en: {
-    title: 'Case Files | Brendon Lai · One person × AI = a whole team',
+    title: 'Case Files | Brendon Lai · An AI-driven lean team',
     description:
-      'One person × AI = a whole team, taken apart: building a Southeast Asian industrial-supply company from zero, turning go-global compliance into tools, and an AI animation crew making character stories for a kid.',
+      'AI put to work in industry, taken apart: building a Southeast Asian industrial-supply company from zero, turning go-global compliance into tools, and an AI animation crew making character stories for a kid.',
     h1: 'Case Files',
-    sub: 'One person × AI = a whole team, taken apart: the problem, the method, the result.',
+    sub: 'AI put to work in industry, taken apart: the problem, the method, the result.',
   },
 };
