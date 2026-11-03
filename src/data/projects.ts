@@ -108,13 +108,13 @@ export const CASE_FILES: CaseFileData[] = [
       en: "Done the traditional way, this is months of work for a small team. My point isn't how powerful AI is — it's that when you know exactly what to do, AI compresses the doing. The judgement is still yours.",
     },
     photos: [
-      { src: '/photos/case-a-overhead-rail.jpg', alt: { zh: '站上工作台，亲手安装上层灯架与挂杆', en: 'On top of the bench, installing the overhead rail myself' } },
-      { src: '/photos/case-a-hydraulic-press.jpg', alt: { zh: '在客户现场调试液压机', en: 'Testing a hydraulic press on site' } },
+      { src: '/photos/case-a-overhead-rail.jpg', alt: { zh: '在客户现场参与工作台上层挂杆的安装', en: 'On site, taking part in installing the overhead rail' } },
+      { src: '/photos/case-a-hydraulic-press.jpg', alt: { zh: '在客户现场参与液压机调试', en: 'On site, taking part in commissioning a hydraulic press' } },
       { src: '/photos/case-a-delivery-team.jpg', alt: { zh: '客户现场交付后的合照', en: 'Team photo after an on-site client delivery' } },
     ],
     photoCaption: {
-      zh: '客户现场交付：工作台、挂板与车间设备，从报价、安装到调试一手跟进。',
-      en: 'On-site client delivery: workbenches, pegboards and workshop equipment — followed through from quote to installation and testing.',
+      zh: '客户现场交付：工作台、挂板与车间设备——从方案设计到现场安装调试，每个环节我都亲身参与。',
+      en: 'On-site client delivery: workbenches, pegboards and workshop equipment — from solution design to installation and commissioning, I take part in every stage.',
     },
     roles: {
       zh: ['数据专员', '定价分析', 'ERP 实施', '网站开发'],
