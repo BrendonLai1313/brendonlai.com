@@ -74,7 +74,7 @@ export const journeyPhases: Record<Lang, JourneyPhase[]> = {
       yearRange: '2018 - 2025',
       milestones: [
         { id: 'stage-adult-1', age: '38岁', year: '2018', title: '中国电子元器件平台：猎芯网', desc: '出任深圳电子元器件 B2B 平台猎芯网（ichunt）的销售总监，负责国际与中国市场：完成销售架构调整，把销售团队扩充一倍，并设立香港办事处与供应链分公司。', impact: '从平台内部看见中国供应链的速度，也看见它出海时要补的那一块。', image: '/photos/timeline-2018-ichunt.jpg', align: 'right' },
-        { id: 'stage-adult-2', age: '40岁', year: '2020', title: '德国工具品牌：一个人，用数码带动全国团队', desc: '出任德国工具品牌 Hoffmann Group 马来西亚公司销售总监（国家经理），完成各部门架构调整与办事处搬迁。自发用数码工具带领全国销售团队：把销售理念、产品知识和数据做成视频、报表与网页工具。任内 36 个月，国家营业额增长超过 44%，团队人数却减少了 43%。', impact: '人少了 43%，营业额多了 44%：一个人 + 好工具，可以放大一整支团队。这是「一个人 × AI = 一支团队」的起点。', image: '/photos/timeline-2020-hoffmann.jpg', align: 'left' },
+        { id: 'stage-adult-2', age: '40岁', year: '2020', title: '德国工具品牌：一个人，用数码带动全国团队', desc: '出任德国工具品牌 Hoffmann Group 马来西亚公司销售总监（国家经理），完成各部门架构调整与办事处搬迁。自发用数码工具带领全国销售团队：把销售理念、产品知识和数据做成视频、报表与网页工具。任内 36 个月，国家营业额增长超过 44%，团队人数却减少了 43%。', impact: '人少了 43%，营业额多了 44%：一个人 + 好工具，可以放大一整支团队。这是「一个人 × AI = 一支团队」的起点。', image: '/photos/timeline-2020-hoffmann-training.jpg', align: 'left' },
       ],
     },
     {
@@ -118,7 +118,7 @@ export const journeyPhases: Record<Lang, JourneyPhase[]> = {
       yearRange: '2018 - 2025',
       milestones: [
         { id: 'stage-adult-1', age: '38', year: '2018', title: 'Chinese components platform: ichunt', desc: 'Sales Director (International & China) at ichunt (猎芯网), a Shenzhen B2B platform for electronic components: restructured sales, doubled the sales team, and set up a Hong Kong office and a supply-chain subsidiary.', impact: 'Saw the speed of China\'s supply chain from the inside — and the piece it still needs when going global.', image: '/photos/timeline-2018-ichunt.jpg', align: 'right' },
-        { id: 'stage-adult-2', age: '40', year: '2020', title: 'A German tool brand: one person, a nationwide team, made digital', desc: 'Sales Director (Country Manager) at Hoffmann Group\'s Malaysian company — restructured departments and relocated the office. I took it on myself to lead the nationwide sales team with digital tools: videos, reports and web tools carrying our sales thinking, product knowledge and data. Over 36 months, country turnover grew by more than 44% while the team shrank by 43%.', impact: '43% fewer people, 44% more turnover: one person with good tools can amplify a whole team — the seed of "one person × AI = a whole team".', image: '/photos/timeline-2020-hoffmann.jpg', align: 'left' },
+        { id: 'stage-adult-2', age: '40', year: '2020', title: 'A German tool brand: one person, a nationwide team, made digital', desc: 'Sales Director (Country Manager) at Hoffmann Group\'s Malaysian company — restructured departments and relocated the office. I took it on myself to lead the nationwide sales team with digital tools: videos, reports and web tools carrying our sales thinking, product knowledge and data. Over 36 months, country turnover grew by more than 44% while the team shrank by 43%.', impact: '43% fewer people, 44% more turnover: one person with good tools can amplify a whole team — the seed of "one person × AI = a whole team".', image: '/photos/timeline-2020-hoffmann-training.jpg', align: 'left' },
       ],
     },
     {

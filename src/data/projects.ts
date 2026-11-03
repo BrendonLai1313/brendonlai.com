@@ -108,13 +108,13 @@ export const CASE_FILES: CaseFileData[] = [
       en: "Done the traditional way, this is months of work for a small team. My point isn't how powerful AI is — it's that when you know exactly what to do, AI compresses the doing. The judgement is still yours.",
     },
     photos: [
+      { src: '/photos/case-a-overhead-rail.jpg', alt: { zh: '站上工作台，亲手安装上层灯架与挂杆', en: 'On top of the bench, installing the overhead rail myself' } },
+      { src: '/photos/case-a-hydraulic-press.jpg', alt: { zh: '在客户现场调试液压机', en: 'Testing a hydraulic press on site' } },
       { src: '/photos/case-a-delivery-team.jpg', alt: { zh: '客户现场交付后的合照', en: 'Team photo after an on-site client delivery' } },
-      { src: '/photos/case-a-workbench.jpg', alt: { zh: '安装工作台与挂板', en: 'Installing a workbench and pegboard' } },
-      { src: '/photos/case-a-trolley.jpg', alt: { zh: '组装移动推车', en: 'Assembling a mobile trolley' } },
     ],
     photoCaption: {
-      zh: '客户现场交付：工作台、挂板与移动推车，从报价到安装一手跟进。',
-      en: 'On-site client delivery: workbenches, pegboards and mobile trolleys — followed through from quote to installation.',
+      zh: '客户现场交付：工作台、挂板与车间设备，从报价、安装到调试一手跟进。',
+      en: 'On-site client delivery: workbenches, pegboards and workshop equipment — followed through from quote to installation and testing.',
     },
     roles: {
       zh: ['数据专员', '定价分析', 'ERP 实施', '网站开发'],
