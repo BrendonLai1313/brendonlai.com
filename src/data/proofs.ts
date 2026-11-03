@@ -1,7 +1,7 @@
 // src/data/proofs.ts
 // -----------------------------------------------------------------------------
 // 首页「三个实证」区块的资料（中英双语）。
-// 主线：一个人 × AI = 一支团队。每个实证只讲「做过什么、结果怎样」，
+// 主线（2026-11-03）：AI 驱动的精干团队，帮中国工业落地东南亚。每个实证只讲「做过什么、结果怎样」，
 // 只接一个出口；出口网址一律由 src/data/site.ts 解析，这里不写死任何网址。
 //
 // 内容红线（见 CLAUDE.md §5）：
@@ -39,8 +39,8 @@ export const PROOFS: Proof[] = [
       en: 'No IT department at a brand-new company — how do you have systems that can handle orders from day one?',
     },
     title: {
-      zh: '一个人，把一间东南亚工业品公司从 0 搭起来',
-      en: 'One person, building a Southeast Asian industrial-supply company from zero',
+      zh: '用 AI，把一间东南亚工业品公司的骨架从 0 搭起来',
+      en: 'Building the backbone of a Southeast Asian industrial-supply company from zero, with AI',
     },
     result: {
       zh: '3 套自建系统：产品数据管线 · 自建 ERP · B2B 产品商城',
@@ -113,14 +113,14 @@ export const PROOFS: Proof[] = [
 export const PROOFS_COPY = {
   zh: {
     eyebrow: 'PROOF · 三个实证',
-    h2: '一个人 × AI = 一支团队',
-    sub: '不是口号。下面每一件，都是我一个人借助 AI 亲手做出来的。',
-    rolesLabel: '顶替的岗位',
+    h2: 'AI 落地在工业现场',
+    sub: '不是口号。下面每一件，都是把 AI 真正用进工业企业日常流程的结果。',
+    rolesLabel: 'AI 承担的工作',
   },
   en: {
     eyebrow: 'PROOF · THREE CASES',
-    h2: 'One person × AI = a whole team',
-    sub: 'Not a slogan. Each of these was built by one person, hands-on, with AI.',
-    rolesLabel: 'Roles covered',
+    h2: 'AI, put to work in industry',
+    sub: 'Not a slogan. Each of these is AI genuinely built into the everyday workflows of industrial businesses.',
+    rolesLabel: 'Work AI takes on',
   },
 };

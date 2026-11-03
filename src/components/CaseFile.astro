@@ -50,7 +50,7 @@ const t = isEn
   ? {
       question: 'The problem',
       how: 'How I did it with AI',
-      roles: 'Roles covered',
+      roles: 'Work AI takes on',
       log: 'Build in Public log',
       exitEyebrow: 'EXIT',
       exitTitle: 'Where this proof leads',
@@ -58,7 +58,7 @@ const t = isEn
   : {
       question: '问题',
       how: '我怎样用 AI 做',
-      roles: '顶替的岗位',
+      roles: 'AI 承担的工作',
       log: 'Build in Public 进度日志',
       exitEyebrow: 'EXIT',
       exitTitle: '这个实证的出口',
@@ -90,7 +90,7 @@ const t = isEn
             alt={ph.alt[lang]}
             loading="lazy"
             decoding="async"
-            class={`w-full object-cover ${data.photos!.length === 1 ? 'h-56 md:h-80' : 'h-40 md:h-64'}`}
+            class={`w-full object-cover object-[50%_22%] ${data.photos!.length === 1 ? 'h-56 md:h-80' : 'h-40 md:h-64'}`}
           />
         ))}
       </div>

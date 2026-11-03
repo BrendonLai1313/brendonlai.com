@@ -4,31 +4,31 @@ import { SOCIAL } from '../data/site';
 const lang = Astro.currentLocale === 'en' ? 'en' : 'zh';
 const isEn = lang === 'en';
 
-// 2026-10-22 Hero 改版：对齐主线「一个人 × AI = 一支团队」。
+// 2026-11-03 Hero：主张改为「AI 驱动的精干团队，帮中国工业落地东南亚」（不再强调一人公司）。
 // 三张翻卡 = 实证 A / 实证 B / 本人，不再放小朋友的相（私隐规则，见 docs/DECISIONS.md）。
 const t = isEn
   ? {
       badge: 'Stay true. Serve the industry.',
-      h1a: 'One person × AI',
-      h1b: '= a whole team',
+      h1a: 'An AI-driven lean team,',
+      h1b: 'helping Chinese industry land in Southeast Asia',
       tag1: '[ 20+ years on the industrial sales front line ]',
-      tag2: '[ Now: a one-person company + AI agents ]',
+      tag2: '[ Method: traditional workflows × AI efficiency ]',
       tag3: '[ Focus: Chinese industry → Southeast Asia ]',
-      p1: "20+ years in industrial sales and management — Japanese component makers, a European catalog distributor, a Chinese supply-chain platform, a German tool brand. Today I work alone, using AI to cover the roles a team used to fill: data, pricing, ERP, web, compliance, documentation. I help Chinese industrial products land in Southeast Asia.",
-      p2: 'No success stories here — just three proofs you can check, and the mistakes I paid for.',
+      p1: "20+ years in industrial sales and management — Japanese component makers, a European catalog distributor, a Chinese supply-chain platform, a German tool brand. Today we put AI to work on the most 'traditional' parts of a manufacturer's business — product selection, quoting, compliance documents, delivery follow-up — so the same workflow runs faster, more accurately and with fewer errors.",
+      p2: 'Speed goes to AI; judgement stays with people. Here are three proofs you can check — and the mistakes we paid to learn from.',
       cta1: 'See how I can help',
       cta2: 'See the three proofs →',
       cta3: 'Who is Brendon',
     }
   : {
       badge: '坚守真实，贡献产业',
-      h1a: '一个人 × AI',
-      h1b: '= 一支团队',
+      h1a: 'AI 驱动的精干团队，',
+      h1b: '帮中国工业落地东南亚',
       tag1: '[ 20+ 年工业销售一线 ]',
-      tag2: '[ 现在：一人公司 + AI 智能体 ]',
+      tag2: '[ 方法：传统流程 × AI 提效 ]',
       tag3: '[ 方向：中国工业 → 东南亚 ]',
-      p1: '20 多年工业品销售与管理：日系元器件原厂、欧洲目录分销、中国供应链平台、德国工具品牌。现在我一个人，用 AI 补齐数据、定价、ERP、网站、合规、单证这些本来要一支团队的岗位，帮中国工业品落地东南亚。',
-      p2: '这里没有成功学，只有三个可以核查的实证，和我交过学费的坑。',
+      p1: '20 多年工业品销售与管理：日系元器件原厂、欧洲目录分销、中国供应链平台、德国工具品牌。今天，我们把 AI 用在制造企业最「传统」的环节——选型、报价、合规文件、交付跟进——让同一套流程更快、更准、更少出错。',
+      p2: '速度交给 AI，判断留给人。这里有三个可以核查的实证，也有我们交过学费的坑。',
       cta1: '了解我能帮你做什么',
       cta2: '看三个实证 →',
       cta3: 'Brendon是谁',
@@ -42,18 +42,20 @@ const cards = [
     pos: 'object-[70%_50%]',
     label: isEn ? 'PROOF A' : 'PROOF A',
     back: isEn
-      ? 'A Southeast Asian company from 0→1 — down to assembling the delivery myself.'
-      : '东南亚 0→1：从系统搭建，到交付现场亲手组装。',
+      ? 'A Southeast Asian company from 0→1 — from building the systems to on-site delivery, I take part at every step.'
+      : '东南亚 0→1：从系统搭建到现场交付，每一步我都亲身参与。',
     side: 'left',
   },
   {
-    src: '/photos/hero-portrait-street.jpg',
-    alt: 'Brendon Lai',
-    pos: 'object-center',
-    label: 'REAL ME',
+    src: '/photos/hero-shanghai-industry40.jpg',
+    alt: isEn
+      ? 'Brendon Lai speaking for GAI at the Asia Industry 4.0 Automation Conference, Shanghai, 2026'
+      : 'Brendon Lai 代表 GAI 在 2026 年上海「亚洲工业4.0自动化交流会」演讲',
+    pos: 'object-[20%_50%]',
+    label: 'ON STAGE',
     back: isEn
-      ? 'A dad and a husband. Off the clock, I turn the road I\'ve walked into cartoons for my kid.'
-      : '也是爸爸和丈夫。工作之外，用 AI 把走过的路画成动画，留给孩子。',
+      ? 'Speaking for GAI at the Asia Industry 4.0 Automation Conference in Shanghai: how AI gets put to work for manufacturers.'
+      : '代表 GAI 在上海「亚洲工业4.0自动化交流会」分享：AI 如何落地服务生产企业。',
     side: 'center',
   },
   {
@@ -80,7 +82,7 @@ const SIDE = {
         <div class="inline-block px-3 py-1 border border-hk-accent/30 text-hk-accent text-sm font-bold rounded-full bg-hk-accent/5">
             {t.badge}
         </div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-hk-primary leading-[1.2]">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-hk-primary leading-[1.2]">
             {t.h1a}<br/>
             <span class="text-hk-accent relative inline-block mt-2">
                 {t.h1b}
